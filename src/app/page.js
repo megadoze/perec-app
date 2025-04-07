@@ -1,6 +1,6 @@
 // app/page.js
 import { db, ref, get, child } from "@/lib/firebase";
-import NewsSection from "@/components/NewsSection";
+import NewsSection from "../components/NewsSection";
 
 export const dynamic = "force-dynamic"; // чтобы Firebase работал на Vercel
 
