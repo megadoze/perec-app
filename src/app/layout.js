@@ -1,4 +1,3 @@
-// app/layout.js
 import { PT_Sans, PT_Sans_Narrow } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";

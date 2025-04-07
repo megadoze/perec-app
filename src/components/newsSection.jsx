@@ -1,4 +1,3 @@
-// components/NewsSection.jsx
 import Link from "next/link";
 
 function formatDate(timestamp) {
