@@ -9,6 +9,8 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
 };
 
+console.log("🔥 DATABASE_URL:", process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL);
+
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 export { ref, get, child };
