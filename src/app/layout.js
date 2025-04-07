@@ -1,6 +1,6 @@
+import Link from "next/link";
 import { PT_Sans, PT_Sans_Narrow } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 
 const ptsans = PT_Sans({
   subsets: ["latin", "cyrillic"],
