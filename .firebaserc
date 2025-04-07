@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "perec-news"
+  },
+  "targets": {
+    "perec-news": {
+      "hosting": {
+        "frontend": [
+          "perec-app"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
