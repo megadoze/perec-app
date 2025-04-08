@@ -10,8 +10,12 @@ export const content = [
 export const theme = {
   extend: {
     fontFamily: {
-      sans: ["var(--font-ptsans)"], // основной текст
       narrow: ["var(--font-ptsans-narrow)"], // заголовки
+      // narrow: ["var(--font-roboto-condensed)"],
+      // sans: ["var(--font-open-sans)"],
+      // sans: ["var(--font-ptsans-narrow)"], // заголовки
+      sans: ["var(--font-roboto-condensed)"],
+      // sans: ["var(--font-ptsans)"], // основной текст
     },
   },
 };

@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { PT_Sans, PT_Sans_Narrow } from "next/font/google";
+import {
+  PT_Sans,
+  PT_Sans_Narrow,
+  Roboto_Condensed,
+  Open_Sans,
+} from "next/font/google";
 import "./globals.css";
 
 const ptsans = PT_Sans({
@@ -16,6 +21,20 @@ const ptsansNarrow = PT_Sans_Narrow({
   display: "swap",
 });
 
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["cyrillic", "latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-roboto-condensed",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "600", "700"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
+
 export const metadata = {
   title: "PEREC.news - нескучные новости!🔥",
   description:
@@ -24,7 +43,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${ptsans.variable} ${ptsansNarrow.variable}`}>
+    <html
+      lang="en"
+      className={`${ptsans.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} ${openSans.variable}`}
+    >
       <body className=" bg-[#faf8f5] text-black font-sans">
         <header className=" px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
