@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
             <button className="hidden md:block bg-black text-white px-3 py-1 rounded hover:opacity-80">
               Get 1 year for $50 USD
             </button>
-            <Link href="/login" className="hidden md:block text-lg">
-              Login
-            </Link>
+            {/* <Link href="/login" className="hidden md:block text-lg"> */}
+            <p className="hidden md:block text-lg">Login</p>
+            {/* </Link> */}
             <button className="md:hidden text-lg">☰</button>
           </div>
         </header>
