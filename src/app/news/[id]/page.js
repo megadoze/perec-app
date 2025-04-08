@@ -53,7 +53,7 @@ export default async function NewsPage(props) {
   }
 
   return (
-    <article className="max-w-3xl mx-auto p-4">
+    <article className="max-w-3xl mx-auto p-0">
       <h1 className="text-3xl font-narrow font-bold mb-2">{news.title}</h1>
       <p className="text-gray-500 text-sm mb-4">
         Опубликовано: {dayjs(news.publishedAt).format("DD MMM YYYY HH:mm")}
