@@ -40,7 +40,7 @@ export default function NewsSection({ news }) {
               </h3>
             </Link>
             <div
-              className=" text-neutral-600 mt-3 line-clamp-3"
+              className=" text-lg text-neutral-600 mt-3 line-clamp-3"
               dangerouslySetInnerHTML={{ __html: item.content }}
             ></div>
             <div className="text-sm text-neutral-500 mt-2 flex flex-col gap-1">
@@ -120,7 +120,7 @@ export default function NewsSection({ news }) {
               </h3>
             </Link>
             <div
-              className=" text-neutral-600 mt-3 line-clamp-3"
+              className="text-lg text-neutral-600 mt-3 line-clamp-3"
               dangerouslySetInnerHTML={{ __html: item.content }}
             />
             <p className="text-sm text-neutral-500 pt-2">{item.category}</p>
