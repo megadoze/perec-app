@@ -29,9 +29,9 @@ export default function NewsSection({ news }) {
   const col4 = news.slice(5, 7);
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1.1fr] divide-x divide-neutral-200">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1.1fr] lg:divide-x divide-neutral-200">
       {/* Колонка 1 */}
-      <div className="space-y-6 px-4 border-neutral-200 divide-y divide-neutral-200">
+      <div className="order-2 sm:order-1 space-y-6 pr-4 pb-8 border-neutral-200 md:divide-y md:border-r lg:border-r-0 divide-neutral-200">
         {col1.map((item, index) => (
           <article key={item.id} className="pt-4 first:pt-0">
             <Link href={`/news/${item.id}`}>
@@ -54,7 +54,7 @@ export default function NewsSection({ news }) {
       </div>
 
       {/* Колонка 2 */}
-      <div className="px-4 border-neutral-200">
+      <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-8 border-neutral-200">
         {main?.images && (
           <Link href={`/news/${main.id}`}>
             <img
@@ -81,7 +81,7 @@ export default function NewsSection({ news }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="space-y-6 px-4 border-neutral-200 divide-y divide-neutral-200">
+      <div className="order-3 space-y-6 md:px-4 pb-8 border-neutral-200 md:divide-y md:border-r lg:border-r-0 divide-neutral-200">
         {mini.map((item) => (
           <article key={item.id} className="pt-4 first:pt-0">
             {item?.images && (
@@ -104,7 +104,7 @@ export default function NewsSection({ news }) {
       </div>
 
       {/* Колонка 4 */}
-      <div className="space-y-6 px-4 border-neutral-200 divide-y divide-neutral-200">
+      <div className="order-4 space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
         {col4.map((item) => (
           <article key={item.id} className="pt-4 first:pt-0">
             <Link href={`/news/${item.id}`}>

@@ -25,25 +25,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${ptsans.variable} ${ptsansNarrow.variable}`}>
-      <body className="bg-[#faf8f5] text-black font-sans">
-        <header className="border-b border-neutral-300 px-10 py-4 flex items-center justify-between text-sm">
+      <body className=" bg-[#faf8f5] text-black font-sans">
+        <header className="border-b border-neutral-300 px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <Link href="/" className="text-xl font-bold tracking-tight">
               Perec News
             </Link>
           </div>
-          <div className="flex items-center gap-4">
-            <Link href="/login" className="hover:underline">
-              Login
-            </Link>
+          <div className="flex justify-end items-center gap-4">
             <button className="bg-black text-white px-3 py-1 rounded hover:opacity-80">
               Get 1 year for $50 USD
             </button>
+            <Link href="/login" className="hover:underline">
+              Login
+            </Link>
             <button className="md:hidden text-sm">☰</button>
           </div>
         </header>
 
-        <main className="px-6 py-8">{children}</main>
+        <main className="px-5 md:px-8 py-8">{children}</main>
 
         <footer className="mt-12 text-center text-neutral-400 text-sm pb-8">
           © {new Date().getFullYear()} Perec News. All rights reserved.
