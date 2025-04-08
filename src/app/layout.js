@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${ptsans.variable} ${ptsansNarrow.variable}`}>
       <body className=" bg-[#faf8f5] text-black font-sans">
-        <header className="border-b border-neutral-300 px-5 md:px-8 py-4 flex items-center justify-between text-sm">
+        <header className=" px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <Link href="/" className="text-2xl font-bold tracking-tight">
               Perec News
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        <main className="px-5 md:px-8 py-8">{children}</main>
+        <main className="px-5 md:px-8 pt-5 md:pt-10">{children}</main>
 
         <footer className="mt-12 text-center text-neutral-400 text-sm pb-8">
           © {new Date().getFullYear()} Perec News. All rights reserved.
