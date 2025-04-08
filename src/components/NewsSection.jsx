@@ -60,7 +60,7 @@ export default function NewsSection({ news }) {
             <img
               src={main?.images[0]}
               alt={main.title}
-              className="w-full h-56 object-cover hover:opacity-90 transition mb-4"
+              className="w-full h-56 md:h-52 xl:h-60 object-cover hover:opacity-90 transition mb-4"
             />
           </Link>
         )}
@@ -81,7 +81,7 @@ export default function NewsSection({ news }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="order-3 space-y-6 md:px-4 pb-8 border-neutral-200 md:divide-y md:border-r lg:border-r-0 divide-neutral-200">
+      <div className="order-3 space-y-6 md:pr-4 lg:px-4 pb-8 border-neutral-200 md:divide-y md:border-r lg:border-r-0 divide-neutral-200">
         {mini.map((item) => (
           <article key={item.id} className="pt-4 first:pt-0">
             {item?.images && (
@@ -89,7 +89,7 @@ export default function NewsSection({ news }) {
                 <img
                   src={item?.images[0]}
                   alt={item.title}
-                  className="w-full h-40 object-cover hover:opacity-90 transition mb-2"
+                  className="w-full h-56 md:h-52 lg:h-36 xl:h-40 object-cover hover:opacity-90 transition mb-2"
                 />
               </Link>
             )}

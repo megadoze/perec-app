@@ -28,18 +28,18 @@ export default function RootLayout({ children }) {
       <body className=" bg-[#faf8f5] text-black font-sans">
         <header className="border-b border-neutral-300 px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
-            <Link href="/" className="text-xl font-bold tracking-tight">
+            <Link href="/" className="text-2xl font-bold tracking-tight">
               Perec News
             </Link>
           </div>
           <div className="flex justify-end items-center gap-4">
-            <button className="bg-black text-white px-3 py-1 rounded hover:opacity-80">
+            <button className="hidden md:block bg-black text-white px-3 py-1 rounded hover:opacity-80">
               Get 1 year for $50 USD
             </button>
-            <Link href="/login" className="hover:underline">
+            <Link href="/login" className="hidden md:block text-lg">
               Login
             </Link>
-            <button className="md:hidden text-sm">☰</button>
+            <button className="md:hidden text-lg">☰</button>
           </div>
         </header>
 
