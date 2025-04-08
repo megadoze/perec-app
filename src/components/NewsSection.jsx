@@ -45,10 +45,6 @@ export default function NewsSection({ news }) {
             ></div>
             <div className="text-sm text-neutral-500 mt-2 flex flex-col gap-1">
               <span className="">{item.category}</span>
-              {/* <span>{item.author}</span>
-              <span className="text-[10px]">
-                {formatDate(item.publishedAt)}
-              </span> */}
             </div>
           </article>
         ))}
@@ -79,8 +75,6 @@ export default function NewsSection({ news }) {
 
         <div className="text-sm text-neutral-500 mt-2">
           <span className="">{main.category}</span>
-          {/* <span>{main?.author}</span> ·{" "}
-          <span className="text-[10px]">{formatDate(main?.publishedAt)}</span> */}
         </div>
       </div>
 
@@ -104,7 +98,6 @@ export default function NewsSection({ news }) {
                 {item.title}
               </h4>
             </Link>
-            {/* <p className="text-xs text-neutral-500 mt-1">{item.author}</p> */}
             <p className="text-sm text-neutral-500 pt-2">{item.category}</p>
           </article>
         ))}
@@ -124,7 +117,6 @@ export default function NewsSection({ news }) {
               dangerouslySetInnerHTML={{ __html: item.content }}
             />
             <p className="text-sm text-neutral-500 pt-2">{item.category}</p>
-            {/* <p className="text-xs text-neutral-500 mt-1">{item.author}</p> */}
           </article>
         ))}
       </div>

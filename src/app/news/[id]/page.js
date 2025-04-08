@@ -13,12 +13,11 @@ export async function generateMetadata(props) {
     return { title: "Новость не найдена" };
   }
 
-  const description =
-    news.subTitle || "Читайте последние новости на нашем сайте.";
+  const description = news.subTitle || "Нескучные новости на PEREC.news!🔥";
   const url = `https://perec-news.web.app/news/${id}`;
-  //   const image =
-  //     news.image[0] ||
-  //     "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/news%2F20250308_BRP503.webp?alt=media&token=912c3ea4-ab76-47f3-b867-5c55d77bc588";
+  const image =
+    news.images[0] ||
+    "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media&token=12734781-3f48-4b57-b2a1-7d8ac626b3ee";
 
   return {
     title: news.title,
@@ -29,13 +28,13 @@ export async function generateMetadata(props) {
       url,
       siteName: "PEREC.news - нескучные новости!🔥",
       type: "article",
-      //   images: [image],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: news.title,
       description,
-      //   images: [image],
+      images: [image],
     },
   };
 }
@@ -45,7 +44,7 @@ export default async function NewsPage(props) {
   const snapshot = await get(child(ref(db), `news/${id}`));
   const news = snapshot.val();
 
-  if (!news || news.publishAt > Date.now()) {
+  if (!news || news.publishedAt > Date.now()) {
     return (
       <div className="p-4 text-gray-600">
         Новость не найдена или ещё не опубликована.
@@ -57,27 +56,25 @@ export default async function NewsPage(props) {
     <article className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-narrow font-bold mb-2">{news.title}</h1>
       <p className="text-gray-500 text-sm mb-4">
-        Опубликовано: {dayjs(news.publishAt).format("DD MMM YYYY HH:mm")}
+        Опубликовано: {dayjs(news.publishedAt).format("DD MMM YYYY HH:mm")}
       </p>
+      <h2 className="text-xl font-narrow">{news?.subTitle}</h2>
       <div
-        className="text-lg font-light leading-relaxed"
+        className="pt-4 text-lg font-light leading-relaxed"
         dangerouslySetInnerHTML={{ __html: news.content }}
       ></div>
       <p className="mt-6 text-sm text-gray-400">
-        Источник:{" "}
+        Автор:{" "}
         <a
           href={news.originalLink}
-          className="underline"
+          className=""
           target="_blank"
           rel="noreferrer"
         >
-          rbc.ua
+          {news.author}
         </a>
       </p>
-      <Link
-        href="/"
-        className="inline-block mt-6 text-blue-600 hover:underline"
-      >
+      <Link href="/" className="inline-block mt-6 text-cyan-700/60">
         ← Назад к новостям
       </Link>
     </article>
