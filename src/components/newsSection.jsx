@@ -35,7 +35,7 @@ export default function NewsSection({ news }) {
         {col1.map((item, index) => (
           <article key={item.id} className="pt-4 first:pt-0">
             <Link href={`/news/${item.id}`}>
-              <h3 className="text-xl font-bold font-narrow leading-tight">
+              <h3 className="text-2xl font-bold font-narrow leading-tight">
                 {highlightFirstWord(item.title, "bg-orange-200 text-black")}
               </h3>
             </Link>
@@ -65,12 +65,12 @@ export default function NewsSection({ news }) {
           </Link>
         )}
         <Link href={`/news/${main.id}`}>
-          <h2 className="text-2xl font-bold font-narrow leading-tight">
+          <h2 className="text-3xl font-bold font-narrow leading-tight">
             {main?.title}
           </h2>
         </Link>
         <div
-          className=" text-lg text-neutral-600 mt-2"
+          className="text-lg text-neutral-600 mt-2"
           dangerouslySetInnerHTML={{ __html: main.content }}
         ></div>
 
@@ -94,7 +94,7 @@ export default function NewsSection({ news }) {
               </Link>
             )}
             <Link href={`/news/${item.id}`}>
-              <h4 className="font-semibold font-narrow text-xl line-clamp-3">
+              <h4 className="font-semibold font-narrow text-2xl line-clamp-3">
                 {item.title}
               </h4>
             </Link>
@@ -108,7 +108,7 @@ export default function NewsSection({ news }) {
         {col4.map((item) => (
           <article key={item.id} className="pt-4 first:pt-0">
             <Link href={`/news/${item.id}`}>
-              <h3 className="font-semibold font-narrow leading-tight text-xl">
+              <h3 className="font-semibold font-narrow leading-tight text-2xl">
                 {highlightFirstWord(item.title, "bg-yellow-200 text-black")}
               </h3>
             </Link>
