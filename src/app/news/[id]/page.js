@@ -74,8 +74,12 @@ export default async function NewsPage(props) {
           {news.author}
         </a>
       </p>
-      <Link href="/" className="inline-block mt-6 text-cyan-700/60">
-        ← Назад к новостям
+      <Link
+        href="/"
+        className="inline-flex items-center gap-1 mt-6 text-cyan-700/60 "
+      >
+        <span className=" pb-1">←</span>{" "}
+        <span className="">Назад к новостям</span>
       </Link>
     </article>
   );
