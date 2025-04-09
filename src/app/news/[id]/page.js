@@ -15,9 +15,9 @@ export async function generateMetadata(props) {
 
   const description = news.subTitle || "Нескучные новости на PEREC.news!🔥";
   const url = `https://perec-news.web.app/news/${id}`;
-  const image =
-    news.images[0] ||
-    "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media&token=12734781-3f48-4b57-b2a1-7d8ac626b3ee";
+  const image = news?.images
+    ? news?.images[0]
+    : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media&token=12734781-3f48-4b57-b2a1-7d8ac626b3ee";
 
   return {
     title: news.title,

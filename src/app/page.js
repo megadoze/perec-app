@@ -12,7 +12,7 @@ export default async function Home() {
     .map(([id, item]) => ({ id, ...item }))
     .filter((item) => item.status === "published") // <-- Только опубликованные
     .sort((a, b) => b.publishedAt - a.publishedAt)
-    .slice(0, 20);
+    .slice(0, 23);
 
   const politics = news
     .filter((item) => item.category === "politics")
