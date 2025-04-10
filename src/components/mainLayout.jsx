@@ -34,7 +34,7 @@ export default function MainLayout({ news }) {
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-200 md:border-r lg:border-r-0 divide-neutral-200">
         {col1.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText maincat />
+            <NewsLayout news={item} withText maincat line={3} />
           </div>
         ))}
       </div>
@@ -55,7 +55,7 @@ export default function MainLayout({ news }) {
       <div className="order-4 md:space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
         {col4.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText maincat />
+            <NewsLayout news={item} withText maincat line={3}/>
           </div>
         ))}
       </div>

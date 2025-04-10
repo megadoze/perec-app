@@ -5,9 +5,15 @@ export const NewsLayout = ({
   main,
   withPhoto,
   withText,
-  lineClamp = 3,
   maincat,
+  line = 2,
 }) => {
+  const clampClass = {
+    2: "line-clamp-2",
+    3: "line-clamp-3",
+    4: "line-clamp-4",
+  };
+
   return (
     <article>
       {withPhoto && news?.images && (
@@ -38,7 +44,7 @@ export const NewsLayout = ({
         <div
           className={`${
             main ? "lg:line-clamp-6" : ""
-          } text-lg font-light text-neutral-800 mt-3 line-clamp-[${lineClamp}]`}
+          } text-lg font-light text-neutral-800 mt-3 ${clampClass[line]}`}
           dangerouslySetInnerHTML={{ __html: news.content }}
         ></div>
       )}
