@@ -49,7 +49,7 @@ export const NewsLayout = ({
         ></div>
       )}
       {maincat && (
-        <div className="text-sm text-orange-800/80 pt-3">
+        <div className="text-sm text-orange-700/80 pt-3">
           <span className="">{news.category}</span>
         </div>
       )}

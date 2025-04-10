@@ -34,25 +34,25 @@ export default async function Home() {
       <MainLayout news={news} />
       <div className=" my-6 border-t border-neutral-200"></div>
       {/* Politics */}
-      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+      <h2 className=" font-sans text-xl pb-6 text-orange-700">
         Политический перчик
       </h2>
       <CategoryLayoutFourH news={politics} withText />
       <div className=" my-6 border-t border-neutral-200"></div>
       {/* Economics */}
-      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+      <h2 className=" font-sans text-xl pb-6 text-orange-700">
         Экономика с огоньком
       </h2>
       <CategoryLayoutFourH news={economics} withPhoto withText />
       <div className=" my-6 border-t border-neutral-200"></div>
       {/* Life */}
-      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+      <h2 className=" font-sans text-xl pb-6 text-orange-700">
         Жизнь острая как чили
       </h2>
       <CategoryLayoutSix news={life} />
       <div className=" my-6 border-t border-neutral-200"></div>
       {/* Culture */}
-      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+      <h2 className=" font-sans text-xl pb-6 text-orange-700">
         Поп-культура с перцем
       </h2>
       <CategoryLayoutFourV news={culture} />
