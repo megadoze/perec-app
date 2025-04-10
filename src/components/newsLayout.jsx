@@ -1,6 +1,13 @@
 import Link from "next/link";
 
-export const NewsLayout = ({ news, main, withPhoto, withText }) => {
+export const NewsLayout = ({
+  news,
+  main,
+  withPhoto,
+  withText,
+  lineClamp = 3,
+  maincat,
+}) => {
   return (
     <article>
       {withPhoto && news?.images && (
@@ -10,7 +17,9 @@ export const NewsLayout = ({ news, main, withPhoto, withText }) => {
               src={news?.images[0]}
               alt={news.title}
               className={`${
-                main ? "aspect-[4/3]" : "aspect-[3/2]"
+                main
+                  ? "aspect-[4/3]"
+                  : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
               } w-full h-full object-cover hover:opacity-90`}
             />
           </div>
@@ -29,13 +38,15 @@ export const NewsLayout = ({ news, main, withPhoto, withText }) => {
         <div
           className={`${
             main ? "lg:line-clamp-6" : ""
-          } text-lg font-light text-neutral-800 mt-3 line-clamp-3`}
+          } text-lg font-light text-neutral-800 mt-3 line-clamp-[${lineClamp}]`}
           dangerouslySetInnerHTML={{ __html: news.content }}
         ></div>
       )}
-      <div className="text-sm text-orange-800/80 pt-3">
-        <span className="">{news.category}</span>
-      </div>
+      {maincat && (
+        <div className="text-sm text-orange-800/80 pt-3">
+          <span className="">{news.category}</span>
+        </div>
+      )}
     </article>
   );
 };

@@ -20,7 +20,7 @@ import { NewsLayout } from "./newsLayout";
 //   );
 // }
 
-export default function NewsSection({ news }) {
+export default function MainLayout({ news }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 2);
@@ -34,20 +34,20 @@ export default function NewsSection({ news }) {
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-200 md:border-r lg:border-r-0 divide-neutral-200">
         {col1.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText />
+            <NewsLayout news={item} withText maincat />
           </div>
         ))}
       </div>
 
       {/* Колонка 2 */}
       <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-8 border-neutral-200">
-        <NewsLayout news={col2} main withPhoto withText />
+        <NewsLayout news={col2} main withPhoto withText maincat />
       </div>
 
       {/* Колонка 3 */}
       <div className="order-3 space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 border-neutral-200 md:border-r lg:border-r-0 divide-neutral-200">
         {col3.map((item) => (
-          <NewsLayout key={item.id} news={item} withPhoto />
+          <NewsLayout key={item.id} news={item} withPhoto maincat />
         ))}
       </div>
 
@@ -55,7 +55,7 @@ export default function NewsSection({ news }) {
       <div className="order-4 md:space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
         {col4.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText />
+            <NewsLayout news={item} withText maincat />
           </div>
         ))}
       </div>

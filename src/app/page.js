@@ -1,6 +1,8 @@
-import NewsCategory from "@/components/newsCategory.jsx";
-import NewsSection from "../components/NewsSection.jsx";
 import { db, ref, get, child } from "@/lib/firebase";
+import MainLayout from "../components/mainLayout.jsx";
+import CategoryLayoutSix from "@/components/categoryLayoutSix.jsx";
+import CategoryLayoutFourH from "@/components/categoryLayoutFourH.jsx";
+import CategoryLayoutFourV from "@/components/categoryLayoutFourV.jsx";
 
 export const dynamic = "force-dynamic"; // чтобы Firebase работал на Vercel
 
@@ -12,7 +14,7 @@ export default async function Home() {
     .map(([id, item]) => ({ id, ...item }))
     .filter((item) => item.status === "published") // <-- Только опубликованные
     .sort((a, b) => b.publishedAt - a.publishedAt)
-    .slice(0, 23);
+    .slice(0, 25);
 
   const politics = news
     .filter((item) => item.category === "politics")
@@ -22,20 +24,38 @@ export default async function Home() {
     .filter((item) => item.category === "economics")
     .slice(0, 4);
 
+  const life = news.filter((item) => item.category === "life").slice(0, 6);
+  const culture = news
+    .filter((item) => item.category === "culture")
+    .slice(0, 6);
+
   return (
     <>
-      {/* <h1 className="text-xl font-bold mb-6">Latest Updates</h1> */}
-      <NewsSection news={news} />
+      <MainLayout news={news} />
       <div className=" my-6 border-t border-neutral-200"></div>
+      {/* Politics */}
       <h2 className=" font-narrow text-xl pb-6 text-orange-800">
         Политический перчик
       </h2>
-      <NewsCategory news={politics} />
+      <CategoryLayoutFourH news={politics} withText />
       <div className=" my-6 border-t border-neutral-200"></div>
+      {/* Economics */}
       <h2 className=" font-narrow text-xl pb-6 text-orange-800">
         Экономика с огоньком
       </h2>
-      <NewsCategory news={economics} />
+      <CategoryLayoutFourH news={economics} withPhoto withText />
+      <div className=" my-6 border-t border-neutral-200"></div>
+      {/* Life */}
+      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+        Жизнь острая как чили
+      </h2>
+      <CategoryLayoutSix news={life} />
+      <div className=" my-6 border-t border-neutral-200"></div>
+      {/* Culture */}
+      <h2 className=" font-narrow text-xl pb-6 text-orange-800">
+        Поп-культура с перцем
+      </h2>
+      <CategoryLayoutFourV news={culture} />
     </>
   );
 }
