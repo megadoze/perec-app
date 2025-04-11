@@ -3,9 +3,24 @@
 import { useEffect, useState, useMemo } from "react";
 import { db, ref, onValue } from "@/lib/firebase";
 import MainLayout from "./mainLayout";
-import CategoryLayoutFourH from "./categoryLayoutFourH";
-import CategoryLayoutFourV from "./categoryLayoutFourV";
-import CategoryLayoutSix from "./categoryLayoutSix";
+
+import dynamic from "next/dynamic";
+
+const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
+  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  ssr: false,
+});
+
+const CategoryLayoutFourV = dynamic(() => import("./categoryLayoutFourV"), {
+  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  ssr: false,
+});
+
+const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
+  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  ssr: false,
+});
+
 import { motion, AnimatePresence } from "framer-motion"; // <== добавим анимацию
 import Link from "next/link";
 

@@ -26,17 +26,18 @@ export const NewsLayout = ({
             <Image
               src={news?.images[0]}
               alt={news.title}
-              width={400} // или нужные размеры
-              height={main ? 300 : 250} // примерный aspect ratio
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+              width={320}
+              height={main ? 240 : 200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
               priority={priority}
+              loading={priority ? "eager" : "lazy"}
               className={`${
                 main
                   ? "aspect-[4/3]"
                   : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
               } w-full h-full object-cover hover:opacity-90`}
               placeholder="blur"
-              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMyMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlZWUiIC8+PC9zdmc+"
             />
           </div>
         </Link>

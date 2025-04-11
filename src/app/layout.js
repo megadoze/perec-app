@@ -47,6 +47,13 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${ptsans.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} ${openSans.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
+        <link
+          rel="dns-prefetch"
+          href="https://firebasestorage.googleapis.com"
+        />
+      </head>
       <body className=" bg-[#faf8f5] text-black font-sans">
         <header className=" px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
