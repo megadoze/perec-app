@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 export default function NewsContent({ data }) {
   return (
     <>
-      <Head>
+      {/* <Head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -25,7 +25,7 @@ export default function NewsContent({ data }) {
             }),
           }}
         />
-      </Head>
+      </Head> */}
       <AnimatePresence mode="sync">
         <motion.div
           key="data"
