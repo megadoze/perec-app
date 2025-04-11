@@ -1,25 +1,5 @@
 import { NewsLayout } from "./newsLayout";
 
-// function formatDate(timestamp) {
-//   return new Date(timestamp).toLocaleDateString("ru-RU", {
-//     day: "numeric",
-//     month: "short",
-//     year: "numeric",
-//   });
-// }
-
-// function highlightFirstWord(title, color = "") {
-//   const [first, ...rest] = title.split(" ");
-//   return color ? (
-//     <>
-//       <span className={`${color} px-1 rounded-sm`}>{first}</span>{" "}
-//       {rest.join(" ")}
-//     </>
-//   ) : (
-//     title
-//   );
-// }
-
 export default function MainLayout({ news }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
@@ -55,7 +35,7 @@ export default function MainLayout({ news }) {
       <div className="order-4 md:space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
         {col4.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText maincat line={3}/>
+            <NewsLayout news={item} withText maincat line={3} />
           </div>
         ))}
       </div>

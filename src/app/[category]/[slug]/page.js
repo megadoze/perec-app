@@ -1,7 +1,6 @@
 export const runtime = "nodejs";
 
 import { db, ref, get, child } from "@/lib/firebase";
-import Link from "next/link";
 import dayjs from "dayjs";
 import { notFound } from "next/navigation";
 import BackButton from "@/components/backButton";
@@ -17,11 +16,12 @@ export async function generateMetadata(props) {
     return { title: "Новость не найдена" };
   }
 
-  const description = news.subTitle || "Нескучные новости на PEREC.news!🔥";
+  const description = news.subTitle || "Добавляем остроты в скучные новости!";
   const url = `https://perec-news.web.app/news/${id}`;
-  const image = news?.images
-    ? news?.images[0]
-    : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media&token=12734781-3f48-4b57-b2a1-7d8ac626b3ee";
+  const image =
+    Array.isArray(news?.images) && news.images.length > 0
+      ? news.images[0]
+      : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
     title: news.title,
@@ -65,24 +65,7 @@ export default async function NewsPage(props) {
         className="pt-4 text-lg font-light leading-relaxed"
         dangerouslySetInnerHTML={{ __html: data.content }}
       ></div>
-      <p className="mt-6 text-sm text-gray-400">
-        Автор:{" "}
-        <a
-          href={data.originalLink}
-          className=""
-          target="_blank"
-          rel="noreferrer"
-        >
-          {data.author}
-        </a>
-      </p>
-      {/* <Link
-        href={"/"}
-        className="inline-flex items-center gap-1 mt-6 text-cyan-700/60 "
-      >
-        <span className=" pb-1">←</span>{" "}
-        <span className="">Назад к новостям</span>
-      </Link> */}
+      <p className="mt-6 text-sm text-gray-400">Автор: {data.author}</p>
       <BackButton />
     </article>
   );
