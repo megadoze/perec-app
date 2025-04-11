@@ -17,7 +17,7 @@ export const NewsLayout = ({
   return (
     <article>
       {withPhoto && news?.images && (
-        <Link href={`/news/${news.id}`}>
+        <Link href={`${news.category}/${news.slug}`}>
           <div className="overflow-hidden mb-2">
             <img
               src={news?.images[0]}
@@ -31,7 +31,7 @@ export const NewsLayout = ({
           </div>
         </Link>
       )}
-      <Link href={`/news/${news.id}`}>
+      <Link href={`${news.category}/${news.slug}`}>
         <h2
           className={`${
             main ? "text-3xl" : "text-2xl"

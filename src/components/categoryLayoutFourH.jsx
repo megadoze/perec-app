@@ -9,11 +9,26 @@ export default function CategoryLayoutFourH({
   if (!news?.length) return <p>Нет новостей</p>;
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 space-y-6 md:space-y-0 lg:grid-cols-4  lg:divide-x divide-neutral-200">
-      {news.map((item) => (
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-y-10">
+      {news.map((item, idx) => (
         <div
           key={item.id}
-          className=" md:odd:pr-4 md:even:pl-4 lg:px-4 lg:last:pr-0 lg:first:pl-0 md:odd:border-r lg:odd:border-r-0 md:first:pb-6 lg:first:pb-0"
+          className="
+          px-0 md:px-4 pb-0
+          // Вертикальные бордеры
+          md:[&:not(:nth-child(2n+1))]:border-l md:border-neutral-200
+          lg:[&:not(:nth-child(4n+1))]:border-l lg:border-neutral-200
+
+          
+          // Убираем отступы у краёв строки
+          md:[&:nth-child(2n+1)]:pl-0
+          md:[&:nth-child(2n)]:pr-0
+
+          lg:[&:nth-child(3n)]:pl-4
+          lg:[&:nth-child(2n)]:pr-4
+          lg:[&:nth-child(4n+1)]:pr-4
+          lg:[&:nth-child(4n)]:pr-0
+        "
         >
           <NewsLayout
             news={item}
@@ -24,5 +39,21 @@ export default function CategoryLayoutFourH({
         </div>
       ))}
     </section>
+
+    // <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-y-10 space-y-6 md:space-y-0 lg:divide-x divide-neutral-200">
+    //   {news.map((item) => (
+    //     <div
+    //       key={item.id}
+    //       className=" md:odd:pr-4 md:even:pl-4 lg:px-4 lg:first:pl-0 lg:last:pr-0 md:odd:border-r lg:odd:border-r-0 lg:odd:border-l-0 lg:even:border-l-0 md:first:pb-6 lg:first:pb-0"
+    //     >
+    //       <NewsLayout
+    //         news={item}
+    //         withPhoto={withPhoto}
+    //         withText={withText}
+    //         lineClamp={lineClamp}
+    //       />
+    //     </div>
+    //   ))}
+    // </section>
   );
 }

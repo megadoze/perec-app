@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, child } from "firebase/database";
+import { getDatabase, ref, get, child, onValue } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -8,8 +8,8 @@ const firebaseConfig = {
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
 };
 
-console.log("🔥 DATABASE_URL:", process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL);
+// console.log("🔥 DATABASE_URL:", process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL);
 
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
-export { ref, get, child };
+export { ref, get, child, onValue };
