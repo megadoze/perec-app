@@ -53,5 +53,26 @@ export default async function NewsPage(props) {
     return notFound();
   }
 
-  return <NewsContent data={data} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "NewsArticle",
+            headline: data.title,
+            description: data.subTitle || "",
+            image: Array.isArray(data.images) ? data.images[0] : "",
+            datePublished: new Date(data.publishedAt).toISOString(),
+            author: {
+              "@type": "Organization",
+              name: "PEREC.news",
+            },
+          }),
+        }}
+      />
+      <NewsContent data={data} />
+    </>
+  );
 }
