@@ -96,7 +96,6 @@ export default function ClientHome({ initialNews }) {
     <AnimatePresence mode="wait">
       <motion.div
         key={news.length} // переключатель на изменение массива
-        // initial={{ opacity: 0 }}
         initial={false}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
