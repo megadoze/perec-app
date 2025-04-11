@@ -1,7 +1,8 @@
 import ClientHome from "@/components/clientHome";
 import { db, ref, get, child } from "@/lib/firebase";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
+export const revalidate = 60; // <-- ISR: 60 секунд
 
 export const metadata = {
   title: "PEREC.news — нескучные новости🔥",
