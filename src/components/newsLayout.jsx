@@ -27,8 +27,10 @@ export const NewsLayout = ({
               src={news?.images[0]}
               alt={news.title}
               width={320}
-              height={main ? 240 : 200}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
+              // height={main ? 240 : 200}
+              fill
+              sizes="100vw"
+              // sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
               priority={priority}
               loading={priority ? "eager" : "lazy"}
               className={`${
