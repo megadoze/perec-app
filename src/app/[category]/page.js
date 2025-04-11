@@ -16,9 +16,36 @@ export async function generateMetadata({ params }) {
   const title = categoryTitles[category];
   if (!title) return notFound();
 
+  const name = `${title} | PEREC.news`;
+  const description = `Новости рубрики "${title}"`;
+  const url = `https://perec-news.web.app/${category}`;
+
   return {
-    title: `${title} | PEREC.news`,
-    description: `Новости по теме "${title}"`,
+    title: name,
+    description,
+    openGraph: {
+      title: name,
+      description,
+      url,
+      siteName: "PEREC.news - нескучные новости🔥",
+      type: "article",
+      images: [
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
+          width: 1200,
+          height: 630,
+          alt: "PEREC.news - нескучные новости🔥",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: name,
+      description,
+      images: [
+        "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
+      ],
+    },
   };
 }
 

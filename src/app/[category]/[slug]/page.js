@@ -30,7 +30,7 @@ export async function generateMetadata(props) {
       title: news.title,
       description,
       url,
-      siteName: "PEREC.news - нескучные новости!🔥",
+      siteName: "PEREC.news - нескучные новости🔥",
       type: "article",
       images: [image],
     },
