@@ -21,7 +21,14 @@ export default function MainLayout({ news }) {
 
       {/* Колонка 2 */}
       <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-8 border-neutral-200">
-        <NewsLayout news={col2} main withPhoto withText maincat />
+        <NewsLayout
+          news={col2}
+          main
+          withPhoto
+          withText
+          maincat
+          priority={true}
+        />
       </div>
 
       {/* Колонка 3 */}

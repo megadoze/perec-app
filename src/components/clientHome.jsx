@@ -29,22 +29,51 @@ export default function ClientHome({ initialNews }) {
     return () => unsubscribe();
   }, []);
 
-  // 🔍 Оптимизация: фильтрация с useMemo
+  // ⚡️ ID главных новостей (MainLayout)
+  const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
+
+  // Категории без дублирования с главной
   const politics = useMemo(
-    () => news.filter((item) => item.category === "politics").slice(0, 4),
-    [news]
+    () =>
+      news
+        .filter(
+          (item) =>
+            item.category === "politics" && !mainNewsIds.includes(item.id)
+        )
+        .slice(0, 4),
+    [news, mainNewsIds]
   );
+
   const economics = useMemo(
-    () => news.filter((item) => item.category === "economics").slice(0, 4),
-    [news]
+    () =>
+      news
+        .filter(
+          (item) =>
+            item.category === "economics" && !mainNewsIds.includes(item.id)
+        )
+        .slice(0, 4),
+    [news, mainNewsIds]
   );
+
   const life = useMemo(
-    () => news.filter((item) => item.category === "life").slice(0, 6),
-    [news]
+    () =>
+      news
+        .filter(
+          (item) => item.category === "life" && !mainNewsIds.includes(item.id)
+        )
+        .slice(0, 6),
+    [news, mainNewsIds]
   );
+
   const culture = useMemo(
-    () => news.filter((item) => item.category === "culture").slice(0, 6),
-    [news]
+    () =>
+      news
+        .filter(
+          (item) =>
+            item.category === "culture" && !mainNewsIds.includes(item.id)
+        )
+        .slice(0, 6),
+    [news, mainNewsIds]
   );
 
   return (
@@ -58,7 +87,6 @@ export default function ClientHome({ initialNews }) {
       >
         <MainLayout news={news} />
         <div className="my-6 border-t border-neutral-200"></div>
-
         <h2 className="font-sans text-xl pb-6 text-orange-700">
           <Link href="politics">Политический перчик</Link>
         </h2>
@@ -69,7 +97,6 @@ export default function ClientHome({ initialNews }) {
           <Link href="economics"> Экономика с огоньком</Link>
         </h2>
         <CategoryLayoutFourH news={economics} withPhoto withText />
-
         <div className="my-6 border-t border-neutral-200"></div>
         <h2 className="font-sans text-xl pb-6 text-orange-700">
           <Link href="life">Жизнь острая как чили</Link>

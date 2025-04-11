@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const NewsLayout = ({
   news,
@@ -6,6 +7,7 @@ export const NewsLayout = ({
   withPhoto,
   withText,
   maincat,
+  priority = false, // ← по умолчанию false
   line = 2,
 }) => {
   const clampClass = {
@@ -19,7 +21,21 @@ export const NewsLayout = ({
       {withPhoto && news?.images && (
         <Link href={`${news.category}/${news.slug}`}>
           <div className="overflow-hidden mb-2">
-            <img
+            {console.log("priority?", priority, news?.images[0])}
+
+            <Image
+              src={news?.images[0]}
+              alt={news.title}
+              width={800} // или нужные размеры
+              height={main ? 600 : 400} // примерный aspect ratio
+              priority={priority}
+              className={`${
+                main
+                  ? "aspect-[4/3]"
+                  : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
+              } w-full h-full object-cover hover:opacity-90`}
+            />
+            {/* <img
               src={news?.images[0]}
               alt={news.title}
               className={`${
@@ -27,7 +43,7 @@ export const NewsLayout = ({
                   ? "aspect-[4/3]"
                   : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
               } w-full h-full object-cover hover:opacity-90`}
-            />
+            /> */}
           </div>
         </Link>
       )}
