@@ -1,4 +1,3 @@
-// app/api/revalidate/route.js
 import { revalidatePath } from "next/cache";
 
 export async function GET(request) {

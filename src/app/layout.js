@@ -1,9 +1,5 @@
-// import "@mantine/core/styles.css";
 import "./globals.css";
 
-// import { MantineProvider } from "@mantine/core";
-// import Link from "next/link";
-// import BurgerMenu from "@/components/burgerMenu";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
 import Header from "@/components/header";
 
@@ -41,19 +37,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className=" bg-[#faf8f5] text-black font-sans flex flex-col min-h-screen">
-        {/* <MantineProvider
-          theme={{
-            fontFamily: "var(--font-roboto-condensed)",
-            headings: { fontFamily: "var(--font-ptsans-narrow)" },
-          }}
-        > */}
         <Header />
         <main className="px-3 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
-
         <footer className="mt-12 text-center text-neutral-400 text-sm pb-8">
           © {new Date().getFullYear()} Perec News. All rights reserved.
         </footer>
-        {/* </MantineProvider> */}
       </body>
     </html>
   );

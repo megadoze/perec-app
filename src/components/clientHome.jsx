@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-// import { db, ref, onValue } from "@/lib/firebase";
 import MainLayout from "./mainLayout";
 
 import dynamic from "next/dynamic";
@@ -21,13 +20,11 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
   ssr: false,
 });
 
-// import { motion, AnimatePresence } from "framer-motion"; // <== добавим анимацию
 import Link from "next/link";
 
 export default function ClientHome({ initialNews }) {
   const [news] = useState(initialNews);
 
-  // ⚡️ ID главных новостей (MainLayout)
   const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
 
   // Категории без дублирования с главной
@@ -75,15 +72,6 @@ export default function ClientHome({ initialNews }) {
   );
 
   return (
-    // <AnimatePresence mode="wait">
-    //   <motion.div
-    //     key={news.length} // переключатель на изменение массива
-    //     initial={{ opacity: 0 }}
-    //     // initial={false}
-    //     animate={{ opacity: 1 }}
-    //     exit={{ opacity: 0 }}
-    //     transition={{ duration: 0.4 }}
-    //   >
     <>
       <MainLayout news={news} />
       <div className="my-6 border-t border-neutral-200"></div>
@@ -109,7 +97,5 @@ export default function ClientHome({ initialNews }) {
       </h2>
       <CategoryLayoutFourV news={culture} />
     </>
-    //   </motion.div>
-    // </AnimatePresence>
   );
 }

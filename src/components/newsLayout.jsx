@@ -13,7 +13,6 @@ export const NewsLayout = ({
   const clampClass = {
     2: "line-clamp-2",
     3: "line-clamp-3",
-    4: "line-clamp-4",
   };
 
   return (

@@ -36,15 +36,6 @@ export default function CategoryLayoutFourV({ news }) {
           </div>
         ))}
       </div>
-
-      {/* Колонка 4 */}
-      {/* <div className=" md:space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
-        {col4.map((item, index) => (
-          <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText lineClamp={2} />
-          </div>
-        ))}
-      </div> */}
     </section>
   );
 }
