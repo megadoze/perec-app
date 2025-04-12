@@ -20,7 +20,7 @@ export default function MainLayout({ news }) {
       </div>
 
       {/* Главная новость */}
-      <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-8 border-neutral-200">
+      <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-6 md:pb-0 border-neutral-200">
         <NewsLayout
           news={col2}
           main
