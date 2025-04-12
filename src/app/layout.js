@@ -1,18 +1,6 @@
 import Link from "next/link";
-import {
-  PT_Sans,
-  PT_Sans_Narrow,
-  Roboto_Condensed,
-  Open_Sans,
-} from "next/font/google";
+import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
-
-const ptsans = PT_Sans({
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "700"],
-  variable: "--font-ptsans",
-  display: "swap",
-});
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
@@ -28,13 +16,6 @@ const robotoCondensed = Roboto_Condensed({
   display: "swap",
 });
 
-const openSans = Open_Sans({
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "600", "700"],
-  variable: "--font-open-sans",
-  display: "swap",
-});
-
 export const metadata = {
   title: "PEREC.news - нескучные новости🔥",
   description:
@@ -45,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${ptsans.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} ${openSans.variable}`}
+      className={`${ptsansNarrow.variable} ${robotoCondensed.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
