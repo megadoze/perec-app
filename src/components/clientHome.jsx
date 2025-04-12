@@ -25,25 +25,7 @@ import { motion, AnimatePresence } from "framer-motion"; // <== добавим �
 import Link from "next/link";
 
 export default function ClientHome({ initialNews }) {
-  // const [news, setNews] = useState(initialNews);
   const [news] = useState(initialNews);
-
-  // useEffect(() => {
-  //   const newsRef = ref(db, "news");
-
-  //   const unsubscribe = onValue(newsRef, (snapshot) => {
-  //     const data = snapshot.val() || {};
-  //     const fresh = Object.entries(data)
-  //       .map(([id, item]) => ({ id, ...item }))
-  //       .filter((item) => item.status === "published")
-  //       .sort((a, b) => b.publishedAt - a.publishedAt)
-  //       .slice(0, 25);
-
-  //     setNews(fresh);
-  //   });
-
-  //   return () => unsubscribe();
-  // }, []);
 
   // ⚡️ ID главных новостей (MainLayout)
   const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
