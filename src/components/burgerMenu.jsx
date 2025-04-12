@@ -12,10 +12,10 @@ export default function BurgerMenu() {
       {/* Кнопка-бургер */}
       <button
         onClick={() => setOpened(true)}
-        className=" text-2xl px-2 py-1"
+        className=" text-2xl md:text-xl py-1"
         aria-label="Открыть меню"
       >
-        ☰
+        <span className=" hidden md:inline-block">Menu</span> ☰
       </button>
 
       {/* Drawer от Mantine */}
@@ -23,29 +23,31 @@ export default function BurgerMenu() {
         opened={opened}
         onClose={() => setOpened(false)}
         position="right"
-        title="Меню"
-        padding="md"
-        size="xs"
+        // title="Меню"
+        padding="xl"
         withCloseButton
         overlayProps={{ opacity: 0.5, blur: 4 }}
         transitionProps={{ transition: "slide-left", duration: 200 }}
         classNames={{
-          header: "font-bold text-xl",
-          content: "bg-white dark:bg-gray-900",
+          header: "font-bold text-xl bg-[#faf8f5]",
+          content: "bg-[#faf8f5] dark:bg-gray-900",
         }}
       >
         <nav className="flex flex-col gap-4 text-lg">
           <Link href="/" onClick={() => setOpened(false)}>
             Главная
           </Link>
-          <Link href="/news" onClick={() => setOpened(false)}>
-            Новости
+          <Link href="/politics" onClick={() => setOpened(false)}>
+            Политический перчик
           </Link>
-          <Link href="/about" onClick={() => setOpened(false)}>
-            О проекте
+          <Link href="/economics" onClick={() => setOpened(false)}>
+            Экономика с огоньком
           </Link>
-          <Link href="/login" onClick={() => setOpened(false)}>
-            Вход
+          <Link href="/life" onClick={() => setOpened(false)}>
+            Жизнь острая как чили
+          </Link>
+          <Link href="/culture" onClick={() => setOpened(false)}>
+            Поп-культура в перце
           </Link>
         </nav>
       </Drawer>

@@ -53,14 +53,10 @@ export default function RootLayout({ children }) {
               </Link>
             </div>
             <div className="flex justify-end items-center gap-4">
-              <button className="hidden md:block bg-black text-white px-3 py-1 rounded hover:opacity-80">
+              {/* <button className="hidden md:block bg-black text-white px-3 py-1 rounded hover:opacity-80">
                 Get 1 year for $50 USD
-              </button>
+              </button> */}
               <BurgerMenu />
-              {/* <Link href="/login" className="hidden md:block text-lg"> */}
-              {/* <p className="hidden md:block text-lg">Login</p> */}
-              {/* </Link> */}
-              {/* <button className="md:hidden text-lg">☰</button> */}
             </div>
           </header>
 
