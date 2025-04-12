@@ -14,10 +14,10 @@ export default function BackButton() {
           router.push("/");
         }
       }}
-      className="inline-flex items-center gap-1 mt-6 text-cyan-700/60 hover:underline"
+      className="inline-flex items-center gap-1 mt-6 text-cyan-700/60"
     >
       <span className="pb-1">←</span>
-      <span>Назад к новостям</span>
+      <span>Назад</span>
     </button>
   );
 }

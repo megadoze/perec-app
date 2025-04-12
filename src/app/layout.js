@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${ptsansNarrow.variable} ${robotoCondensed.variable}`}
+      className={`${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>
         <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
@@ -35,8 +35,8 @@ export default function RootLayout({ children }) {
           href="https://firebasestorage.googleapis.com"
         />
       </head>
-      <body className=" bg-[#faf8f5] text-black font-sans">
-        <header className=" px-5 md:px-8 py-4 flex items-center justify-between text-sm">
+      <body className=" bg-[#faf8f5] text-black font-sans flex flex-col min-h-screen">
+        <header className="h-[64px] px-5 md:px-8 py-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <Link href="/" className="text-2xl font-bold tracking-tight">
               Perec News
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        <main className="px-5 md:px-8 pt-5 md:pt-10">{children}</main>
+        <main className="px-5 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
 
         <footer className="mt-12 text-center text-neutral-400 text-sm pb-8">
           © {new Date().getFullYear()} Perec News. All rights reserved.

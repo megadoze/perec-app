@@ -21,8 +21,6 @@ export const NewsLayout = ({
       {withPhoto && news?.images && (
         <Link href={`${news.category}/${news.slug}`}>
           <div className="overflow-hidden mb-2">
-            {console.log("priority?", priority, news?.images[0])}
-
             <Image
               src={news?.images[0]}
               alt={news.title}
