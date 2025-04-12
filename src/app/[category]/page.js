@@ -9,8 +9,6 @@ const categoryTitles = {
   culture: "Поп-культура в перце",
 };
 
-// const allowedCategories = Object.keys(categoryTitles);
-
 export async function generateMetadata({ params }) {
   const { category } = await params; // 👈 обязательное await
   const title = categoryTitles[category];
