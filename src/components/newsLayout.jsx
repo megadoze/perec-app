@@ -25,13 +25,13 @@ export const NewsLayout = ({
               src={news?.images[0]}
               alt={news.title}
               width={320}
-              height={main ? 240 : 200}
+              height={200}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
               priority={priority}
               loading={priority ? "eager" : "lazy"}
               className={`${
                 main
-                  ? "aspect-[4/3]"
+                  ? " aspect-[3/2] lg:aspect-[4/3]"
                   : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
               } w-full h-full object-cover hover:opacity-90`}
               placeholder="blur"
@@ -43,7 +43,7 @@ export const NewsLayout = ({
       <Link href={`${news.category}/${news.slug}`}>
         <h2
           className={`${
-            main ? "text-3xl" : "text-2xl"
+            main ? " text-2xl lg:text-3xl" : "text-2xl"
           } font-bold font-narrow leading-tight`}
         >
           {news?.title}
