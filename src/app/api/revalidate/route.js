@@ -15,7 +15,7 @@ export async function GET(request) {
     return new Response("Revalidate", {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": "https://perec-app.vercel.app",
+        "Access-Control-Allow-Origin": "https://perec-news.web.app",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
       },
