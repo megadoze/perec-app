@@ -1,6 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const categoryTitles = {
+  politics: "Политический перчик",
+  economics: "Экономика с огоньком",
+  life: "Жизнь острая как чили",
+  culture: "Поп-культура в перце",
+};
+
 export const NewsLayout = ({
   news,
   main,
@@ -51,14 +58,14 @@ export const NewsLayout = ({
       {withText && (
         <div
           className={`${
-            main ? "lg:line-clamp-6" : ""
+            main ? " line-clamp-3 lg:line-clamp-6" : ""
           } text-lg font-light text-neutral-800 mt-3 ${clampClass[line]}`}
           dangerouslySetInnerHTML={{ __html: news.content }}
         ></div>
       )}
       {maincat && (
-        <div className="text-sm text-orange-700/80 pt-3">
-          <span className="">{news.category}</span>
+        <div className=" font-narrow text-orange-700 pt-2">
+          <span className="">{categoryTitles[news.category]}</span>
         </div>
       )}
     </article>

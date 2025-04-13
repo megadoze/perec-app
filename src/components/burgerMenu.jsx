@@ -47,7 +47,7 @@ export default function BurgerMenu() {
         >
           <div className="relative">
             <button
-              className="absolute top-0 right-0 text-xl"
+              className="absolute top-0 right-0 text-xl text-zinc-600"
               onClick={() => setOpened(false)}
               aria-label="Закрыть меню"
             >
