@@ -12,7 +12,14 @@ export async function GET(request) {
     // Перегенерируем главную страницу
     revalidatePath("/");
 
-    return new Response("Revalidated", { status: 200 });
+    return new Response("Revalidate", {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "https://perec-app.vercel.app",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+    });
   } catch (err) {
     return new Response("Error revalidating", { status: 500 });
   }
