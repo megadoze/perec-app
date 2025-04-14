@@ -21,9 +21,12 @@ export default function CategoryLayoutFourH({
 
           
           // Убираем отступы у краёв строки
+
           md:[&:nth-child(2n+1)]:pl-0
           md:[&:nth-child(2n)]:pr-0
 
+          lg:[&:nth-child(4n+1)]:pl-0
+          lg:[&:nth-child(3n+1)]:pl-4
           lg:[&:nth-child(3n)]:pl-4
           lg:[&:nth-child(2n)]:pr-4
           lg:[&:nth-child(4n+1)]:pr-4
