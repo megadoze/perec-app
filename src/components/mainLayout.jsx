@@ -47,7 +47,7 @@ export default function MainLayout({ news }) {
             className={
               index > 0
                 ? "pt-0"
-                : " pb-6 border-b border-neutral-200  last:border-b-0"
+                : " pb-6 md:border-b border-neutral-200  last:border-b-0"
             }
           >
             <NewsLayout news={item} withText maincat line={3} />
