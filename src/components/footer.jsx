@@ -37,18 +37,27 @@ export default function Footer() {
           </Link>
         </div>
         <div className="flex items-center gap-6">
-          <Link href="https://facebook.com" target="_blank">
-            <FaFacebookF
-              size={20}
-              className="text-gray-600 hover:text-orange-700"
-            />
-          </Link>
-          <Link href="https://t.me" target="_blank">
-            <FaTelegramPlane
-              size={22}
-              className="text-gray-600 hover:text-orange-700"
-            />
-          </Link>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perec News в Facebook"
+            title="Perec News в Facebook"
+            className="hover:text-orange-700 text-gray-600"
+          >
+            <FaFacebookF size={20} />
+          </a>
+
+          <a
+            href="https://t.me/perecnews"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Perec News в Telegram"
+            title="Perec News в Telegram"
+            className="hover:text-orange-700 text-gray-600"
+          >
+            <FaTelegramPlane size={22} />
+          </a>
         </div>
 
         <div className=" pt-0 text-neutral-600 text-sm">
