@@ -1,4 +1,5 @@
 import { NewsLayout } from "./newsLayout";
+import TelegramBanner from "./telegramBanner";
 
 export default function MainLayout({ news }) {
   if (!news?.length) return <p>Нет новостей</p>;
@@ -39,12 +40,22 @@ export default function MainLayout({ news }) {
       </div>
 
       {/* Колонка 4 */}
-      <div className="order-4 md:space-y-6 md:pl-4 border-neutral-200 md:divide-y divide-neutral-200">
+      <div className="order-4 md:space-y-6 md:pl-4">
         {col4.map((item, index) => (
-          <div key={item.id} className={index > 0 ? "pt-5" : ""}>
+          <div
+            key={item.id}
+            className={
+              index > 0
+                ? "pt-0"
+                : " pb-6 border-b border-neutral-200  last:border-b-0"
+            }
+          >
             <NewsLayout news={item} withText maincat line={3} />
           </div>
         ))}
+        <div className=" mt-6">
+          <TelegramBanner />
+        </div>
       </div>
     </section>
   );
