@@ -12,7 +12,7 @@ export default function ContactsPage() {
         Мы всегда рады обратной связи от наших читателей и партнёров.
       </p>
       <p className="mb-2">
-        📧 Email:{" "}
+        Email:{" "}
         <a
           href="mailto:contact@perec.news"
           className="text-orange-700 hover:underline"
@@ -21,7 +21,7 @@ export default function ContactsPage() {
         </a>
       </p>
       <p>
-        📱 Telegram:{" "}
+        Telegram:{" "}
         <a
           href="https://t.me/perecnews"
           className="text-orange-700 hover:underline"

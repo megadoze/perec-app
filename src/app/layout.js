@@ -2,7 +2,6 @@ import "./globals.css";
 
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
 import Header from "@/components/header";
-import Link from "next/link";
 import Footer from "@/components/footer";
 
 const ptsansNarrow = PT_Sans_Narrow({
@@ -40,7 +39,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className=" bg-[#faf8f5] text-black font-sans flex flex-col min-h-screen">
         <Header />
-        <main className="px-3 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
+        <main className="px-4 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
         <Footer />
       </body>
     </html>

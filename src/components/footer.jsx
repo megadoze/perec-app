@@ -8,7 +8,7 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <footer className="mt-10 px-3 md:px-8 pb-6 pt-14 text-neutral-600 text-sm">
+    <footer className="mt-10 px-4 md:px-8 pb-6 pt-14 text-neutral-600 text-sm">
       <div className=" mx-auto flex flex-col items-center gap-8 text-center border-t">
         <div className="flex flex-wrap justify-center gap-8 text-base font-medium tracking-wide pt-10">
           <Link
@@ -37,25 +37,21 @@ export default function Footer() {
           </Link>
         </div>
         <div className="flex items-center gap-6">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black"
-          >
-            <FaFacebookF size={20} />
-          </a>
-          <a
-            href="https://t.me"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black"
-          >
-            <FaTelegramPlane size={22} />
-          </a>
+          <Link href="https://facebook.com" target="_blank">
+            <FaFacebookF
+              size={20}
+              className="text-gray-600 hover:text-orange-700"
+            />
+          </Link>
+          <Link href="https://t.me" target="_blank">
+            <FaTelegramPlane
+              size={22}
+              className="text-gray-600 hover:text-orange-700"
+            />
+          </Link>
         </div>
 
-        <div className=" pt-0 text-neutral-500 text-xs">
+        <div className=" pt-0 text-neutral-600 text-sm">
           © {new Date().getFullYear()} Perec News. Все права защищены.
         </div>
       </div>
