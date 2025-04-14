@@ -56,12 +56,14 @@ export const NewsLayout = ({
         </h2>
       </Link>
       {withText && (
-        <div
-          className={`${
-            main ? " line-clamp-3 lg:line-clamp-6" : ""
-          } text-lg font-light text-neutral-800 mt-3 ${clampClass[line]}`}
-          dangerouslySetInnerHTML={{ __html: news.content }}
-        ></div>
+        <Link href={`${news.category}/${news.slug}`}>
+          <div
+            className={`${
+              main ? " line-clamp-3 lg:line-clamp-6" : ""
+            } text-lg font-light text-neutral-800 mt-3 ${clampClass[line]}`}
+            dangerouslySetInnerHTML={{ __html: news.content }}
+          ></div>
+        </Link>
       )}
       {maincat && (
         <div className=" font-narrow text-orange-700 pt-2">
