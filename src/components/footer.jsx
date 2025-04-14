@@ -20,14 +20,6 @@ export default function Footer() {
             О нас
           </Link>
           <Link
-            href="/contacts"
-            className={`hover:text-orange-700 transition ${
-              pathname === "/contacts" ? "text-orange-700 font-semibold" : ""
-            }`}
-          >
-            Контакты
-          </Link>
-          <Link
             href="/ads"
             className={`hover:text-orange-700 transition ${
               pathname === "/ads" ? "text-orange-700 font-semibold" : ""
@@ -35,8 +27,15 @@ export default function Footer() {
           >
             Реклама
           </Link>
+          <Link
+            href="/contacts"
+            className={`hover:text-orange-700 transition ${
+              pathname === "/contacts" ? "text-orange-700 font-semibold" : ""
+            }`}
+          >
+            Контакты
+          </Link>
         </div>
-
         <div className="flex items-center gap-6">
           <a
             href="https://facebook.com"
