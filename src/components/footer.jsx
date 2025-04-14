@@ -29,8 +29,8 @@ export default function Footer() {
           </Link>
           <Link
             href="/contacts"
-            className={`hover:text-orange-700 transition ${
-              pathname === "/contacts" ? "text-orange-700 font-semibold" : ""
+            className={`hover:text-red-700 transition ${
+              pathname === "/contacts" ? "text-red-700 font-semibold" : ""
             }`}
           >
             Контакты
@@ -43,7 +43,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Perec News в Facebook"
             title="Perec News в Facebook"
-            className="hover:text-orange-700 text-gray-600"
+            className="hover:text-red-600 text-red-700"
           >
             <FaFacebookF size={20} />
           </a>
@@ -54,7 +54,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Perec News в Telegram"
             title="Perec News в Telegram"
-            className="hover:text-orange-700 text-gray-600"
+            className="hover:text-red-600 text-red-700"
           >
             <FaTelegramPlane size={22} />
           </a>

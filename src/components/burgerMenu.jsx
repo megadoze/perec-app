@@ -42,7 +42,7 @@ export default function BurgerMenu() {
         <div
           className={`transition-all duration-300 transform ${
             opened ? "translate-x-0" : "translate-x-full"
-          } w-full md:w-[360px] h-full bg-[#faf8f5] p-6 ml-auto`}
+          } w-full md:w-[360px] h-full bg-white p-6 ml-auto`}
           onClick={(e) => e.stopPropagation()} // чтобы не закрывалось при клике внутри
         >
           <div className="relative">
@@ -72,7 +72,7 @@ export default function BurgerMenu() {
               </Link>
             </nav>
             <p className="mt-6 text-lg">
-              <span className=" underline underline-offset-4 text-orange-700">
+              <span className=" underline underline-offset-4 text-red-600">
                 ru
               </span>{" "}
               | <span>en</span>

@@ -11,6 +11,9 @@ export const theme = {
       narrow: ["var(--font-ptsans-narrow)"],
       sans: ["var(--font-roboto-condensed)"],
     },
+    colors: {
+      perecred: "#e3120b",
+    },
   },
 };
 export const plugins = [];

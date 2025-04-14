@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
           href="https://firebasestorage.googleapis.com"
         />
       </head>
-      <body className=" bg-[#faf8f5] text-black font-sans flex flex-col min-h-screen">
+      <body className=" bg-white text-black font-sans flex flex-col min-h-screen">
         <Header />
         <main className="px-4 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
         <Footer />
