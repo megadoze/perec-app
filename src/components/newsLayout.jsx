@@ -66,7 +66,7 @@ export const NewsLayout = ({
         </Link>
       )}
       {maincat && (
-        <div className=" font-narrow text-red-700 pt-2">
+        <div className=" font-narrow text-perecred pt-2">
           <span className="">{categoryTitles[news.category]}</span>
         </div>
       )}

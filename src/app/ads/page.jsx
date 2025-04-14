@@ -19,7 +19,7 @@ export default function AdsPage() {
         По вопросам размещения рекламы:{" "}
         <a
           href="mailto:ads@perec.news"
-          className="text-orange-700 hover:underline"
+          className="text-red-600"
         >
           ads@perec.news
         </a>

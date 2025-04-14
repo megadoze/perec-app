@@ -13,19 +13,13 @@ export default function ContactsPage() {
       </p>
       <p className="mb-2">
         Email:{" "}
-        <a
-          href="mailto:contact@perec.news"
-          className="text-orange-700 hover:underline"
-        >
+        <a href="mailto:contact@perec.news" className="text-red-600">
           contact@perec.news
         </a>
       </p>
       <p>
         Telegram:{" "}
-        <a
-          href="https://t.me/perecnews"
-          className="text-orange-700 hover:underline"
-        >
+        <a href="https://t.me/perecnews" className="text-red-600">
           @perecnews
         </a>
       </p>

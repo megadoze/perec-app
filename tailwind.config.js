@@ -12,7 +12,7 @@ export const theme = {
       sans: ["var(--font-roboto-condensed)"],
     },
     colors: {
-      perecred: "#e3120b",
+      perecred: "#d41d1d",
     },
   },
 };

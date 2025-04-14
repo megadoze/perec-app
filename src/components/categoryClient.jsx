@@ -33,7 +33,7 @@ export default function CategoryClient({ title, news }) {
 
   return (
     <div>
-      <h1 className="text-2xl font-narrow text-red-700 mb-6">{title}</h1>
+      <h1 className="text-2xl font-narrow text-perecred mb-6">{title}</h1>
 
       {news.length === 0 && <p>Нет новостей в этой категории</p>}
 
