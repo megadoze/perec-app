@@ -6,15 +6,13 @@
     "dev": "NEXT_DISABLE_TURBOPACK=true next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "lint": "next lint"
   },
   "dependencies": {
     "dayjs": "^1.11.13",
     "firebase": "^11.6.0",
     "framer-motion": "^12.6.3",
     "next": "15.2.4",
-    "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0"

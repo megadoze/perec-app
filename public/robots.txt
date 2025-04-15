@@ -8,4 +8,4 @@ Disallow: /api
 Host: https://perec-app.vercel.app
 
 # Sitemaps
-Sitemap: https://perec-app.vercel.app/sitemap.xml
+Sitemap: https://perec-news.web.app/sitemap.xml
