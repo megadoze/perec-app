@@ -6,6 +6,7 @@ const categoryTitles = {
   economics: "Экономика с огоньком",
   life: "Жизнь острая как чили",
   culture: "Поп-культура в перце",
+  bezkupur: "Без купюр",
 };
 
 export const NewsLayout = ({

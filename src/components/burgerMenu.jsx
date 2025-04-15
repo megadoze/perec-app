@@ -70,6 +70,9 @@ export default function BurgerMenu() {
               <Link href="/culture" onClick={() => setOpened(false)}>
                 Поп-культура в перце
               </Link>
+              <Link href="/bezkupur" onClick={() => setOpened(false)}>
+                Без купюр
+              </Link>
             </nav>
             <p className="mt-6 text-lg">
               <span className=" underline underline-offset-4 text-red-600">

@@ -3,8 +3,6 @@ import { NewsLayout } from "./newsLayout";
 export default function CategoryLayoutSixV({ news }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
-  console.log(news);
-
   const col1 = news.slice(0, 1);
   const col2 = news.slice(1, 4);
   const col3 = news.slice(4, 6);

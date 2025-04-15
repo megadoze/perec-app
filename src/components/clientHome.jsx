@@ -26,6 +26,8 @@ export default function ClientHome({ initialNews }) {
 
   const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
 
+  const mainNews = news.filter((item) => item.category !== "bezkupur");
+
   // Категории без дублирования с главной
   const politics = useMemo(
     () =>
@@ -70,9 +72,14 @@ export default function ClientHome({ initialNews }) {
     [news, mainNewsIds]
   );
 
+  const bezkupur = useMemo(
+    () => news.filter((item) => item.category === "bezkupur").slice(0, 1),
+    [news, mainNewsIds]
+  );
+
   return (
     <>
-      <MainLayout news={news} />
+      <MainLayout news={mainNews} bezkupur={bezkupur} />
       <div className="my-6 border-t border-neutral-200"></div>
       <h2 className="font-narrow text-2xl pb-6  text-perecred">
         <Link href="politics">Политический перчик</Link>

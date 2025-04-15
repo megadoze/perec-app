@@ -1,13 +1,15 @@
 import { NewsLayout } from "./newsLayout";
 import TelegramBanner from "./telegramBanner";
 
-export default function MainLayout({ news }) {
+export default function MainLayout({ news, bezkupur }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 2);
   const col2 = news[2];
   const col3 = news.slice(3, 5);
-  const col4 = news.slice(5, 7);
+  const col4 = news.slice(5, 6);
+
+  const newsBezKupur = bezkupur[0];
 
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1.5fr_1fr_1.1fr] lg:divide-x divide-neutral-200">
@@ -47,12 +49,15 @@ export default function MainLayout({ news }) {
             className={
               index > 0
                 ? "pt-0"
-                : " pb-6 md:border-b border-neutral-200  last:border-b-0"
+                : " pb-6 md:pb-0 border-neutral-200  last:border-b-0"
             }
           >
             <NewsLayout news={item} withText maincat line={3} />
           </div>
         ))}
+        <div className=" bg-neutral-100/60 p-4 rounded-xl">
+          <NewsLayout news={newsBezKupur} maincat />
+        </div>
         <div className=" mt-6">
           <TelegramBanner />
         </div>
