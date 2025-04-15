@@ -1,3 +1,5 @@
+import { getAllCategorySlugs, getAllNewsSlugs } from "./scripts/sitemapData.js";
+
 /** @type {import('next-sitemap').IConfig} */
 const config = {
   siteUrl: "https://perec-app.vercel.app",
@@ -14,6 +16,33 @@ const config = {
       hreflang: "en",
     },
   ],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin", "/api"],
+      },
+    ],
+  },
+  additionalPaths: async () => {
+    const news = await getAllNewsSlugs();
+    const categories = await getAllCategorySlugs();
+
+    return [
+      // Добавляем новости
+      ...news.map((n) => ({
+        loc: `/${n.category}/${n.slug}`, // <--- вот так
+        lastmod: new Date().toISOString(),
+      })),
+
+      // Добавляем категории
+      ...categories.map((slug) => ({
+        loc: `/${slug}`, // <--- категории — без префикса /category/
+        lastmod: new Date().toISOString(),
+      })),
+    ];
+  },
 };
 
 export default config;
