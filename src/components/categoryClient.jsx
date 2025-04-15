@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CategoryLayoutFourV from "./categoryLayoutFourV";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
+import CategoryLayoutSixV from "./categoryLayoutSixV";
 
 const PAGE_SIZE = 8; // Количество новостей за одну подгрузку
 
 export default function CategoryClient({ title, news }) {
-  const initial = news.slice(0, 4); // первые 4
-  const extraAll = news.slice(4); // остальные
+  const initial = news.slice(0, 6); // первые 4
+  const extraAll = news.slice(6); // остальные
 
   const [visibleCount, setVisibleCount] = useState(1); // сколько порций загружено
   const containerRef = useRef(null);
@@ -37,7 +37,7 @@ export default function CategoryClient({ title, news }) {
 
       {news.length === 0 && <p>Нет новостей в этой категории</p>}
 
-      {initial.length > 0 && <CategoryLayoutFourV news={initial} />}
+      {initial.length > 0 && <CategoryLayoutSixV news={initial} />}
 
       <AnimatePresence>
         {extraToShow.length > 0 && (
@@ -56,10 +56,10 @@ export default function CategoryClient({ title, news }) {
       </AnimatePresence>
 
       {hasMore && (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-10">
           <button
             onClick={handleLoadMore}
-            className="bg-cyan-600/80 text-white px-6 py-2 rounded hover:bg-cyan-600 transition"
+            className="bg-gray-100 px-6 py-2 rounded hover:bg-gray-100/80 text-gray-600 transition"
           >
             Показать ещё
           </button>

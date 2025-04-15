@@ -11,7 +11,7 @@ const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
   ssr: false,
 });
 
-const CategoryLayoutFourV = dynamic(() => import("./categoryLayoutFourV"), {
+const CategoryLayoutSixV = dynamic(() => import("./categoryLayoutSixV"), {
   loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
   ssr: false,
 });
@@ -66,7 +66,7 @@ export default function ClientHome({ initialNews }) {
           (item) =>
             item.category === "culture" && !mainNewsIds.includes(item.id)
         )
-        .slice(0, 4),
+        .slice(0, 6),
     [news, mainNewsIds]
   );
 
@@ -76,8 +76,6 @@ export default function ClientHome({ initialNews }) {
       <div className="my-6 border-t border-neutral-200"></div>
       <h2 className="font-narrow text-2xl pb-6  text-perecred">
         <Link href="politics">Политический перчик</Link>
-        {/* <span className=" h-20 w-20 bg-red-600 p-3">P</span>
-        <span className=" h-2 w-2 bg-[#d41d1d] p-3">P</span> */}
       </h2>
       <CategoryLayoutFourH news={politics} withText />
 
@@ -96,7 +94,7 @@ export default function ClientHome({ initialNews }) {
       <h2 className="font-narrow text-2xl pb-6 text-perecred">
         <Link href="culture">Поп-культура в перце</Link>
       </h2>
-      <CategoryLayoutFourV news={culture} />
+      <CategoryLayoutSixV news={culture} />
     </>
   );
 }

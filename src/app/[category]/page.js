@@ -60,7 +60,6 @@ export async function generateMetadata({ params }) {
 
 export default async function CategoryPage({ params }) {
   const { category } = await params; // 👈 обязательное await
-  console.log(category);
 
   const title = categoryTitles[category];
   if (!title) return notFound();
