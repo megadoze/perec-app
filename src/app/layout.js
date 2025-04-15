@@ -27,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="ru"
       className={`${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>

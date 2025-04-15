@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://perec-app.vercel.app
+
+# Sitemaps
+Sitemap: https://perec-app.vercel.app/sitemap.xml
