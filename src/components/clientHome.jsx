@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useMemo } from "react";
 import MainLayout from "./mainLayout";
 
@@ -19,8 +20,6 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
   loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
   ssr: false,
 });
-
-import Link from "next/link";
 
 export default function ClientHome({ initialNews }) {
   const [news] = useState(initialNews);
@@ -67,7 +66,7 @@ export default function ClientHome({ initialNews }) {
           (item) =>
             item.category === "culture" && !mainNewsIds.includes(item.id)
         )
-        .slice(0, 6),
+        .slice(0, 4),
     [news, mainNewsIds]
   );
 
