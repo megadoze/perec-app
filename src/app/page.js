@@ -39,7 +39,7 @@ export default async function Home() {
     .map(([id, item]) => ({ id, ...item }))
     .filter((item) => item.status === "published")
     .sort((a, b) => b.publishedAt - a.publishedAt)
-    .slice(0, 25);
+    .slice(0, 30);
 
   return <ClientHome initialNews={news} />;
 }

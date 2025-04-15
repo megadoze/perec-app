@@ -38,7 +38,7 @@ export const NewsLayout = ({
               className={`${
                 main
                   ? " aspect-[3/2] lg:aspect-[4/3]"
-                  : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-48"
+                  : "aspect-[3/2] h-60 md:h-56 lg:h-36 xl:h-40"
               } w-full h-full object-cover hover:opacity-90`}
               placeholder="blur"
               blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMyMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlZWUiIC8+PC9zdmc+"
@@ -59,7 +59,7 @@ export const NewsLayout = ({
         <Link href={`${news.category}/${news.slug}`}>
           <div
             className={`${
-              main ? " line-clamp-3 lg:line-clamp-6" : ""
+              main ? " line-clamp-3 lg:line-clamp-3" : ""
             } text-lg font-light text-neutral-800 mt-3 ${clampClass[line]}`}
             dangerouslySetInnerHTML={{ __html: news.content }}
           ></div>
