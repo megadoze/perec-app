@@ -6,6 +6,31 @@ import BackButton from "./backButton";
 import dayjs from "dayjs";
 
 export default function NewsContent({ data }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: data.title,
+    image: [data.images?.[0]],
+    datePublished: new Date(data.createdAt).toISOString(),
+    dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),
+    author: {
+      "@type": "Person",
+      name: data.author || "PEREC.news",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "PEREC.news",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://perec-app.vercel.app/logoperec.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://perec-app.vercel.app/${data.category}/${data.slug}`,
+    },
+  };
+
   return (
     <motion.div
       key="data"
@@ -14,6 +39,9 @@ export default function NewsContent({ data }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
+      <Head>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      </Head>
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-3xl font-narrow font-bold mb-2">{data.title}</h1>
         <p className="text-gray-500 text-sm mb-4">

@@ -22,31 +22,6 @@ export async function generateMetadata(props) {
       ? news.images[0]
       : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: news.title,
-    image: [image],
-    datePublished: new Date(news.createdAt).toISOString(),
-    dateModified: new Date(news.updatedAt || news.createdAt).toISOString(),
-    author: {
-      "@type": "Person",
-      name: news.author || "PEREC.news",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "PEREC.news",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://perec-app.vercel.app/logoperec.png",
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
-  };
-
   return {
     title: news.title,
     description,
