@@ -1,20 +1,10 @@
-// "use client";
-
 import Image from "next/image";
-// import { motion } from "framer-motion";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
 
 export default function NewsContent({ data }) {
   return (
     <>
-      {/* <motion.div
-        key="data"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.4 }}
-      > */}
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-3xl font-narrow font-bold mb-2">{data.title}</h1>
         <p className="text-gray-500 text-sm mb-4">
@@ -45,7 +35,6 @@ export default function NewsContent({ data }) {
         <p className="mt-4 text-sm text-gray-400">Автор: {data.author}</p>
         <BackButton />
       </article>
-      {/* </motion.div> */}
     </>
   );
 }

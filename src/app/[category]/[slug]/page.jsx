@@ -1,10 +1,11 @@
 export const runtime = "nodejs";
 
-import Script from "next/script";
+// import Script from "next/script";
 
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
+import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata(props) {
   const params = await props.params;
@@ -82,12 +83,18 @@ export default async function NewsPage(props) {
 
   return (
     <>
-      <Script
+      {/* <Script
         id="json-ld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      /> */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <NewsContent data={data} />
+      <FadeWrapper>
+        <NewsContent data={data} />
+      </FadeWrapper>
     </>
   );
 }
