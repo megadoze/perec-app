@@ -13,24 +13,24 @@ export default function Footer() {
         <div className="flex flex-wrap justify-center gap-8 text-base font-medium tracking-wide pt-10">
           <Link
             href="/about"
-            className={`hover:text-perecred transition ${
-              pathname === "/about" ? "text-perecred font-semibold" : ""
+            className={`hover:text-red-600 transition ${
+              pathname === "/about" ? "text-red-600 font-semibold" : ""
             }`}
           >
             О нас
           </Link>
           <Link
             href="/ads"
-            className={`hover:text-perecred transition ${
-              pathname === "/ads" ? "text-perecred font-semibold" : ""
+            className={`hover:text-red-600 transition ${
+              pathname === "/ads" ? "text-red-600 font-semibold" : ""
             }`}
           >
             Реклама
           </Link>
           <Link
             href="/contacts"
-            className={`hover:text-perecred transition ${
-              pathname === "/contacts" ? "text-perecred font-semibold" : ""
+            className={`hover:text-red-600 transition ${
+              pathname === "/contacts" ? "text-red-600 font-semibold" : ""
             }`}
           >
             Контакты
@@ -43,7 +43,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Perec News в Facebook"
             title="Perec News в Facebook"
-            className="hover:text-perecred text-gray-800"
+            className="hover:text-red-600 text-gray-800"
           >
             <FaFacebookF size={20} />
           </a>
@@ -54,7 +54,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="Perec News в Telegram"
             title="Perec News в Telegram"
-            className="hover:text-perecred text-gray-800"
+            className="hover:text-red-600 text-gray-800"
           >
             <FaTelegramPlane size={22} />
           </a>
