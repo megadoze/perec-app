@@ -34,6 +34,8 @@ export default function RootLayout({ children }) {
       className={`${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
         <link
           rel="dns-prefetch"
