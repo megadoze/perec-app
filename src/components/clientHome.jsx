@@ -81,24 +81,24 @@ export default function ClientHome({ initialNews }) {
     <>
       <MainLayout news={mainNews} bezkupur={bezkupur} />
       <div className="my-6 border-t border-neutral-200"></div>
-      <h2 className="font-narrow text-2xl pb-6  text-perecred">
+      <h2 className="font-narrow text-2xl pb-6  text-red-600">
         <Link href="politics">Политический перчик</Link>
       </h2>
       <CategoryLayoutFourH news={politics} withText />
 
       <div className="my-6 border-t border-neutral-200"></div>
-      <h2 className="font-narrow text-2xl pb-6 text-perecred">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href="economics"> Экономика с огоньком</Link>
       </h2>
       <CategoryLayoutFourH news={economics} withPhoto withText />
       <div className="my-6 border-t border-neutral-200"></div>
-      <h2 className="font-narrow text-2xl pb-6 text-perecred">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href="life">Жизнь острая как чили</Link>
       </h2>
       <CategoryLayoutSix news={life} />
 
       <div className="my-6 border-t border-neutral-200"></div>
-      <h2 className="font-narrow text-2xl pb-6 text-perecred">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href="culture">Поп-культура в перце</Link>
       </h2>
       <CategoryLayoutSixV news={culture} />
