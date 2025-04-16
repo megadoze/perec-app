@@ -3,6 +3,8 @@
 import Head from "next/head";
 
 export default function JsonLdSchema({ data }) {
+  if (!data) return null;
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",

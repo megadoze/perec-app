@@ -1,36 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import JsonLdSchema from "./jsonLdSchema";
 import { motion } from "framer-motion";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
 
 export default function NewsContent({ data }) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: data.title,
-    image: [data.images?.[0]],
-    datePublished: new Date(data.createdAt).toISOString(),
-    dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),
-    author: {
-      "@type": "Person",
-      name: data.author || "PEREC.news",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "PEREC.news",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://perec-app.vercel.app/logoperec.png",
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://perec-app.vercel.app/${data.category}/${data.slug}`,
-    },
-  };
-
   return (
     <>
       <JsonLdSchema data={data} />
