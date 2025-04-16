@@ -1,5 +1,7 @@
 export const runtime = "nodejs";
 
+import Script from "next/script";
+
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
@@ -78,5 +80,14 @@ export default async function NewsPage(props) {
     },
   };
 
-  return <NewsContent data={data} />;
+  return (
+    <>
+      <Script
+        id="json-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <NewsContent data={data} />
+    </>
+  );
 }
