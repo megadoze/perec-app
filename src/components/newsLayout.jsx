@@ -56,7 +56,7 @@ export const NewsLayout = ({
         <h2
           className={`${
             main ? " text-2xl lg:text-3xl" : "text-2xl"
-          } font-bold font-narrow leading-tight`}
+          }  font-narrow font-bold leading-tight `}
         >
           {news?.title}
         </h2>

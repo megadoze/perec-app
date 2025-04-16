@@ -73,5 +73,5 @@ export default async function CategoryPage({ params }) {
     .filter((item) => item.status === "published" && item.category === category)
     .sort((a, b) => b.publishedAt - a.publishedAt);
 
-  return <CategoryClient title={title} news={news} />;
+  return <CategoryClient title={title} news={news} category={category} />;
 }

@@ -49,13 +49,13 @@ export default function MainLayout({ news, bezkupur }) {
             className={
               index > 0
                 ? "pt-0"
-                : " pb-6 md:pb-0 border-neutral-200  last:border-b-0"
+                : " pb-6 md:pb-0 border-neutral-200 last:border-b-0"
             }
           >
             <NewsLayout news={item} withText maincat line={3} />
           </div>
         ))}
-        <div className=" bg-neutral-100/60 p-4 rounded-xl">
+        <div className=" bg-stone-50 p-4 rounded-xl">
           <NewsLayout news={newsBezKupur} maincat />
         </div>
         <div className=" mt-6">

@@ -7,9 +7,9 @@ import CategoryLayoutSixV from "./categoryLayoutSixV";
 
 const PAGE_SIZE = 8; // Количество новостей за одну подгрузку
 
-export default function CategoryClient({ title, news }) {
-  const initial = news.slice(0, 6); // первые 4
-  const extraAll = news.slice(6); // остальные
+export default function CategoryClient({ title, news, category }) {
+  const initial = news.slice(0, 6); // первые 6
+  const extraAll = category === "bezkupur" ? news : news.slice(6);
 
   const [visibleCount, setVisibleCount] = useState(1); // сколько порций загружено
   const containerRef = useRef(null);
@@ -37,7 +37,9 @@ export default function CategoryClient({ title, news }) {
 
       {news.length === 0 && <p>Нет новостей в этой категории</p>}
 
-      {initial.length > 0 && <CategoryLayoutSixV news={initial} />}
+      {initial.length > 0 && category !== "bezkupur" && (
+        <CategoryLayoutSixV news={initial} />
+      )}
 
       <AnimatePresence>
         {extraToShow.length > 0 && (
@@ -49,7 +51,13 @@ export default function CategoryClient({ title, news }) {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="my-6 border-t border-neutral-200" />
+            <div
+              className={
+                category !== "bezkupur"
+                  ? "my-6 border-t border-neutral-200"
+                  : ""
+              }
+            ></div>
             <CategoryLayoutFourH news={extraToShow} withText withPhoto />
           </motion.div>
         )}
