@@ -19,7 +19,7 @@ export default function NewsContent({ data }) {
         <p className="text-gray-500 text-sm mb-4">
           Опубликовано: {dayjs(data.publishedAt).format("DD MMM YYYY HH:mm")}
         </p>
-        <h2 className="text-xl font-narrow mb-6 md:mb-10">{data?.subTitle}</h2>
+        <h2 className="text-xl font-narrow mb-6 md:mb-6">{data?.subTitle}</h2>
         <div className="clearfix">
           {data?.images && (
             <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-0">

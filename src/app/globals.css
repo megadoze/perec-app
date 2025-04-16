@@ -19,3 +19,14 @@
   font-weight: 400 !important; /* ← принудительно переопределяет font-bold */
   font-size: 22px;
 }
+
+blockquote {
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+p {
+  margin-top: 1em;
+}
