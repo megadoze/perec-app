@@ -39,9 +39,6 @@ export async function generateMetadata(props) {
       description,
       images: [image],
     },
-    other: {
-      "application/ld+json": JSON.stringify(schema),
-    },
   };
 }
 
