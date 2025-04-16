@@ -1,6 +1,5 @@
 export const runtime = "nodejs";
 
-import JsonLdSchema from "../../../components/jsonLdSchema";
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
@@ -54,12 +53,5 @@ export default async function NewsPage(props) {
     return notFound();
   }
 
-  return (
-    <>
-      <head>
-        <JsonLdSchema data={data} />
-      </head>
-      <NewsContent data={data} />
-    </>
-  );
+  return <NewsContent data={data} />;
 }
