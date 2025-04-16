@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import JsonLdSchema from "./jsonLdSchema";
 import { motion } from "framer-motion";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
@@ -9,7 +8,6 @@ import dayjs from "dayjs";
 export default function NewsContent({ data }) {
   return (
     <>
-      <JsonLdSchema data={data} />
       <motion.div
         key="data"
         initial={{ opacity: 0 }}
