@@ -16,11 +16,36 @@ export async function generateMetadata(props) {
   }
 
   const description = news.subTitle || "Добавляем остроты в скучные новости!";
-  const url = `https://perec-news.web.app/news/${id}`;
+  const url = `https://perec-news.web.app/${news.category}/${news.slug}`;
   const image =
     Array.isArray(news?.images) && news.images.length > 0
       ? news.images[0]
       : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: news.title,
+    image: [image],
+    datePublished: new Date(news.createdAt).toISOString(),
+    dateModified: new Date(news.updatedAt || news.createdAt).toISOString(),
+    author: {
+      "@type": "Person",
+      name: news.author || "PEREC.news",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "PEREC.news",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://perec-app.vercel.app/logoperec.png",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+  };
 
   return {
     title: news.title,
@@ -38,6 +63,9 @@ export async function generateMetadata(props) {
       title: news.title,
       description,
       images: [image],
+    },
+    other: {
+      "application/ld+json": JSON.stringify(schema),
     },
   };
 }
