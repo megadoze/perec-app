@@ -78,13 +78,5 @@ export default async function NewsPage(props) {
     },
   };
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-      <NewsContent data={data} />
-    </>
-  );
+  return <NewsContent data={data} />;
 }
