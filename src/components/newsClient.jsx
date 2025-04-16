@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Head from "next/head";
 import { motion } from "framer-motion";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
