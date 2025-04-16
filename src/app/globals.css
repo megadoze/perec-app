@@ -15,12 +15,7 @@
   font-style: normal;
 }
 
-
-/* body::before {
-  content: "PEREC";
-  font-family: "Blackout 2AM";
-  font-size: 48px;
-  display: block;
-  padding: 20px;
-  background: #eee;
-} */
+.news-h2-light h2 {
+  font-weight: 400 !important; /* ← принудительно переопределяет font-bold */
+  font-size: 22px;
+}

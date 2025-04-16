@@ -73,7 +73,7 @@ export default function ClientHome({ initialNews }) {
   );
 
   const bezkupur = useMemo(
-    () => news.filter((item) => item.category === "bezkupur").slice(0, 1),
+    () => news.filter((item) => item.category === "bezkupur").slice(0, 2),
     [news, mainNewsIds]
   );
 

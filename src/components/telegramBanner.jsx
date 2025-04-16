@@ -13,7 +13,7 @@ const TelegramBanner = () => {
           Подписывайся на наш <br />
           <span className="font-bold font-narrow text-xl">Telegram-канал</span>
         </div>
-        <FaTelegramPlane className="text-perecred text-3xl transition-transform duration-200 group-hover:rotate-[360deg]" />
+        <FaTelegramPlane className="text-red-600 text-3xl transition-transform duration-200 group-hover:rotate-[360deg]" />
       </div>
     </a>
   );
