@@ -13,6 +13,7 @@
   src: url("/fonts/blackout/Blackout2AM.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 .news-h2-light h2 {
