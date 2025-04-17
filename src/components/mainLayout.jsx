@@ -10,9 +10,9 @@ export default function MainLayout({ news, bezkupur }) {
   const col4 = bezkupur;
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-200">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100">
       {/* Колонка 1 */}
-      <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-200 md:border-r lg:border-r-0 divide-neutral-200">
+      <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100 mt-4 md:mt-0">
         {col1.map((item, index) => (
           <div key={item.id} className={index > 0 ? "pt-5" : ""}>
             <NewsLayout news={item} withText maincat line={3} />
@@ -21,7 +21,7 @@ export default function MainLayout({ news, bezkupur }) {
       </div>
 
       {/* Главная новость */}
-      <div className="order-1 sm:order-2 md:pl-4 md:pr-0 lg:px-4 pb-6 md:pb-6 lg:pb-0 border-neutral-200">
+      <div className="order-1 sm:order-2 md:pl-4 md:pr-4 lg:px-4 pb-6 lg:pb-0 border-neutral-100 bg-stone-50 px-4 md:px-0 -mx-4 md:-mx-0 pt-4 lg:pt-0">
         <NewsLayout
           news={col2}
           main
@@ -33,14 +33,14 @@ export default function MainLayout({ news, bezkupur }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="order-3 space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 border-neutral-200 md:border-r lg:border-r-0 divide-neutral-200">
+      <div className="md:mt-6 lg:mt-0 order-3 space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {col3.map((item, index) => (
           <NewsLayout key={item.id} news={item} withPhoto maincat />
         ))}
       </div>
 
       {/* Колонка 4 */}
-      <div className="order-4 md:space-y-6 md:pl-4 space-y-6">
+      <div className="md:mt-6 lg:mt-0 order-4 md:space-y-6 md:pl-4 space-y-6">
         <div className=" bg-stone-50 p-4 rounded-xl space-y-6">
           {col4.map((item, index) => (
             <div key={item.id} className="news-h2-light">

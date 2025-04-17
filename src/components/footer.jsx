@@ -9,12 +9,12 @@ export default function Footer() {
 
   return (
     <footer className="mt-10 px-4 md:px-8 pb-6 pt-14 text-neutral-600 text-sm">
-      <div className=" mx-auto flex flex-col items-center gap-8 text-center border-t">
+      <div className=" mx-auto flex flex-col items-center gap-8 text-center border-t border-stone-100">
         <div className="flex flex-wrap justify-center gap-8 text-base font-medium tracking-wide pt-10">
           <Link
             href="/about"
             className={`hover:text-red-600 transition ${
-              pathname === "/about" ? "text-red-600 font-semibold" : ""
+              pathname === "/about" ? "text-red-600 " : ""
             }`}
           >
             О нас
@@ -22,7 +22,7 @@ export default function Footer() {
           <Link
             href="/ads"
             className={`hover:text-red-600 transition ${
-              pathname === "/ads" ? "text-red-600 font-semibold" : ""
+              pathname === "/ads" ? "text-red-600 " : ""
             }`}
           >
             Реклама
@@ -30,7 +30,7 @@ export default function Footer() {
           <Link
             href="/contacts"
             className={`hover:text-red-600 transition ${
-              pathname === "/contacts" ? "text-red-600 font-semibold" : ""
+              pathname === "/contacts" ? "text-red-600" : ""
             }`}
           >
             Контакты
@@ -60,8 +60,8 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className=" pt-0 text-neutral-600 text-sm">
-          © {new Date().getFullYear()} Perec News. Все права защищены.
+        <div className=" pt-0 text-neutral-600 font-light text-sm">
+          © {new Date().getFullYear()} Perec News. Все права защищены
         </div>
       </div>
     </footer>
