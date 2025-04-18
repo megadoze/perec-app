@@ -5,6 +5,7 @@ export default function CategoryLayoutFourH({
   withPhoto,
   withText,
   lineClamp,
+  locale,
 }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
@@ -38,6 +39,7 @@ export default function CategoryLayoutFourH({
             withPhoto={withPhoto}
             withText={withText}
             lineClamp={lineClamp}
+            locale={locale}
           />
         </div>
       ))}

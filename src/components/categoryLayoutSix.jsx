@@ -1,6 +1,6 @@
 import { NewsLayout } from "./newsLayout";
 
-export default function CategoryLayoutSix({ news }) {
+export default function CategoryLayoutSix({ news, locale }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 1);
@@ -14,7 +14,13 @@ export default function CategoryLayoutSix({ news }) {
       <div className=" md:space-y-6 md:divide-y md:pr-4 pb-6 lg:pb-0 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {col1.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText withPhoto lineClamp={2} />
+            <NewsLayout
+              news={item}
+              withText
+              withPhoto
+              lineClamp={2}
+              locale={locale}
+            />
           </div>
         ))}
       </div>
@@ -23,7 +29,7 @@ export default function CategoryLayoutSix({ news }) {
       <div className=" md:space-y-6 md:pl-4 lg:pr-4 pb-6 lg:pb-0 border-neutral-100 md:divide-y divide-neutral-100">
         {col2.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText lineClamp={2} />
+            <NewsLayout news={item} withText lineClamp={2} locale={locale} />
           </div>
         ))}
       </div>
@@ -32,7 +38,13 @@ export default function CategoryLayoutSix({ news }) {
       <div className=" space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 lg:pb-0 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {col3.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText withPhoto lineClamp={2} />
+            <NewsLayout
+              news={item}
+              withText
+              withPhoto
+              lineClamp={2}
+              locale={locale}
+            />
           </div>
         ))}
       </div>
@@ -41,7 +53,7 @@ export default function CategoryLayoutSix({ news }) {
       <div className=" md:space-y-6 md:pl-4 border-neutral-100 md:divide-y divide-neutral-100">
         {col4.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText lineClamp={2} />
+            <NewsLayout news={item} withText lineClamp={2} locale={locale} />
           </div>
         ))}
       </div>

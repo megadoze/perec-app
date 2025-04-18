@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
@@ -8,6 +9,7 @@ import CategoryLayoutSixV from "./categoryLayoutSixV";
 const PAGE_SIZE = 8; // Количество новостей за одну подгрузку
 
 export default function CategoryClient({ title, news, category }) {
+  const locale = useLocale();
   const initial = news.slice(0, 6); // первые 6
   const extraAll = category === "bezkupur" ? news : news.slice(6);
 
@@ -38,7 +40,7 @@ export default function CategoryClient({ title, news, category }) {
       {news.length === 0 && <p>Нет новостей в этой категории</p>}
 
       {initial.length > 0 && category !== "bezkupur" && (
-        <CategoryLayoutSixV news={initial} />
+        <CategoryLayoutSixV news={initial} locale={locale} />
       )}
 
       <AnimatePresence>
@@ -58,7 +60,12 @@ export default function CategoryClient({ title, news, category }) {
                   : ""
               }
             ></div>
-            <CategoryLayoutFourH news={extraToShow} withText withPhoto />
+            <CategoryLayoutFourH
+              news={extraToShow}
+              withText
+              withPhoto
+              locale={locale}
+            />
           </motion.div>
         )}
       </AnimatePresence>

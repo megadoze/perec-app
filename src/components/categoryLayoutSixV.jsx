@@ -1,6 +1,6 @@
 import { NewsLayout } from "./newsLayout";
 
-export default function CategoryLayoutSixV({ news }) {
+export default function CategoryLayoutSixV({ news, locale }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 1);
@@ -14,7 +14,14 @@ export default function CategoryLayoutSixV({ news }) {
       <div className="  md:pr-4 pb-6 lg:pb-0 md:border-r lg:border-r-0">
         {col1.map((item, index) => (
           <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText withPhoto lineClamp={2} culture />
+            <NewsLayout
+              news={item}
+              withText
+              withPhoto
+              lineClamp={2}
+              culture
+              locale={locale}
+            />
           </div>
         ))}
       </div>
@@ -23,7 +30,7 @@ export default function CategoryLayoutSixV({ news }) {
         <div className=" md:space-y-6 lg:px-4 md:pl-4 pb-6 md:pb-0 lg:pb-0 lg:border-r border-neutral-100 md:divide-y divide-neutral-100">
           {col2.map((item, index) => (
             <div key={item.id} className={`${index > 0 && "pt-5"}`}>
-              <NewsLayout news={item} withText lineClamp={2} />
+              <NewsLayout news={item} withText lineClamp={2} locale={locale} />
             </div>
           ))}
         </div>
@@ -36,7 +43,7 @@ export default function CategoryLayoutSixV({ news }) {
               key={item.id}
               className={`${index > 0 ? "md:pl-4 lg:pl-0" : "md:pr-4 lg:pr-0"}`}
             >
-              <NewsLayout news={item} withPhoto lineClamp={2} />
+              <NewsLayout news={item} withPhoto lineClamp={2} locale={locale} />
             </div>
           ))}
         </div>

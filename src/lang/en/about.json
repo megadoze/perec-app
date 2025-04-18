@@ -1,0 +1,42 @@
+{
+  "title": "About Us — PEREC.news",
+  "description": "Learn more about the philosophy, sections and mission of the satirical media PEREC.news",
+  "ogTitle": "About Us — PEREC.news",
+  "ogDescription": "Perec.news is a political-satirical online media that covers hot topics with humor and irony.",
+  "heading": "About Us",
+  "paragraph1": "Perec.news is a political-satirical online platform that covers relevant news, events, and trends with sharp irony, humor, and analysis.",
+  "paragraph2": "Our specialty is fact-based humor without unnecessary cynicism.",
+  "paragraph3": "Our motto: “We spice up boring news.”",
+  "paragraph4": "We challenge traditional media by making news not only informative but also captivating.",
+  "audience": "Target Audience",
+  "audiencePoints": [
+    "Active readers: People aged 20–45 with critical thinking, interested in politics, economy, society, and culture.",
+    "Tired of dry news: Those seeking an informal and entertaining take on serious topics.",
+    "Satire lovers: Fans of witty and sharp humor."
+  ],
+  "sections": "Key Sections",
+  "sectionsList": [
+    {
+      "title": "Political Pepper:",
+      "text": "Witty reviews of the political scene, parodies of famous politicians and their decisions."
+    },
+    {
+      "title": "Life Spicy Like Chili:",
+      "text": "Social issues, news and trends served with a pinch of humor."
+    },
+    {
+      "title": "Economy on Fire:",
+      "text": "Financial and economic events with satire: from inflation to crypto."
+    },
+    {
+      "title": "Pop Culture in Pepper:",
+      "text": "Ironic view on showbiz, cinema, fashion and internet trends."
+    },
+    {
+      "title": "Unfiltered News:",
+      "text": "The most absurd, funny and unexpected headlines that you just can’t ignore."
+    }
+  ],
+  "mission": "Mission",
+  "missionText": "To deliver important topics through the prism of irony and humor, making news accessible, easy to perceive, yet deep in essence."
+}

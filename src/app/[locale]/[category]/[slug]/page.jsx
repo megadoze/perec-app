@@ -5,9 +5,10 @@ import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 
-export async function generateMetadata(props) {
-  const params = await props.params;
-  const id = params.slug?.split("-").at(-1);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
+  const id = slug?.split("-").at(-1);
 
   const snapshot = await get(child(ref(db), `news/${id}`));
   const news = snapshot.val();
@@ -43,9 +44,9 @@ export async function generateMetadata(props) {
   };
 }
 
-export default async function NewsPage(props) {
-  const params = await props.params;
-  const id = params.slug?.split("-").at(-1);
+export default async function NewsPage({ params }) {
+  const { slug } = await params;
+  const id = slug?.split("-").at(-1);
 
   const snapshot = await get(child(ref(db), `news/${id}`));
   const data = snapshot.exists() ? snapshot.val() : null;

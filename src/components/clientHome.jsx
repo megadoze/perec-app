@@ -1,5 +1,6 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import MainLayout from "./mainLayout";
@@ -22,6 +23,7 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
 });
 
 export default function ClientHome({ initialNews }) {
+  const locale = useLocale();
   const [news] = useState(initialNews);
 
   const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
@@ -79,29 +81,34 @@ export default function ClientHome({ initialNews }) {
 
   return (
     <>
-      <MainLayout news={mainNews} bezkupur={bezkupur} />
+      <MainLayout news={mainNews} bezkupur={bezkupur} locale={locale} />
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6  text-red-600">
-        <Link href="politics">Политический перчик</Link>
+        <Link href={`/${locale}/politics`}>Политический перчик</Link>
       </h2>
-      <CategoryLayoutFourH news={politics} withText />
+      <CategoryLayoutFourH news={politics} withText locale={locale} />
 
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href="economics"> Экономика с огоньком</Link>
+        <Link href={`/${locale}/economics`}>Экономика с огоньком</Link>
       </h2>
-      <CategoryLayoutFourH news={economics} withPhoto withText />
+      <CategoryLayoutFourH
+        news={economics}
+        withPhoto
+        withText
+        locale={locale}
+      />
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href="life">Жизнь острая как чили</Link>
+        <Link href={`/${locale}/life`}>Жизнь острая как чили</Link>
       </h2>
-      <CategoryLayoutSix news={life} />
+      <CategoryLayoutSix news={life} locale={locale} />
 
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href="culture">Поп-культура в перце</Link>
+        <Link href={`/${locale}/culture`}>Поп-культура в перце</Link>
       </h2>
-      <CategoryLayoutSixV news={culture} />
+      <CategoryLayoutSixV news={culture} locale={locale} />
     </>
   );
 }

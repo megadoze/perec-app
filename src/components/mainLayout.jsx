@@ -1,7 +1,7 @@
 import { NewsLayout } from "./newsLayout";
 import TelegramBanner from "./telegramBanner";
 
-export default function MainLayout({ news, bezkupur }) {
+export default function MainLayout({ news, bezkupur, locale }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 2);
@@ -15,7 +15,7 @@ export default function MainLayout({ news, bezkupur }) {
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100 mt-4 md:mt-0">
         {col1.map((item, index) => (
           <div key={item.id} className={index > 0 ? "pt-5" : ""}>
-            <NewsLayout news={item} withText maincat line={3} />
+            <NewsLayout news={item} withText maincat line={3} locale={locale} />
           </div>
         ))}
       </div>
@@ -29,13 +29,20 @@ export default function MainLayout({ news, bezkupur }) {
           withText
           maincat
           priority={true} // 💥 это важно для LCP
+          locale={locale}
         />
       </div>
 
       {/* Колонка 3 */}
       <div className="md:mt-6 lg:mt-0 order-3 space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {col3.map((item, index) => (
-          <NewsLayout key={item.id} news={item} withPhoto maincat />
+          <NewsLayout
+            key={item.id}
+            news={item}
+            withPhoto
+            maincat
+            locale={locale}
+          />
         ))}
       </div>
 
@@ -47,7 +54,7 @@ export default function MainLayout({ news, bezkupur }) {
               key={item.id}
               className="news-h2-light first:border-b first:pb-6 border-neutral-200/40"
             >
-              <NewsLayout news={item} maincat />
+              <NewsLayout news={item} maincat locale={locale} />
             </div>
           ))}
         </div>

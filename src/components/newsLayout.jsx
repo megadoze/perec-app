@@ -18,6 +18,7 @@ export const NewsLayout = ({
   culture,
   priority = false, // ← по умолчанию false
   line = 2,
+  locale,
 }) => {
   const clampClass = {
     2: "line-clamp-2",
@@ -27,7 +28,7 @@ export const NewsLayout = ({
   return (
     <article>
       {withPhoto && news?.images && (
-        <Link href={`${news.category}/${news.slug}`}>
+        <Link href={`/${locale}/${news.category}/${news.slug}`}>
           <div className="overflow-hidden mb-2">
             <Image
               src={news?.images[0]}
@@ -52,7 +53,7 @@ export const NewsLayout = ({
           </div>
         </Link>
       )}
-      <Link href={`${news.category}/${news.slug}`}>
+      <Link href={`/${locale}/${news.category}/${news.slug}`}>
         <h2
           className={`${
             main ? " text-2xl lg:text-3xl" : "text-2xl"
@@ -62,7 +63,7 @@ export const NewsLayout = ({
         </h2>
       </Link>
       {withText && (
-        <Link href={`${news.category}/${news.slug}`}>
+        <Link href={`/${locale}/${news.category}/${news.slug}`}>
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : ""

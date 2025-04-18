@@ -1,9 +1,12 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import LanguageSwitcher from "./langSwitch";
 
 export default function BurgerMenu() {
+  const locale = useLocale();
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
@@ -55,31 +58,37 @@ export default function BurgerMenu() {
             </button>
 
             <nav className="flex flex-col gap-4 text-lg pt-10">
-              <Link href="/" onClick={() => setOpened(false)}>
+              <Link href={`/${locale}`} onClick={() => setOpened(false)}>
                 Главная
               </Link>
-              <Link href="/politics" onClick={() => setOpened(false)}>
+              <Link
+                href={`/${locale}/politics`}
+                onClick={() => setOpened(false)}
+              >
                 Политический перчик
               </Link>
-              <Link href="/economics" onClick={() => setOpened(false)}>
+              <Link
+                href={`/${locale}/economics`}
+                onClick={() => setOpened(false)}
+              >
                 Экономика с огоньком
               </Link>
-              <Link href="/life" onClick={() => setOpened(false)}>
+              <Link href={`/${locale}/life`} onClick={() => setOpened(false)}>
                 Жизнь острая как чили
               </Link>
-              <Link href="/culture" onClick={() => setOpened(false)}>
+              <Link href={`/${locale}/culture`} onClick={() => setOpened(false)}>
                 Поп-культура в перце
               </Link>
-              <Link href="/bezkupur" onClick={() => setOpened(false)}>
+              <Link
+                href={`/${locale}/bezkupur`}
+                onClick={() => setOpened(false)}
+              >
                 Без купюр
               </Link>
             </nav>
-            <p className="mt-6 text-lg">
-              <span className=" underline underline-offset-4 text-red-600">
-                ru
-              </span>{" "}
-              | <span>en</span>
-            </p>
+            <div className="mt-6 text-lg">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </div>
