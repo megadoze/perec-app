@@ -5,17 +5,17 @@ export async function generateMetadata({ params }) {
   const messages = (await import(`@/lang/${locale}/ads.json`)).default;
 
   return {
-    title: messages.title || "О нас — PEREC.news",
+    title: messages.adstitle || "О нас — PEREC.news",
     description:
-      messages.description ||
+      messages.adsdescription ||
       "Узнайте больше о философии, рубриках и миссии сатирического медиа PEREC.news",
     openGraph: {
-      title: messages.title || "О нас — PEREC.news",
+      title: messages.ogTitle || "Реклама — PEREC.news",
       description:
-        messages.ogDescription ||
+        messages.adsdescription ||
         "Perec.news — это политико-сатирический онлайн-ресурс, который освещает актуальные темы через призму юмора и иронии.",
-      url: `https://perec.news/${locale}/about`,
-      siteName: "PEREC.news — нескучные новости🔥",
+      url: `https://perec.news/${locale}/ads`,
+      siteName: messages.ogSiteName || "PEREC.news — нескучные новости🔥",
       type: "website",
     },
   };

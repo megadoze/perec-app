@@ -76,7 +76,10 @@ export default function BurgerMenu() {
               <Link href={`/${locale}/life`} onClick={() => setOpened(false)}>
                 Жизнь острая как чили
               </Link>
-              <Link href={`/${locale}/culture`} onClick={() => setOpened(false)}>
+              <Link
+                href={`/${locale}/culture`}
+                onClick={() => setOpened(false)}
+              >
                 Поп-культура в перце
               </Link>
               <Link

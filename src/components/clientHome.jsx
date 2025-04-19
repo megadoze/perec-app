@@ -87,7 +87,6 @@ export default function ClientHome({ initialNews }) {
         <Link href={`/${locale}/politics`}>Политический перчик</Link>
       </h2>
       <CategoryLayoutFourH news={politics} withText locale={locale} />
-
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/economics`}>Экономика с огоньком</Link>

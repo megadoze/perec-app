@@ -1,7 +1,9 @@
 {
-    "title": "Contacts | PEREC.news",
-    "description": "We always welcome feedback from our readers and partners",
-    "email": "hello@perec.news",
-    "telegram": "@perecnews"
+    "contacttitle": "Contacts | PEREC.news",
+    "contactdescription": "We always welcome feedback from our readers and partners",
+    "contactemail": "hello@perec.news",
+    "contacttelegram": "@perecnews",
+    "ogTitle": "Contacts — PEREC.news",
+    "ogSiteName": "PEREC.news — spicy news🔥"
 }
   

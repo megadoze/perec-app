@@ -2,7 +2,7 @@ import ContactsClient from "./contactsClient";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
-  const messages = (await import(`@/lang/${locale}/ads.json`)).default;
+  const messages = (await import(`@/lang/${locale}/contacts.json`)).default;
 
   return {
     title: messages.title || "Контакты — PEREC.news",
@@ -21,6 +21,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function AdsPage() {
+export default function ContactPage() {
   return <ContactsClient />;
 }
