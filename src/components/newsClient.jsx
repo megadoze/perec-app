@@ -2,21 +2,34 @@ import Image from "next/image";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
 
-export default function NewsContent({ data }) {
+export default function NewsContent({ data, locale }) {
+  const t = data.translations?.[locale] || {};
+
+  const published = {
+    ru: "Опубликовано",
+    en: "Published",
+  };
+
+  const author = {
+    ru: "Автор",
+    en: "Author",
+  };
+
   return (
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
-        <h1 className="text-3xl font-narrow font-bold mb-2">{data.title}</h1>
+        <h1 className="text-3xl font-narrow font-bold mb-2">{t.title}</h1>
         <p className="text-gray-500 text-sm mb-4">
-          Опубликовано: {dayjs(data.publishedAt).format("DD MMM YYYY HH:mm")}
+          {published[locale]}:{" "}
+          {dayjs(data.publishedAt).format("DD MMM YYYY HH:mm")}
         </p>
-        <h2 className="text-xl font-narrow mb-6 md:mb-6">{data?.subTitle}</h2>
+        <h2 className="text-xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
         <div className="clearfix">
           {data?.images && (
             <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-0">
               <Image
                 src={data.images[0]}
-                alt={data.title}
+                alt={t.title}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                 priority
@@ -29,10 +42,12 @@ export default function NewsContent({ data }) {
 
           <div
             className=" text-lg font-light leading-relaxed clear-none"
-            dangerouslySetInnerHTML={{ __html: data.content }}
+            dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
-        <p className="mt-4 text-sm text-gray-400">Автор: {data.author}</p>
+        <p className="mt-4 text-sm text-gray-400">
+          {author[locale]}: {data.author}
+        </p>
         <BackButton />
       </article>
     </>

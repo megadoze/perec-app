@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo } from "react";
@@ -8,23 +9,25 @@ import MainLayout from "./mainLayout";
 import dynamic from "next/dynamic";
 
 const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
-  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
   ssr: false,
 });
 
 const CategoryLayoutSixV = dynamic(() => import("./categoryLayoutSixV"), {
-  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
   ssr: false,
 });
 
 const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
-  loading: () => <p className="text-sm text-neutral-400">Загрузка блока...</p>,
+  loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
   ssr: false,
 });
 
 export default function ClientHome({ initialNews }) {
   const locale = useLocale();
   const [news] = useState(initialNews);
+
+  const t = useTranslations("categoryName");
 
   const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
 
@@ -84,12 +87,12 @@ export default function ClientHome({ initialNews }) {
       <MainLayout news={mainNews} bezkupur={bezkupur} locale={locale} />
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6  text-red-600">
-        <Link href={`/${locale}/politics`}>Политический перчик</Link>
+        <Link href={`/${locale}/politics`}>{t("politics")}</Link>
       </h2>
       <CategoryLayoutFourH news={politics} withText locale={locale} />
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href={`/${locale}/economics`}>Экономика с огоньком</Link>
+        <Link href={`/${locale}/economics`}>{t("economics")}</Link>
       </h2>
       <CategoryLayoutFourH
         news={economics}
@@ -99,13 +102,13 @@ export default function ClientHome({ initialNews }) {
       />
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href={`/${locale}/life`}>Жизнь острая как чили</Link>
+        <Link href={`/${locale}/life`}>{t("life")}</Link>
       </h2>
       <CategoryLayoutSix news={life} locale={locale} />
 
       <div className="my-6 border-t border-neutral-100"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
-        <Link href={`/${locale}/culture`}>Поп-культура в перце</Link>
+        <Link href={`/${locale}/culture`}>{t("culture")}</Link>
       </h2>
       <CategoryLayoutSixV news={culture} locale={locale} />
     </>

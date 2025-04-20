@@ -33,11 +33,16 @@ export default function CategoryClient({ title, news, category }) {
     }
   }, [visibleCount]);
 
+  const emptyNewsTitle = {
+    ru: "Нет новостей в этой категории",
+    en: "There are no news in this category",
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-narrow text-red-600 mb-6">{title}</h1>
 
-      {news.length === 0 && <p>Нет новостей в этой категории</p>}
+      {news.length === 0 && <p>{emptyNewsTitle[locale]}</p>}
 
       {initial.length > 0 && category !== "bezkupur" && (
         <CategoryLayoutSixV news={initial} locale={locale} />
@@ -76,7 +81,7 @@ export default function CategoryClient({ title, news, category }) {
             onClick={handleLoadMore}
             className="bg-gray-100 px-6 py-2 rounded hover:bg-gray-100/80 text-gray-600 transition"
           >
-            Показать ещё
+            {locale === "ru" ? "Показать ещё" : "More news"}
           </button>
         </div>
       )}

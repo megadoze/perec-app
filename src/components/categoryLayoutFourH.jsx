@@ -7,7 +7,12 @@ export default function CategoryLayoutFourH({
   lineClamp,
   locale,
 }) {
-  if (!news?.length) return <p>Нет новостей</p>;
+  const emptyNews = {
+    ru: "Нет новостей",
+    en: "No news",
+  };
+  
+  if (!news?.length) return <p>{emptyNews[locale]}</p>;
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-y-10">

@@ -1,9 +1,19 @@
 "use client";
 
+import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 
-export default function BackButton() {
+export default function BackButton({ params }) {
   const router = useRouter();
+
+  const locale = useLocale();
+
+  console.log(locale);
+
+  const butName = {
+    ru: "Назад",
+    en: "Back",
+  };
 
   return (
     <button
@@ -17,7 +27,7 @@ export default function BackButton() {
       className="inline-flex items-center gap-1 mt-6 text-cyan-700/60"
     >
       <span className="pb-1">←</span>
-      <span>Назад</span>
+      <span>{butName[locale]}</span>
     </button>
   );
 }

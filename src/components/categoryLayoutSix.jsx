@@ -1,7 +1,12 @@
 import { NewsLayout } from "./newsLayout";
 
 export default function CategoryLayoutSix({ news, locale }) {
-  if (!news?.length) return <p>Нет новостей</p>;
+  const emptyNews = {
+    ru: "Нет новостей",
+    en: "No news",
+  };
+
+  if (!news?.length) return <p>{emptyNews[locale]}</p>;
 
   const col1 = news.slice(0, 1);
   const col2 = news.slice(1, 3);

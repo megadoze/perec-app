@@ -1,13 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-
-const categoryTitles = {
-  politics: "Политический перчик",
-  economics: "Экономика с огоньком",
-  life: "Жизнь острая как чили",
-  culture: "Поп-культура в перце",
-  bezkupur: "Без купюр",
-};
+import { useTranslations } from "next-intl";
 
 export const NewsLayout = ({
   news,
@@ -16,23 +11,38 @@ export const NewsLayout = ({
   withText,
   maincat,
   culture,
-  priority = false, // ← по умолчанию false
+  priority = false,
   line = 2,
   locale,
 }) => {
+  const tCat = useTranslations("categoryName");
+
+  if (!news) {
+    console.warn("❌ Пустая новость:", news);
+    return null;
+  }
+
+  if (!news?.translations?.[locale]) {
+    console.warn("❌ Ошибка: новость без перевода", news);
+    return null;
+  }
+
   const clampClass = {
     2: "line-clamp-2",
     3: "line-clamp-3",
   };
 
+  const t = news.translations[locale] || {};
+  if (!t) return null;
+
   return (
     <article>
       {withPhoto && news?.images && (
-        <Link href={`/${locale}/${news.category}/${news.slug}`}>
+        <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <div className="overflow-hidden mb-2">
             <Image
               src={news?.images[0]}
-              alt={news.title}
+              alt={t.title || ""}
               width={320}
               height={200}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
@@ -53,28 +63,31 @@ export const NewsLayout = ({
           </div>
         </Link>
       )}
-      <Link href={`/${locale}/${news.category}/${news.slug}`}>
+
+      <Link href={`/${locale}/${news.category}/${t.slug}`}>
         <h2
           className={`${
             main ? " text-2xl lg:text-3xl" : "text-2xl"
           }  font-narrow font-bold leading-tight `}
         >
-          {news?.title}
+          {t.title}
         </h2>
       </Link>
+
       {withText && (
-        <Link href={`/${locale}/${news.category}/${news.slug}`}>
+        <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : ""
             } text-lg font-light text-neutral-800 ${clampClass[line]}`}
-            dangerouslySetInnerHTML={{ __html: news.content }}
+            dangerouslySetInnerHTML={{ __html: t.content || "" }}
           ></div>
         </Link>
       )}
+
       {maincat && (
         <div className=" font-narrow text-red-600 pt-2">
-          <span className="">{categoryTitles[news.category]}</span>
+          <span>{tCat(news.category)}</span>
         </div>
       )}
     </article>

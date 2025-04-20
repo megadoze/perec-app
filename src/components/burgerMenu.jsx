@@ -1,22 +1,17 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import LanguageSwitcher from "./langSwitch";
 
 export default function BurgerMenu() {
   const locale = useLocale();
+  const t = useTranslations("categoryName"); // 👈 перевод категорий
   const [opened, setOpened] = useState(false);
 
   useEffect(() => {
-    if (opened) {
-      document.body.style.overflow = "hidden"; // блокируем прокрутку
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    // Очистка при размонтировании
+    document.body.style.overflow = opened ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -33,20 +28,19 @@ export default function BurgerMenu() {
         <span className="w-2/3 h-[2px] bg-black"></span>
       </button>
 
-      {/* Фон и панель с анимацией */}
       <div
         className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-300 ${
           opened
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
-        onClick={() => setOpened(false)} // клик вне панели
+        onClick={() => setOpened(false)}
       >
         <div
           className={`transition-all duration-300 transform ${
             opened ? "translate-x-0" : "translate-x-full"
           } w-full md:w-[360px] h-full bg-white p-6 ml-auto`}
-          onClick={(e) => e.stopPropagation()} // чтобы не закрывалось при клике внутри
+          onClick={(e) => e.stopPropagation()}
         >
           <div className="relative">
             <button
@@ -59,36 +53,37 @@ export default function BurgerMenu() {
 
             <nav className="flex flex-col gap-4 text-lg pt-10">
               <Link href={`/${locale}`} onClick={() => setOpened(false)}>
-                Главная
+                {t("home") || "Главная"}
               </Link>
               <Link
                 href={`/${locale}/politics`}
                 onClick={() => setOpened(false)}
               >
-                Политический перчик
+                {t("politics")}
               </Link>
               <Link
                 href={`/${locale}/economics`}
                 onClick={() => setOpened(false)}
               >
-                Экономика с огоньком
+                {t("economics")}
               </Link>
               <Link href={`/${locale}/life`} onClick={() => setOpened(false)}>
-                Жизнь острая как чили
+                {t("life")}
               </Link>
               <Link
                 href={`/${locale}/culture`}
                 onClick={() => setOpened(false)}
               >
-                Поп-культура в перце
+                {t("culture")}
               </Link>
               <Link
                 href={`/${locale}/bezkupur`}
                 onClick={() => setOpened(false)}
               >
-                Без купюр
+                {t("bezkupur")}
               </Link>
             </nav>
+
             <div className="mt-6 text-lg">
               <LanguageSwitcher />
             </div>

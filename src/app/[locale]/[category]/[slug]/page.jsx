@@ -7,37 +7,49 @@ import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
+  const { locale } = await params;
 
   const id = slug?.split("-").at(-1);
+
+  const messages = (await import(`@/lang/${locale}/common.json`)).default;
+
+  const subTitleDesc = messages.metaTwitterDescription;
+  const siteName = messages.metaTitle;
 
   const snapshot = await get(child(ref(db), `news/${id}`));
   const news = snapshot.val();
 
+  const emptyNews = {
+    ru: "Новость не найдена",
+    en: "News not found",
+  };
+
   if (!news) {
-    return { title: "Новость не найдена" };
+    return { title: emptyNews[locale] };
   }
 
-  const description = news.subTitle || "Добавляем остроты в скучные новости!";
-  const url = `https://perec-news.web.app/${news.category}/${news.slug}`;
+  const title = news.translations[locale].title;
+  const description = news.translations[locale].subTitle || subTitleDesc;
+  const url = `https://perec-news.web.app/${locale}/${news.category}/${news.translations[locale].slug}`;
   const image =
     Array.isArray(news?.images) && news.images.length > 0
       ? news.images[0]
       : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
-    title: news.title,
+    title,
     description,
     openGraph: {
-      title: news.title,
+      title,
       description,
       url,
-      siteName: "PEREC.news - нескучные новости🔥",
+      siteName: siteName,
       type: "article",
       images: [image],
     },
     twitter: {
       card: "summary_large_image",
-      title: news.title,
+      title,
       description,
       images: [image],
     },
@@ -47,6 +59,8 @@ export async function generateMetadata({ params }) {
 export default async function NewsPage({ params }) {
   const { slug } = await params;
   const id = slug?.split("-").at(-1);
+
+  const { locale } = await params;
 
   const snapshot = await get(child(ref(db), `news/${id}`));
   const data = snapshot.exists() ? snapshot.val() : null;
@@ -58,7 +72,7 @@ export default async function NewsPage({ params }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: data.title,
+    headline: data.translations[locale].title,
     image: [data.images?.[0] || "default-image-url"],
     datePublished: new Date(data.createdAt).toISOString(),
     dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),
@@ -76,7 +90,7 @@ export default async function NewsPage({ params }) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://perec-app.vercel.app/${data.category}/${data.slug}`,
+      "@id": `https://perec-app.vercel.app/${locale}/${data.category}/${data.translations[locale].slug}`,
     },
   };
 
@@ -87,7 +101,7 @@ export default async function NewsPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <FadeWrapper>
-        <NewsContent data={data} />
+        <NewsContent data={data} locale={locale} />
       </FadeWrapper>
     </>
   );
