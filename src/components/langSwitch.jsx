@@ -20,10 +20,10 @@ export default function LanguageSwitcher() {
           <Link
             key={locale}
             href={newPath}
-            className={`px-1 py-0 text-base font-light  ${
+            className={`px-1 py-0 text-base font-narrow   ${
               locale === currentLocale
-                ? "bg-red-600 text-white"
-                : "text-red-600 border-red-600"
+                ? "bg-red-500 text-white"
+                : "text-red-500 border-red-500"
             }`}
           >
             {locale.toUpperCase()}

@@ -38,14 +38,32 @@ export async function generateMetadata({ params }) {
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
-  const snapshot = await get(child(ref(db), "news"));
-  const data = snapshot.exists() ? snapshot.val() : {};
 
-  const news = Object.entries(data)
-    .map(([id, item]) => ({ id, ...item }))
-    .filter((item) => item.status === "published")
-    .sort((a, b) => b.publishedAt - a.publishedAt)
-    .slice(0, 100);
+  let news = [];
+  let mainNews = [];
 
-  return <ClientHome initialNews={news} locale={locale} />;
+  try {
+    const [newsSnapshot, mainSnapshot] = await Promise.all([
+      get(child(ref(db), "news")),
+      get(child(ref(db), "main_news")),
+    ]);
+
+    const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
+    const mainData = mainSnapshot.exists() ? mainSnapshot.val() : {};
+
+    news = Object.entries(newsData)
+      .map(([id, item]) => ({ id, ...item }))
+      .filter((item) => item.status === "published")
+      .sort((a, b) => b.publishedAt - a.publishedAt)
+      .slice(0, 100);
+
+    mainNews = Object.entries(mainData)
+      .map(([id, item]) => ({ id, ...item }))
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .slice(0, 5);
+  } catch (error) {
+    console.error("Ошибка при загрузке новостей:", error);
+  }
+
+  return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
 }

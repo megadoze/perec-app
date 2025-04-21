@@ -23,15 +23,13 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
   ssr: false,
 });
 
-export default function ClientHome({ initialNews }) {
+export default function ClientHome({ initialNews, mainNews }) {
   const locale = useLocale();
   const [news] = useState(initialNews);
 
   const t = useTranslations("categoryName");
 
-  const mainNewsIds = useMemo(() => news.slice(0, 7).map((n) => n.id), [news]);
-
-  const mainNews = news.filter((item) => item.category !== "bezkupur");
+  const mainNewsIds = useMemo(() => mainNews.map((n) => n.id), [mainNews]);
 
   // Категории без дублирования с главной
   const politics = useMemo(
