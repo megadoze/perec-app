@@ -8,5 +8,5 @@ Disallow: /api
 Host: perec-app.vercel.app
 
 # Sitemaps
-Sitemap: https://storage.googleapis.com/perec-news.appspot.com/sitemap-index.xml
+Sitemap: https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml
 
