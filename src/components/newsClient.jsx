@@ -41,7 +41,7 @@ export default function NewsContent({ data, locale }) {
           )}
 
           <div
-            className=" text-lg font-light leading-relaxed clear-none"
+            className=" text-lg font-light leading-relaxed clear-none "
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>

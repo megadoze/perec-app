@@ -26,10 +26,6 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
 export default function ClientHome({ initialNews, mainNews }) {
   const locale = useLocale();
   const [news] = useState(initialNews);
-  console.log(news);
-  
-
-  // console.log(mainNews);
 
   const t = useTranslations("categoryName");
 
@@ -46,8 +42,6 @@ export default function ClientHome({ initialNews, mainNews }) {
         .slice(0, 4),
     [news, mainNewsIds]
   );
-
-  console.log(politics);
 
   const economics = useMemo(
     () =>

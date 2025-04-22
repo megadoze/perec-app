@@ -21,6 +21,16 @@ const robotoCondensed = Roboto_Condensed({
   display: "swap",
 });
 
+// закрываем от индексации все страницы сайта
+export async function generateMetadata() {
+  return {
+    robots: {
+      index: false,
+      follow: false,
+    },
+  };
+}
+
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
 }

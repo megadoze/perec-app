@@ -79,7 +79,7 @@ export const NewsLayout = ({
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : ""
-            } text-lg font-light text-neutral-800 ${clampClass[line]}`}
+            } text-lg font-light text-black ${clampClass[line]}`}
             dangerouslySetInnerHTML={{ __html: t.content || "" }}
           ></div>
         </Link>

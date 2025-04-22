@@ -20,13 +20,13 @@ export default function LanguageSwitcher() {
           <Link
             key={locale}
             href={newPath}
-            className={`px-1 py-0 text-base font-narrow   ${
+            className={` w-7 text-center font-light  ${
               locale === currentLocale
-                ? "bg-red-500 text-white"
-                : "text-red-500 border-red-500"
+                ? "  text-white bg-red-500 decoration-red-500"
+                : ""
             }`}
           >
-            {locale.toUpperCase()}
+            {locale}
           </Link>
         );
       })}

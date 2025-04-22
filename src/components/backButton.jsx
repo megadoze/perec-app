@@ -8,8 +8,6 @@ export default function BackButton({ params }) {
 
   const locale = useLocale();
 
-  console.log(locale);
-
   const butName = {
     ru: "Назад",
     en: "Back",
