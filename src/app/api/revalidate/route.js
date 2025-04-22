@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 import { revalidatePath } from "next/cache";
 
 export async function GET(request) {
