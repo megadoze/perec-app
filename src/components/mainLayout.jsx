@@ -14,7 +14,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
       {/* Колонка 1 */}
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100 mt-4 md:mt-0">
         {(col1 ?? []).map((item, index) => (
-          <div key={item.id} className={index > 0 ? "pt-5" : ""}>
+          <div key={item._id} className={index > 0 ? "pt-5" : ""}>
             <NewsLayout news={item} withText maincat line={3} locale={locale} />
           </div>
         ))}
@@ -39,7 +39,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
       <div className="md:mt-6 lg:mt-0 order-3 space-y-8 md:pr-4 lg:px-4 pb-6 md:pb-0 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {(col3 ?? []).map((item, index) => (
           <NewsLayout
-            key={item.id}
+            key={item._id}
             news={item}
             withPhoto
             maincat
@@ -53,7 +53,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
         <div className=" bg-stone-50 p-4 rounded-xl space-y-4 ">
           {(col4 ?? []).map((item, index) => (
             <div
-              key={item.id}
+              key={item._id}
               className="news-h2-light first:border-b first:pb-6 border-neutral-200/40"
             >
               <NewsLayout news={item} maincat locale={locale} />

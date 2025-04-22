@@ -18,7 +18,7 @@ export default function CategoryLayoutFourH({
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 md:gap-y-10">
       {news.map((item, idx) => (
         <div
-          key={item.id}
+          key={item._id}
           className="
           px-0 md:px-4 pb-0
           // Вертикальные бордеры

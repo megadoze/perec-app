@@ -26,10 +26,14 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
 export default function ClientHome({ initialNews, mainNews }) {
   const locale = useLocale();
   const [news] = useState(initialNews);
+  console.log(news);
+  
+
+  // console.log(mainNews);
 
   const t = useTranslations("categoryName");
 
-  const mainNewsIds = useMemo(() => mainNews.map((n) => n.id), [mainNews]);
+  const mainNewsIds = useMemo(() => mainNews.map((n) => n._id), [mainNews]);
 
   // Категории без дублирования с главной
   const politics = useMemo(
@@ -37,18 +41,20 @@ export default function ClientHome({ initialNews, mainNews }) {
       news
         .filter(
           (item) =>
-            item.category === "politics" && !mainNewsIds.includes(item.id)
+            item.category === "politics" && !mainNewsIds.includes(item._id)
         )
         .slice(0, 4),
     [news, mainNewsIds]
   );
+
+  console.log(politics);
 
   const economics = useMemo(
     () =>
       news
         .filter(
           (item) =>
-            item.category === "economics" && !mainNewsIds.includes(item.id)
+            item.category === "economics" && !mainNewsIds.includes(item._id)
         )
         .slice(0, 4),
     [news, mainNewsIds]
@@ -58,7 +64,7 @@ export default function ClientHome({ initialNews, mainNews }) {
     () =>
       news
         .filter(
-          (item) => item.category === "life" && !mainNewsIds.includes(item.id)
+          (item) => item.category === "life" && !mainNewsIds.includes(item._id)
         )
         .slice(0, 6),
     [news, mainNewsIds]
@@ -69,7 +75,7 @@ export default function ClientHome({ initialNews, mainNews }) {
       news
         .filter(
           (item) =>
-            item.category === "culture" && !mainNewsIds.includes(item.id)
+            item.category === "culture" && !mainNewsIds.includes(item._id)
         )
         .slice(0, 6),
     [news, mainNewsIds]

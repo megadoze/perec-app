@@ -52,13 +52,13 @@ export default async function HomePage({ params }) {
     const mainData = mainSnapshot.exists() ? mainSnapshot.val() : {};
 
     news = Object.entries(newsData)
-      .map(([id, item]) => ({ id, ...item }))
+      .map(([id, item]) => ({ _id: id, ...item }))
       .filter((item) => item.status === "published")
       .sort((a, b) => b.publishedAt - a.publishedAt)
       .slice(0, 100);
 
     mainNews = Object.entries(mainData)
-      .map(([id, item]) => ({ id, ...item }))
+      .map(([id, item]) => ({ _id: id, ...item }))
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
       .slice(0, 5);
   } catch (error) {
