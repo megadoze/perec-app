@@ -10,7 +10,7 @@ export async function GET(request) {
 
   try {
     // Перегенерируем главную страницу
-    revalidatePath("/");
+    await revalidatePath("/");
 
     return new Response("Revalidate", {
       status: 200,
