@@ -1,9 +1,34 @@
 import Image from "next/image";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
+import CategoryLayoutFourH from "./categoryLayoutFourH";
+import { db, ref, get, child } from "@/lib/firebase";
 
-export default function NewsContent({ data, locale }) {
+export default async function NewsContent({ data, locale }) {
   const t = data.translations?.[locale] || {};
+  const category = data.category;
+
+  const messages = (await import(`@/lang/${locale}/common.json`)).default;
+  const categoryName = messages.categoryName?.[category];
+
+  const newsSnapshot = await get(child(ref(db), "news"));
+  const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
+
+  const news = Object.entries(newsData)
+    .map(([id, item]) => ({ _id: id, ...item }))
+    .filter(
+      (item) =>
+        item.status === "published" &&
+        item.category === category &&
+        item._id !== data._id
+    )
+    .sort((a, b) => b.publishedAt - a.publishedAt)
+    .slice(0, 4);
+
+  const moreNews = {
+    ru: "Еще",
+    en: "More",
+  };
 
   const published = {
     ru: "Опубликовано",
@@ -50,6 +75,11 @@ export default function NewsContent({ data, locale }) {
         </p>
         <BackButton />
       </article>
+      <div className="my-8 border-t border-neutral-100"></div>
+      <h2 className=" font-narrow text-2xl mb-5">
+        {moreNews[locale]} <span className=" text-red-600">{categoryName}</span>
+      </h2>
+      <CategoryLayoutFourH news={news} withPhoto withText locale={locale} />
     </>
   );
 }
