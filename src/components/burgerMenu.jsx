@@ -1,14 +1,19 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import LanguageSwitcher from "./langSwitch";
 
 export default function BurgerMenu() {
+  const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("categoryName"); // 👈 перевод категорий
   const [opened, setOpened] = useState(false);
+
+  const parts = pathname.split("/");
+  const category = parts[2] || null;
 
   useEffect(() => {
     document.body.style.overflow = opened ? "hidden" : "";
@@ -51,34 +56,70 @@ export default function BurgerMenu() {
               ✕
             </button>
 
-            <nav className="flex flex-col gap-4 text-lg pt-10">
-              <Link href={`/${locale}`} onClick={() => setOpened(false)}>
+            <nav className="flex flex-col gap-4 text-lg pt-10 font-light">
+              <Link
+                href={`/${locale}`}
+                onClick={() => setOpened(false)}
+                className={
+                  category === null
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
+              >
                 {t("home") || "Главная"}
               </Link>
               <Link
                 href={`/${locale}/politics`}
                 onClick={() => setOpened(false)}
+                className={
+                  category === "politics"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
               >
                 {t("politics")}
               </Link>
               <Link
                 href={`/${locale}/economics`}
                 onClick={() => setOpened(false)}
+                className={
+                  category === "economics"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
               >
                 {t("economics")}
               </Link>
-              <Link href={`/${locale}/life`} onClick={() => setOpened(false)}>
+              <Link
+                href={`/${locale}/life`}
+                onClick={() => setOpened(false)}
+                className={
+                  category === "life"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
+              >
                 {t("life")}
               </Link>
               <Link
                 href={`/${locale}/culture`}
                 onClick={() => setOpened(false)}
+                className={
+                  category === "culture"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
               >
                 {t("culture")}
               </Link>
               <Link
                 href={`/${locale}/bezkupur`}
                 onClick={() => setOpened(false)}
+                className={
+                  category === "bezkupur"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
               >
                 {t("bezkupur")}
               </Link>

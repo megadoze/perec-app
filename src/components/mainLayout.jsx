@@ -36,7 +36,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-0 lg:pt-4 lg:bg-stone-100/40 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
+      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
         {(col3 ?? []).map((item, index) => (
           <NewsLayout
             key={item._id}

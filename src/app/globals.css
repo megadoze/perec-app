@@ -8,14 +8,6 @@
   margin-right: auto;
 }
 
-@font-face {
-  font-family: "Blackout 2AM";
-  src: url("../../public/fonts/blackout/Blackout2AM.ttf");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 .news-h2-light h2 {
   font-weight: 400 !important; /* ← принудительно переопределяет font-bold */
   font-size: 22px;

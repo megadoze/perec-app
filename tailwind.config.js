@@ -10,7 +10,7 @@ export const theme = {
     fontFamily: {
       narrow: ["var(--font-ptsans-narrow)"],
       sans: ["var(--font-roboto-condensed)"],
-      blackout: ['"Blackout 2AM"', "sans-serif"],
+      blackout: ["var(--font-blackout)"],
     },
     colors: {
       perecred: "#d41d1d",
