@@ -8,8 +8,8 @@ export default function AboutClient() {
   const sections = t.raw("sectionsList");
 
   return (
-    <section className="max-w-3xl mx-auto px-4 pb-16 font-light text-lg">
-      <h1 className="text-3xl mb-6 font-normal">{t("heading")}</h1>
+    <section className="mt-10 max-w-3xl mx-auto px-4 pb-16 font-light text-lg">
+      <h1 className="text-2xl lg:text-3xl mb-6 font-normal">{t("heading")}</h1>
       <p className="mb-4">{t("paragraph1")}</p>
       <p className="mb-4 font-normal">{t("paragraph2")}</p>
       <p className="mb-4 font-normal">{t("paragraph3")}</p>

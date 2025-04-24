@@ -6,8 +6,8 @@ export default function ContactsClient() {
   const t = useTranslations("");
 
   return (
-    <main className="max-w-3xl mx-auto px-4 pb-16 font-light text-lg">
-      <h1 className="text-3xl mb-6 font-normal">{t("contacttitle")}</h1>
+    <main className="mt-10 max-w-3xl mx-auto px-4 pb-16 font-light text-lg">
+      <h1 className="text-2xl lg:text-3xl mb-6 font-normal">{t("contacttitle")}</h1>
       <p className="mb-2 font-light">{t("contactdescription")}</p>
       <p className="mb-2 font-light">
         Email:{" "}

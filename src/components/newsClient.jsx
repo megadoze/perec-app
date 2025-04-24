@@ -70,9 +70,25 @@ export default async function NewsContent({ data, locale }) {
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
-        <p className="mt-4 text-sm text-gray-400">
-          {author[locale]}: {data.author}
-        </p>
+        <div className=" flex items-center gap-4 mt-6 text-base text-gray-800">
+          {data?.authorAvatar && (
+            <div>
+              <Image
+                src={data.authorAvatar}
+                alt="avatar"
+                width={48}
+                height={48}
+                className="rounded-full"
+              />
+            </div>
+          )}
+          <div className="">
+            <p className="m-0 font-narrow"> {data.author}</p>
+            <p className="m-0 text-gray-500 font-light text-sm">
+              {author[locale]}
+            </p>
+          </div>
+        </div>
         <BackButton />
       </article>
       <div className="my-8 border-t border-neutral-100"></div>
