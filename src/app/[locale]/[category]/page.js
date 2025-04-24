@@ -54,8 +54,16 @@ export default async function CategoryPage({ params }) {
   const data = snapshot.exists() ? snapshot.val() : {};
 
   const news = Object.entries(data)
-    .map(([id, item]) => ({ id, ...item }))
-    .filter((item) => item.status === "published" && item.category === category)
+    .map(([id, item]) => ({ _id: id, ...item }))
+    .filter((item) => {
+      const t = item.translations?.[locale];
+      return (
+        item.status === "published" &&
+        item.category === category &&
+        t?.title?.trim() &&
+        t?.content?.trim()
+      );
+    })
     .sort((a, b) => b.publishedAt - a.publishedAt);
 
   return <CategoryClient title={title} news={news} category={category} />;

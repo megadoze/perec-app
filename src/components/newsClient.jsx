@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import BackButton from "./backButton";
 import dayjs from "dayjs";
@@ -6,6 +7,10 @@ import { db, ref, get, child } from "@/lib/firebase";
 
 export default async function NewsContent({ data, locale }) {
   const t = data.translations?.[locale] || {};
+  if (!t?.title?.trim() || !t?.content?.trim()) {
+    notFound();
+  }
+
   const category = data.category;
 
   const messages = (await import(`@/lang/${locale}/common.json`)).default;
@@ -16,12 +21,16 @@ export default async function NewsContent({ data, locale }) {
 
   const news = Object.entries(newsData)
     .map(([id, item]) => ({ _id: id, ...item }))
-    .filter(
-      (item) =>
+    .filter((item) => {
+      const t = item.translations?.[locale];
+      return (
         item.status === "published" &&
         item.category === category &&
-        item._id !== data._id
-    )
+        item._id !== data._id &&
+        t?.title?.trim() &&
+        t?.content?.trim()
+      );
+    })
     .sort((a, b) => b.publishedAt - a.publishedAt)
     .slice(0, 4);
 

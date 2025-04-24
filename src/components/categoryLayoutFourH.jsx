@@ -11,7 +11,7 @@ export default function CategoryLayoutFourH({
     ru: "Нет новостей",
     en: "No news",
   };
-  
+
   if (!news?.length) return <p>{emptyNews[locale]}</p>;
 
   return (

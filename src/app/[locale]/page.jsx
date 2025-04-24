@@ -53,12 +53,21 @@ export default async function HomePage({ params }) {
 
     news = Object.entries(newsData)
       .map(([id, item]) => ({ _id: id, ...item }))
-      .filter((item) => item.status === "published")
+      .filter((item) => {
+        const t = item.translations?.[locale];
+        return (
+          item.status === "published" && t?.title?.trim() && t?.content?.trim()
+        );
+      })
       .sort((a, b) => b.publishedAt - a.publishedAt)
       .slice(0, 100);
 
     mainNews = Object.entries(mainData)
       .map(([id, item]) => ({ _id: id, ...item }))
+      .filter((item) => {
+        const t = item.translations?.[locale];
+        return t?.title?.trim() && t?.content?.trim();
+      })
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
       .slice(0, 5);
   } catch (error) {
