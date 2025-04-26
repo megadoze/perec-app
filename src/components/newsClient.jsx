@@ -4,6 +4,7 @@ import BackButton from "./backButton";
 import dayjs from "dayjs";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
 import { db, ref, get, child } from "@/lib/firebase";
+import MultiavatarImage from "./multiavatarImage";
 
 export default async function NewsContent({ data, locale }) {
   const t = data.translations?.[locale] || {};
@@ -17,7 +18,10 @@ export default async function NewsContent({ data, locale }) {
   const categoryName = messages.categoryName?.[category];
 
   const newsSnapshot = await get(child(ref(db), "news"));
+  const authorsSnapshot = await get(child(ref(db), "authors"));
+
   const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
+  const authorsData = authorsSnapshot.exists() ? authorsSnapshot.val() : {};
 
   const news = Object.entries(newsData)
     .map(([id, item]) => ({ _id: id, ...item }))
@@ -34,6 +38,18 @@ export default async function NewsContent({ data, locale }) {
     .sort((a, b) => b.publishedAt - a.publishedAt)
     .slice(0, 4);
 
+  console.log(Object.values(newsData).filter((i) => i.user));
+
+  const authors = Object.values(authorsData);
+  console.log(authors);
+
+  const currentAvatar =
+    data?.satire?.author !== ""
+      ? authors.find((a) => a.style === data?.satire?.style).avatar
+      : data.user.avatar;
+
+  console.log(currentAvatar);
+
   const moreNews = {
     ru: "Еще",
     en: "More",
@@ -48,6 +64,8 @@ export default async function NewsContent({ data, locale }) {
     ru: "Автор",
     en: "Author",
   };
+
+  console.log(data?.satire?.author, data.user);
 
   return (
     <>
@@ -80,19 +98,16 @@ export default async function NewsContent({ data, locale }) {
           ></div>
         </div>
         <div className=" flex items-center gap-4 mt-6 text-base text-gray-800">
-          {data?.authorAvatar && (
+          {currentAvatar && (
             <div>
-              <Image
-                src={data.authorAvatar}
-                alt="avatar"
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
+              <MultiavatarImage avatarId={currentAvatar} size={48} />
             </div>
           )}
           <div className="">
-            <p className="m-0 font-narrow"> {data.author}</p>
+            <p className="m-0 font-narrow">
+              {" "}
+              {data?.satire?.author || data.user.name}
+            </p>
             <p className="m-0 text-gray-500 font-light text-sm">
               {author[locale]}
             </p>
