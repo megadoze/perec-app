@@ -37,7 +37,7 @@ const TelegramBanner = () => {
       rel="noopener noreferrer"
       className="group block"
     >
-      <div className="flex items-center justify-between gap-4 p-4 rounded-xl border border-dashed border-red-500  transition-colors">
+      <div className="flex items-center justify-between gap-4 p-4 rounded-xl border-2 border-dashed border-red-500  transition-colors">
         {titleTelegram[locale]}
         <FaTelegramPlane className="text-red-500 text-3xl transition-transform duration-200 group-hover:rotate-[360deg]" />
       </div>

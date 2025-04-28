@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
 import { db, ref, get, child } from "@/lib/firebase";
 import MultiavatarImage from "./multiavatarImage";
+import Link from "next/link";
 
 export default async function NewsContent({ data, locale }) {
   const t = data.translations?.[locale] || {};
@@ -116,9 +117,12 @@ export default async function NewsContent({ data, locale }) {
         <BackButton />
       </article>
       <div className="my-8 border-t border-neutral-100"></div>
-      <h2 className=" font-narrow text-2xl mb-5">
-        {moreNews[locale]} <span className=" text-red-600">{categoryName}</span>
-      </h2>
+      <Link href={`/${locale}/${category}`}>
+        <h3 className=" font-narrow text-2xl mb-5">
+          {moreNews[locale]}{" "}
+          <span className=" text-red-600">{categoryName}</span>
+        </h3>
+      </Link>
       <CategoryLayoutFourH news={news} withPhoto withText locale={locale} />
     </>
   );
