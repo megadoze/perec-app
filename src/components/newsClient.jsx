@@ -95,8 +95,8 @@ export default async function NewsContent({ data, locale }) {
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
-        <div className="w-full pt-10 flex justify-between items-end text-base text-gray-800">
-          <div className=" flex gap-3 items-center">
+        <div className="w-full pt-8 flex flex-wrap justify-between items-end text-base text-gray-800">
+          <div className="order-2 md:order-1 flex w-full md:w-auto gap-3 items-center">
             {currentAvatar && (
               <div>
                 <MultiavatarImage avatarId={currentAvatar} size={48} />
@@ -113,14 +113,10 @@ export default async function NewsContent({ data, locale }) {
             </div>
           </div>
           {data.source.name && (
-            <div className=" flex flex-col">
-              <p className=" font-light">{source[locale]}</p>
-              <a
-                href={data.source.link}
-                target="_blank"
-                className=" font-narrow"
-              >
-                {data.source.name}
+            <div className=" order-1 md:order-2 mb-5 md:mb-0  flex items-center">
+              <p className=" font-light pr-1">{source[locale]}</p>
+              <a href={data.source.link} target="_blank">
+                <p> {data.source.name}</p>
               </a>
             </div>
           )}
