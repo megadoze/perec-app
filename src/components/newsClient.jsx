@@ -61,6 +61,11 @@ export default async function NewsContent({ data, locale }) {
     en: "Author",
   };
 
+  const source = {
+    ru: "По материалам",
+    en: "Based on materials from",
+  };
+
   return (
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
@@ -69,7 +74,7 @@ export default async function NewsContent({ data, locale }) {
           {published[locale]}: <PublishedAt timestamp={data.publishedAt} />
         </p>
         <h2 className="text-xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
-        <div className="clearfix">
+        <div className="clearfix block">
           {data?.images && (
             <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-0">
               <Image
@@ -90,21 +95,35 @@ export default async function NewsContent({ data, locale }) {
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
-        <div className=" flex items-center gap-4 mt-6 text-base text-gray-800">
-          {currentAvatar && (
+        <div className="w-full pt-10 flex justify-between items-end text-base text-gray-800">
+          <div className=" flex gap-3 items-center">
+            {currentAvatar && (
+              <div>
+                <MultiavatarImage avatarId={currentAvatar} size={48} />
+              </div>
+            )}
             <div>
-              <MultiavatarImage avatarId={currentAvatar} size={48} />
+              <p className="m-0 font-narrow">
+                {" "}
+                {data?.satire?.author || data.user.name}
+              </p>
+              <p className="m-0 text-gray-500 font-light text-sm">
+                {author[locale]}
+              </p>
+            </div>
+          </div>
+          {data.source.name && (
+            <div className=" flex flex-col">
+              <p className=" font-light">{source[locale]}</p>
+              <a
+                href={data.source.link}
+                target="_blank"
+                className=" font-narrow"
+              >
+                {data.source.name}
+              </a>
             </div>
           )}
-          <div className="">
-            <p className="m-0 font-narrow">
-              {" "}
-              {data?.satire?.author || data.user.name}
-            </p>
-            <p className="m-0 text-gray-500 font-light text-sm">
-              {author[locale]}
-            </p>
-          </div>
         </div>
         <BackButton />
       </article>
