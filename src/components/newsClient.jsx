@@ -1,11 +1,11 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import BackButton from "./backButton";
-import dayjs from "dayjs";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
 import { db, ref, get, child } from "@/lib/firebase";
 import MultiavatarImage from "./multiavatarImage";
 import Link from "next/link";
+import PublishedAt from "./publishedAt";
 
 export default async function NewsContent({ data, locale }) {
   const t = data.translations?.[locale] || {};
@@ -39,17 +39,12 @@ export default async function NewsContent({ data, locale }) {
     .sort((a, b) => b.publishedAt - a.publishedAt)
     .slice(0, 4);
 
-  console.log(Object.values(newsData).filter((i) => i.user));
-
   const authors = Object.values(authorsData);
-  console.log(authors);
 
   const currentAvatar =
     data?.satire?.author !== ""
       ? authors.find((a) => a.style === data?.satire?.style).avatar
       : data.user.avatar;
-
-  console.log(currentAvatar);
 
   const moreNews = {
     ru: "Еще",
@@ -66,15 +61,13 @@ export default async function NewsContent({ data, locale }) {
     en: "Author",
   };
 
-  console.log(data?.satire?.author, data.user);
-
   return (
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-3xl font-narrow font-bold mb-2">{t.title}</h1>
         <p className="text-gray-500 text-sm mb-4">
-          {published[locale]}:{" "}
-          {dayjs(data.publishedAt).format("DD MMM YYYY HH:mm")}
+          {published[locale]}: {published[locale]}:{" "}
+          <PublishedAt timestamp={data.publishedAt} />
         </p>
         <h2 className="text-xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
         <div className="clearfix">
