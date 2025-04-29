@@ -116,7 +116,7 @@ export default async function NewsContent({ data, locale }) {
             <div className=" order-1 md:order-2 mb-5 md:mb-0  flex items-center">
               <p className=" font-light pr-1">{source[locale]}</p>
               <a href={data.source.link} target="_blank">
-                <p> {data.source.name}</p>
+                <p> {data.source.label}</p>
               </a>
             </div>
           )}
