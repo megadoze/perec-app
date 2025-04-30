@@ -2,7 +2,6 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import Link from "next/link";
 
 const locales = ["ru", "en"];
 
@@ -30,7 +29,7 @@ export default function LanguageSwitcher() {
       const data = await res.json();
 
       if (res.ok) {
-        const newPath = `/${locale}/${data.category}/${data.slug}-${id}`;
+        const newPath = `/${locale}/${data.category}/${data.slug}`;
         router.push(newPath);
       } else {
         console.error(data.error);
