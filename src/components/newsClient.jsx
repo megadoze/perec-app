@@ -14,15 +14,27 @@ export default function NewsContent({
   news,
   currentAvatar,
 }) {
+  console.log("✅ [NewsContent] props:", {
+    data,
+    locale,
+    categoryName,
+    news,
+    currentAvatar,
+  });
+
   if (!data || !data.translations || !data.translations[locale]) {
-    return notFound(); // 🔒 защита от undefined
+    console.log("❌ [NewsContent] no data or translations for locale:", locale);
+    return notFound();
   }
 
   const t = data.translations[locale];
 
   if (!t?.title?.trim() || !t?.content?.trim()) {
+    console.log("❌ [NewsContent] empty title or content:", t);
     return notFound();
   }
+
+  console.log("✅ [NewsContent] rendering article:", t.title);
 
   const moreNews = {
     ru: "Еще",
