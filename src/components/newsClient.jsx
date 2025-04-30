@@ -10,11 +10,14 @@ import PublishedAt from "./publishedAt";
 export default function NewsContent({
   data,
   locale,
-  messages,
   categoryName,
   news,
   currentAvatar,
 }) {
+  if (!data || !data.translations || !data.translations[locale]) {
+    return notFound(); // 🔒 защита от undefined
+  }
+
   const t = data.translations[locale];
 
   if (!t?.title?.trim() || !t?.content?.trim()) {
