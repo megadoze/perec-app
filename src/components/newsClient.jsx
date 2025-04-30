@@ -57,19 +57,12 @@ export default function NewsContent({
   };
 
   return (
-    // <div>🧪 Debug: {t.title}</div>
-
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-3xl font-narrow font-bold mb-2">{t.title}</h1>
         <p className="text-gray-500 font-light text-sm mb-4">
           {published[locale]}: <PublishedAt timestamp={data.publishedAt} />
         </p>
-        {/* <p className="text-gray-500 font-light text-sm mb-4">
-          {(published?.[locale] || "no label") + ": "}
-          {data?.publishedAt || "no date"}
-        </p> */}
-
         <h2 className="text-xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
         <div className="clearfix block">
           {data?.images && (
@@ -84,7 +77,6 @@ export default function NewsContent({
               />
             </div>
           )}
-
           <div
             className=" text-lg font-light leading-relaxed clear-none "
             dangerouslySetInnerHTML={{ __html: t.content }}
@@ -117,14 +109,14 @@ export default function NewsContent({
         </div>
         <BackButton />
       </article>
-      {/* <div className="my-8 border-t border-neutral-100"></div>
+      <div className="my-8 border-t border-neutral-100"></div>
       <Link href={`/${locale}/${data.category}`}>
         <h3 className=" font-narrow text-2xl mb-5">
           {moreNews[locale]}{" "}
           <span className=" text-red-600">{categoryName}</span>
         </h3>
       </Link>
-      <CategoryLayoutFourH news={news} withPhoto withText locale={locale} /> */}
+      <CategoryLayoutFourH news={news} withPhoto withText locale={locale} />
     </>
   );
 }
