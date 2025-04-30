@@ -1,5 +1,3 @@
-"use client";
-
 import { useMemo } from "react";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -9,7 +7,10 @@ import timezone from "dayjs/plugin/timezone";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
-export default function PublishedAt({ timestamp, format = "DD MMM YYYY HH:mm" }) {
+export default function PublishedAt({
+  timestamp,
+  format = "DD MMM YYYY HH:mm",
+}) {
   const userTimeZone = useMemo(() => {
     return Intl.DateTimeFormat().resolvedOptions().timeZone;
   }, []);
