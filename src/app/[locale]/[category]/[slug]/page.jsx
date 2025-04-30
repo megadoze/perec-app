@@ -133,14 +133,15 @@ export default async function NewsPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <FadeWrapper>
-        <NewsContent
+        {/* <NewsContent
           data={data}
           locale={locale}
           messages={messages}
           categoryName={categoryName}
           news={news}
           currentAvatar={currentAvatar}
-        />
+        /> */}
+        <div>Заголовок: {data.translations[locale].title}</div>
       </FadeWrapper>
     </>
   );
