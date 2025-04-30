@@ -126,14 +126,6 @@ export default async function NewsPage({ params }) {
     },
   };
 
-  console.log("🔎 [NewsPage] props for NewsContent", {
-    data,
-    locale,
-    categoryName,
-    news,
-    currentAvatar,
-  });
-
   return (
     <>
       <script
@@ -149,7 +141,6 @@ export default async function NewsPage({ params }) {
           news={news}
           currentAvatar={currentAvatar}
         />
-        {/* <div>Заголовок: {data.translations[locale].title}</div> */}
       </FadeWrapper>
     </>
   );
