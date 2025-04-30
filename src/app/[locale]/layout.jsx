@@ -68,7 +68,7 @@ export default async function LocaleLayout({ children, params }) {
           rel="dns-prefetch"
           href="https://firebasestorage.googleapis.com"
         />
-        <link rel="icon" href="/fav-red.png" sizes="any" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         {/* <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
