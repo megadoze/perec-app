@@ -57,6 +57,8 @@ export default function NewsContent({
   };
 
   return (
+    // <div>🧪 Debug: {t.title}</div>
+
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-3xl font-narrow font-bold mb-2">{t.title}</h1>
