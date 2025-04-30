@@ -64,8 +64,38 @@ export default async function NewsPage({ params }) {
   const data = snapshot.exists() ? snapshot.val() : null;
 
   if (!data || data.status !== "published" || !data.translations?.[locale]) {
-    return notFound(); // 🛡
+    return notFound();
   }
+
+  const messages = (await import(`@/lang/${locale}/common.json`)).default;
+  const categoryName = messages.categoryName?.[data.category];
+
+  const newsSnapshot = await get(child(ref(db), "news"));
+  const authorsSnapshot = await get(child(ref(db), "authors"));
+
+  const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
+  const authorsData = authorsSnapshot.exists() ? authorsSnapshot.val() : {};
+
+  const news = Object.entries(newsData)
+    .map(([id, item]) => ({ _id: id, ...item }))
+    .filter((item) => {
+      const t = item.translations?.[locale];
+      return (
+        item.status === "published" &&
+        item.category === data.category &&
+        item._id !== data._id &&
+        t?.title?.trim() &&
+        t?.content?.trim()
+      );
+    })
+    .sort((a, b) => b.publishedAt - a.publishedAt)
+    .slice(0, 4);
+
+  const authors = Object.values(authorsData);
+  const currentAvatar =
+    data?.satire?.author !== ""
+      ? authors.find((a) => a.style === data?.satire?.style)?.avatar
+      : data.user.avatar;
 
   const schema = {
     "@context": "https://schema.org",
@@ -103,7 +133,14 @@ export default async function NewsPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <FadeWrapper>
-        <NewsContent data={data} locale={locale} />
+        <NewsContent
+          data={data}
+          locale={locale}
+          messages={messages}
+          categoryName={categoryName}
+          news={news}
+          currentAvatar={currentAvatar}
+        />
       </FadeWrapper>
     </>
   );

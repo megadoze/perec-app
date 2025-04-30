@@ -1,55 +1,25 @@
+// components/newsClient.jsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import BackButton from "./backButton";
-import CategoryLayoutFourH from "./categoryLayoutFourH";
-import { db, ref, get, child } from "@/lib/firebase";
 import MultiavatarImage from "./multiavatarImage";
 import Link from "next/link";
+import BackButton from "./backButton";
+import CategoryLayoutFourH from "./categoryLayoutFourH";
 import PublishedAt from "./publishedAt";
 
-export default async function NewsContent({ data, locale }) {
-  if (!data || !data.translations || !data.translations[locale]) {
-    return notFound();
-  }
-
+export default function NewsContent({
+  data,
+  locale,
+  messages,
+  categoryName,
+  news,
+  currentAvatar,
+}) {
   const t = data.translations[locale];
 
-  if (!t.title?.trim() || !t.content?.trim()) {
+  if (!t?.title?.trim() || !t?.content?.trim()) {
     return notFound();
   }
-
-  const category = data.category;
-
-  const messages = (await import(`@/lang/${locale}/common.json`)).default;
-  const categoryName = messages.categoryName?.[category];
-
-  const newsSnapshot = await get(child(ref(db), "news"));
-  const authorsSnapshot = await get(child(ref(db), "authors"));
-
-  const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
-  const authorsData = authorsSnapshot.exists() ? authorsSnapshot.val() : {};
-
-  const news = Object.entries(newsData)
-    .map(([id, item]) => ({ _id: id, ...item }))
-    .filter((item) => {
-      const t = item.translations?.[locale];
-      return (
-        item.status === "published" &&
-        item.category === category &&
-        item._id !== data._id &&
-        t?.title?.trim() &&
-        t?.content?.trim()
-      );
-    })
-    .sort((a, b) => b.publishedAt - a.publishedAt)
-    .slice(0, 4);
-
-  const authors = Object.values(authorsData);
-
-  const currentAvatar =
-    data?.satire?.author !== ""
-      ? authors.find((a) => a.style === data?.satire?.style).avatar
-      : data.user.avatar;
 
   const moreNews = {
     ru: "Еще",
@@ -89,8 +59,6 @@ export default async function NewsContent({ data, locale }) {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                 priority
                 className="w-full h-auto object-cover"
-                placeholder="blur"
-                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMyMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMyMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlZWUiIC8+PC9zdmc+"
               />
             </div>
           )}
@@ -109,7 +77,6 @@ export default async function NewsContent({ data, locale }) {
             )}
             <div>
               <p className="m-0 font-narrow">
-                {" "}
                 {data?.satire?.author || data.user.name}
               </p>
               <p className="m-0 text-gray-500 font-light text-sm">
@@ -129,7 +96,7 @@ export default async function NewsContent({ data, locale }) {
         <BackButton />
       </article>
       <div className="my-8 border-t border-neutral-100"></div>
-      <Link href={`/${locale}/${category}`}>
+      <Link href={`/${locale}/${data.category}`}>
         <h3 className=" font-narrow text-2xl mb-5">
           {moreNews[locale]}{" "}
           <span className=" text-red-600">{categoryName}</span>
