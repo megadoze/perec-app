@@ -4,12 +4,6 @@ import { defaultLocale } from "../../next-intl.config.mjs";
 export default getRequestConfig(async ({ locale }) => {
   const resolvedLocale = locale ?? defaultLocale;
 
-  // console.log(
-  //   locale
-  //     ? `🟡 [getRequestConfig] locale: ${resolvedLocale}`
-  //     : `⚠ [getRequestConfig] locale is undefined (prefetch?) → fallback: ${resolvedLocale}`
-  // );
-
   // Предотвращаем ошибку при undefined
   try {
     return {

@@ -31,6 +31,27 @@ export async function generateMetadata() {
   };
 }
 
+// export async function generateMetadata() {
+//   const host = process.env.VERCEL_URL;
+
+//   if (host?.includes("vercel.app")) {
+//     return {
+//       robots: {
+//         index: false,
+//         follow: false,
+//       },
+//     };
+//   }
+
+//   // для `perec.news` — разрешаем индексацию
+//   return {
+//     robots: {
+//       index: true,
+//       follow: true,
+//     },
+//   };
+// }
+
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
 }
@@ -69,6 +90,7 @@ export default async function LocaleLayout({ children, params }) {
           href="https://firebasestorage.googleapis.com"
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="canonical" href={`https://perec.news/${locale}`} />
         {/* <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"

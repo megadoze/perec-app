@@ -5,7 +5,7 @@ Disallow: /admin
 Disallow: /api
 
 # Host
-Host: perec-app.vercel.app
+Host: perec.news
 
 # Sitemaps
 Sitemap: https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml

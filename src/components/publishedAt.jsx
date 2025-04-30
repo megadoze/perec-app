@@ -25,19 +25,3 @@ export default function PublishedAt({
 
   return <span>{clientTime}</span>;
 }
-
-// import dayjs from "dayjs";
-// import utc from "dayjs/plugin/utc";
-// import timezone from "dayjs/plugin/timezone";
-
-// // Подключаем плагины dayjs
-// dayjs.extend(utc);
-// dayjs.extend(timezone);
-
-// export default function PublishedAt({
-//   timestamp,
-//   format = "DD MMM YYYY HH:mm",
-// }) {
-//   const formattedDate = dayjs(timestamp).tz("Europe/Madrid").format(format);
-//   return <span>{formattedDate}</span>;
-// }

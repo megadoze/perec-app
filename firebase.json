@@ -3,30 +3,6 @@
     {
       "source": "functions",
       "codebase": "admin"
-    },
-    {
-      "source": "ssr",
-      "codebase": "frontend",
-      "runtime": "nodejs20",
-      "platform": "gcfv2"
     }
-  ],
-  "hosting": {
-    "target": "frontend",
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-  "rewrites": [
-    {
-    "source": "**",
-    "function": {
-      "functionId": "nextssr",
-      "region": "us-central1"
-      }
-    }
-    ]
-  }
+  ]
 }

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: t("metaTitle"),
       description: t("metaDescription"),
-      url: `https://perec-app.vercel.app/${locale}`,
+      url: `https://perec.news/${locale}`,
       siteName: t("metaTitle"),
       images: [
         {

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
 
   const title = news.translations[locale].title;
   const description = news.translations[locale].subTitle || subTitleDesc;
-  const url = `https://perec-news.web.app/${locale}/${news.category}/${news.translations[locale].slug}`;
+  const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
   const image =
     Array.isArray(news?.images) && news.images.length > 0
       ? news.images[0]
@@ -117,12 +117,12 @@ export default async function NewsPage({ params }) {
       name: "PEREC.news",
       logo: {
         "@type": "ImageObject",
-        url: "https://perec-app.vercel.app/logoperec.png",
+        url: "https://perec.news/logoperec.png",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://perec-app.vercel.app/${locale}/${data.category}/${data.translations[locale].slug}`,
+      "@id": `https://perec.news/${locale}/${data.category}/${data.translations[locale].slug}`,
     },
   };
 
