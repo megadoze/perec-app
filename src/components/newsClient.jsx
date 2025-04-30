@@ -8,9 +8,14 @@ import Link from "next/link";
 import PublishedAt from "./publishedAt";
 
 export default async function NewsContent({ data, locale }) {
-  const t = data.translations?.[locale] || {};
-  if (!t?.title?.trim() || !t?.content?.trim()) {
-    notFound();
+  if (!data || !data.translations || !data.translations[locale]) {
+    return notFound();
+  }
+
+  const t = data.translations[locale];
+
+  if (!t.title?.trim() || !t.content?.trim()) {
+    return notFound();
   }
 
   const category = data.category;
