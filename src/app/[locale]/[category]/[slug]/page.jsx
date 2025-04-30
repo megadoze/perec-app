@@ -57,28 +57,30 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function NewsPage({ params }) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const id = slug?.split("-").at(-1);
-
-  const { locale } = await params;
 
   const snapshot = await get(child(ref(db), `news/${id}`));
   const data = snapshot.exists() ? snapshot.val() : null;
 
-  if (!data || data.status !== "published") {
-    return notFound();
+  if (!data || data.status !== "published" || !data.translations?.[locale]) {
+    return notFound(); // 🛡
   }
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: data.translations[locale].title,
-    image: [data.images?.[0] || "default-image-url"],
+    image: [
+      Array.isArray(data.images) && data.images.length > 0
+        ? data.images[0]
+        : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
+    ],
     datePublished: new Date(data.createdAt).toISOString(),
     dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),
     author: {
       "@type": "Person",
-      name: data.satire.author || "PEREC.news",
+      name: data.satire?.author || "PEREC.news",
     },
     publisher: {
       "@type": "Organization",
