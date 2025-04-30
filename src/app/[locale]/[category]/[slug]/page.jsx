@@ -78,7 +78,7 @@ export default async function NewsPage({ params }) {
     dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),
     author: {
       "@type": "Person",
-      name: data.author || "PEREC.news",
+      name: data.satire.author || "PEREC.news",
     },
     publisher: {
       "@type": "Organization",
