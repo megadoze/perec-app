@@ -77,4 +77,5 @@ export default async function HomePage({ params }) {
   return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
 }
 
-export const revalidate = 0; // <- ключевая строка для отключения ISR кэша
+export const revalidate = 300;
+// export const revalidate = 0; // <- ключевая строка для отключения ISR кэша
