@@ -1,5 +1,5 @@
 // Vercel Edge API Route (Next.js 13+ App Router)
-export const runtime = "edge";
+// export const runtime = "edge";
 
 export async function GET() {
   const sitemapUrl =
