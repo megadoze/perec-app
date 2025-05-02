@@ -48,12 +48,6 @@ export default async function HomePage({ params }) {
       get(child(ref(db), "main_news")),
     ]);
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/news`, {
-      next: { revalidate: 300 }, // важно: позволяет ISR
-    });
-
-    if (!res.ok) throw new Error("Ошибка загрузки");
-
     const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
     const mainData = mainSnapshot.exists() ? mainSnapshot.val() : {};
 
