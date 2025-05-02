@@ -42,6 +42,8 @@ export default async function HomePage({ params }) {
   let news = [];
   let mainNews = [];
 
+  console.log("🟡 Главная пересобирается:", Date.now());
+
   try {
     const [newsSnapshot, mainSnapshot] = await Promise.all([
       get(child(ref(db), "news")),
@@ -72,6 +74,10 @@ export default async function HomePage({ params }) {
       .slice(0, 5);
 
     console.log(mainNews);
+    console.log(
+      "mainNews hash",
+      JSON.stringify(mainNews.map((n) => n._id + n.order + n.updatedAt))
+    );
   } catch (error) {
     console.error("Ошибка при загрузке новостей:", error);
   }
