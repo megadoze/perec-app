@@ -70,6 +70,8 @@ export default async function HomePage({ params }) {
       })
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
       .slice(0, 5);
+
+    console.log(mainNews);
   } catch (error) {
     console.error("Ошибка при загрузке новостей:", error);
   }
