@@ -1,5 +1,5 @@
 export async function GET() {
-  return new Response("Sitemap stub OK", {
+  return new Response("🧾 It works!", {
     headers: {
       "Content-Type": "text/plain",
     },
