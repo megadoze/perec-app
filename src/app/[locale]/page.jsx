@@ -36,6 +36,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export const revalidate = 300;
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
@@ -85,5 +88,4 @@ export default async function HomePage({ params }) {
   return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
 }
 
-export const revalidate = 300;
 // export const revalidate = 0; // <- ключевая строка для отключения ISR кэша
