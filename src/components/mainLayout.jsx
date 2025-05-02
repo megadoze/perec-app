@@ -13,7 +13,6 @@ export default function MainLayout({ news, bezkupur, locale }) {
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100">
       {/* Колонка 1 */}
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100 mt-4 md:mt-0">
-        <p>TEST !!!!!</p>
         {(col1 ?? []).map((item, index) => (
           <div key={item._id} className={index > 0 ? "pt-5" : ""}>
             <NewsLayout news={item} withText maincat line={3} locale={locale} />
