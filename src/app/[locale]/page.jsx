@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
 import { db, ref, get, child } from "@/lib/firebase";
+import { unstable_cache } from "next/cache";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -36,18 +37,59 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export const revalidate = 300;
-export const dynamic = "force-dynamic";
+export const revalidate = 0;
+// export const dynamic = "force-dynamic";
 
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
-  let news = [];
-  let mainNews = [];
+  // let news = [];
+  // let mainNews = [];
 
   console.log("🟡 Главная пересобирается:", Date.now());
 
-  try {
+  const { news, mainNews } = await getHomePageData(locale);
+
+  // try {
+  // const [newsSnapshot, mainSnapshot] = await Promise.all([
+  //   get(child(ref(db), "news")),
+  //   get(child(ref(db), "main_news")),
+  // ]);
+  // const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
+  // const mainData = mainSnapshot.exists() ? mainSnapshot.val() : {};
+  // news = Object.entries(newsData)
+  //   .map(([id, item]) => ({ _id: id, ...item }))
+  //   .filter((item) => {
+  //     const t = item.translations?.[locale];
+  //     return (
+  //       item.status === "published" && t?.title?.trim() && t?.content?.trim()
+  //     );
+  //   })
+  //   .sort((a, b) => b.publishedAt - a.publishedAt)
+  //   .slice(0, 100);
+  // mainNews = Object.entries(mainData)
+  //   .map(([id, item]) => ({ _id: id, ...item }))
+  //   .filter((item) => {
+  //     const t = item.translations?.[locale];
+  //     return t?.title?.trim() && t?.content?.trim();
+  //   })
+  //   .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+  //   .slice(0, 5);
+  // console.log(mainNews);
+  // console.log(
+  //   "mainNews hash",
+  //   JSON.stringify(mainNews.map((n) => n._id + n.order + n.updatedAt))
+  // );
+  // } catch (error) {
+  //   console.error("Ошибка при загрузке новостей:", error);
+  // }
+
+  return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
+}
+
+// export const revalidate = 0; // <- ключевая строка для отключения ISR кэша
+export const getHomePageData = unstable_cache(
+  async (locale) => {
     const [newsSnapshot, mainSnapshot] = await Promise.all([
       get(child(ref(db), "news")),
       get(child(ref(db), "main_news")),
@@ -56,7 +98,7 @@ export default async function HomePage({ params }) {
     const newsData = newsSnapshot.exists() ? newsSnapshot.val() : {};
     const mainData = mainSnapshot.exists() ? mainSnapshot.val() : {};
 
-    news = Object.entries(newsData)
+    const news = Object.entries(newsData)
       .map(([id, item]) => ({ _id: id, ...item }))
       .filter((item) => {
         const t = item.translations?.[locale];
@@ -67,7 +109,7 @@ export default async function HomePage({ params }) {
       .sort((a, b) => b.publishedAt - a.publishedAt)
       .slice(0, 100);
 
-    mainNews = Object.entries(mainData)
+    const mainNews = Object.entries(mainData)
       .map(([id, item]) => ({ _id: id, ...item }))
       .filter((item) => {
         const t = item.translations?.[locale];
@@ -76,16 +118,11 @@ export default async function HomePage({ params }) {
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
       .slice(0, 5);
 
-    console.log(mainNews);
-    console.log(
-      "mainNews hash",
-      JSON.stringify(mainNews.map((n) => n._id + n.order + n.updatedAt))
-    );
-  } catch (error) {
-    console.error("Ошибка при загрузке новостей:", error);
+    return { news, mainNews };
+  },
+  ["home-page-data"], // 👈 ключ кеша
+  {
+    tags: ["home"], // 👈 используем для ручного revalidate
+    revalidate: 300, // ⏱️ кеш живёт 5 минут
   }
-
-  return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
-}
-
-// export const revalidate = 0; // <- ключевая строка для отключения ISR кэша
+);
