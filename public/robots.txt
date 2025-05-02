@@ -8,5 +8,6 @@ Disallow: /api
 Host: perec.news
 
 # Sitemaps
-Sitemap: https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml
+Sitemap: https://perec.news/sitemap.xml
+
 
