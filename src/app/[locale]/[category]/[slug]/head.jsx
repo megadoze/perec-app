@@ -16,6 +16,7 @@ export default async function Head({ params }) {
   return (
     <>
       <title>{title}</title>
+      <meta name="x-debug-tag" content="from-head-tsx" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
