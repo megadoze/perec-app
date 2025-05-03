@@ -4,6 +4,7 @@ import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
+import Head from "next/head";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -31,13 +32,10 @@ export async function generateMetadata({ params }) {
   const title = news.translations[locale].title;
   const description = news.translations[locale].subTitle || subTitleDesc;
   const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
-  const image = news.images
-    ? news.images[0]
-    : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
-  // const image =
-  //   Array.isArray(news?.images) && news.images.length > 0
-  //     ? news.images[0]
-  //     : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+  const image =
+    Array.isArray(news?.images) && news.images.length > 0
+      ? news.images[0]
+      : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
     title,
@@ -59,6 +57,8 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export const dynamic = "force-dynamic";
+
 export default async function NewsPage({ params }) {
   const { slug, locale } = await params;
   const id = slug?.split("-").at(-1);
@@ -72,6 +72,16 @@ export default async function NewsPage({ params }) {
 
   const messages = (await import(`@/lang/${locale}/common.json`)).default;
   const categoryName = messages.categoryName?.[data.category];
+
+  // === Вот тут вычисляем значения для OG-тегов ===
+  const title = data.translations[locale].title;
+  const description =
+    data.translations[locale].subTitle || messages.metaTwitterDescription;
+  const image =
+    Array.isArray(data.images) && data.images.length > 0
+      ? data.images[0]
+      : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+  const url = `https://perec.news/${locale}/${data.category}/${data.translations[locale].slug}`;
 
   const newsSnapshot = await get(child(ref(db), "news"));
   const authorsSnapshot = await get(child(ref(db), "authors"));
@@ -131,6 +141,13 @@ export default async function NewsPage({ params }) {
 
   return (
     <>
+      <Head>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
