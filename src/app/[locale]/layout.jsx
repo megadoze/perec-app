@@ -84,6 +84,10 @@ export default async function LocaleLayout({ children, params }) {
         <base href="/" />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="google-site-verification"
+          content="8LTXtEFH_48BWqVY1lWd-DfTpWijIm_wmUzw5ME260s"
+        />
         <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
         <link
           rel="dns-prefetch"
