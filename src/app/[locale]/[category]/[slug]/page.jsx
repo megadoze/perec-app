@@ -52,8 +52,6 @@ export async function generateMetadata({ params }) {
           alt: title,
         },
       ],
-
-      // images: [image],
     },
     twitter: {
       card: "summary_large_image",
@@ -157,4 +155,4 @@ export default async function NewsPage({ params }) {
   );
 }
 
-export const revalidate = 0;
+// export const revalidate = 0;
