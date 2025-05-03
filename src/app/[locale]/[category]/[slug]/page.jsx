@@ -44,13 +44,25 @@ export async function generateMetadata({ params }) {
       url,
       siteName: siteName,
       type: "article",
-      images: [image],
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+
+      // images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
       images: [image],
+    },
+    other: {
+      "x-debug-tag": "from-generateMetadata",
     },
   };
 }
@@ -144,3 +156,5 @@ export default async function NewsPage({ params }) {
     </>
   );
 }
+
+export const revalidate = 0;
