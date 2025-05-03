@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
@@ -32,7 +33,7 @@ const robotoCondensed = Roboto_Condensed({
 // }
 
 export async function generateMetadata() {
-  const host = process.env.VERCEL_URL;
+  const host = headers().get("host");
 
   if (host?.includes("vercel.app")) {
     return {
@@ -43,7 +44,6 @@ export async function generateMetadata() {
     };
   }
 
-  // для `perec.news` — разрешаем индексацию
   return {
     robots: {
       index: true,
