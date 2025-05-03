@@ -154,5 +154,3 @@ export default async function NewsPage({ params }) {
     </>
   );
 }
-
-// export const revalidate = 0;

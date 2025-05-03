@@ -51,10 +51,12 @@ export const NewsLayout = ({
               className={`${
                 main
                   ? " aspect-[3/2] lg:aspect-[4/3]"
-                  : `aspect-[3/2] h-60 ${
+                  : maincat
+                  ? "md:h-56 lg:h-32 xl:h-44"
+                  : `${
                       culture
                         ? "md:h-60 lg:h-72 xl:h-96"
-                        : "md:h-56 lg:h-32 xl:h-44"
+                        : "md:h-56 lg:h-36 xl:h-52"
                     } `
               } w-full h-full object-cover hover:opacity-90`}
               placeholder="blur"

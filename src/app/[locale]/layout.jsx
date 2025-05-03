@@ -72,8 +72,6 @@ export default async function LocaleLayout({ children, params }) {
     >
       <head>
         <base href="/" />
-        {/* <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
         <meta
           name="google-site-verification"
           content="8LTXtEFH_48BWqVY1lWd-DfTpWijIm_wmUzw5ME260s"
@@ -85,20 +83,6 @@ export default async function LocaleLayout({ children, params }) {
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href={`https://perec.news/${locale}`} />
-        {/* <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> */}
       </head>
       <body className="bg-white text-black font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>

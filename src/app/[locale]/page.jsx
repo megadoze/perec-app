@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
-  console.log("🟡 Главная пересобирается:", Date.now());
+  // console.log("🟡 Главная пересобирается:", Date.now());
 
   const { news, mainNews } = await getHomePageData(locale);
 

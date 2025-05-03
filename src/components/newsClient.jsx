@@ -27,7 +27,7 @@ export default function NewsContent({
     return notFound();
   }
 
-  console.log("✅ [NewsContent] rendering article:", t.title);
+  // console.log("✅ [NewsContent] rendering article:", t.title);
 
   const moreNews = {
     ru: "Еще",
