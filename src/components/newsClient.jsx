@@ -14,13 +14,6 @@ export default function NewsContent({
   news,
   currentAvatar,
 }) {
-  console.log("✅ [NewsContent] props:", {
-    data,
-    locale,
-    categoryName,
-    news,
-    currentAvatar,
-  });
 
   if (!data || !data.translations || !data.translations[locale]) {
     console.log("❌ [NewsContent] no data or translations for locale:", locale);
