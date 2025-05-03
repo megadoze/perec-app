@@ -22,35 +22,35 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 // закрываем от индексации все страницы сайта
-export async function generateMetadata() {
-  return {
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
-}
-
 // export async function generateMetadata() {
-//   const host = process.env.VERCEL_URL;
-
-//   if (host?.includes("vercel.app")) {
-//     return {
-//       robots: {
-//         index: false,
-//         follow: false,
-//       },
-//     };
-//   }
-
-//   // для `perec.news` — разрешаем индексацию
 //   return {
 //     robots: {
-//       index: true,
-//       follow: true,
+//       index: false,
+//       follow: false,
 //     },
 //   };
 // }
+
+export async function generateMetadata() {
+  const host = process.env.VERCEL_URL;
+
+  if (host?.includes("vercel.app")) {
+    return {
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  // для `perec.news` — разрешаем индексацию
+  return {
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
