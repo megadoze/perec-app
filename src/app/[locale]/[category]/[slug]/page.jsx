@@ -31,10 +31,13 @@ export async function generateMetadata({ params }) {
   const title = news.translations[locale].title;
   const description = news.translations[locale].subTitle || subTitleDesc;
   const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
-  const image =
-    Array.isArray(news?.images) && news.images.length > 0
-      ? news.images[0]
-      : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+  const image = news.images
+    ? news.images[0]
+    : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+  // const image =
+  //   Array.isArray(news?.images) && news.images.length > 0
+  //     ? news.images[0]
+  //     : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
     title,
