@@ -3,7 +3,7 @@ import ClientHome from "@/components/clientHome";
 import { getHomePageData } from "@/lib/getHomePageData";
 
 export async function generateMetadata({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
   const t = await getTranslations({ locale });
 
   return {
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function HomePage({ params }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   console.log("🟡 Главная пересобирается:", Date.now());
 

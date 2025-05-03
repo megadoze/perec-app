@@ -23,7 +23,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 export async function generateMetadata() {
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
 
   if (host?.includes("vercel.app")) {
     return {
@@ -72,8 +72,8 @@ export default async function LocaleLayout({ children, params }) {
     >
       <head>
         <base href="/" />
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {/* <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
         <meta
           name="google-site-verification"
           content="8LTXtEFH_48BWqVY1lWd-DfTpWijIm_wmUzw5ME260s"
