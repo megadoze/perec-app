@@ -22,16 +22,6 @@ const robotoCondensed = Roboto_Condensed({
   display: "swap",
 });
 
-// закрываем от индексации все страницы сайта
-// export async function generateMetadata() {
-//   return {
-//     robots: {
-//       index: false,
-//       follow: false,
-//     },
-//   };
-// }
-
 export async function generateMetadata() {
   const host = headers().get("host");
 
