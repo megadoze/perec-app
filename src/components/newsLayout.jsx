@@ -69,7 +69,11 @@ export const NewsLayout = ({
       <Link href={`/${locale}/${news.category}/${t.slug}`}>
         <h2
           className={`${
-            main ? " text-3xl lg:text-4xl" : "text-2xl"
+            main
+              ? " text-3xl lg:text-4xl"
+              : maincat
+              ? " text-[26px] lg:text-2xl"
+              : " text-[26px]"
           }  font-narrow font-bold leading-tight `}
         >
           {t.title}
