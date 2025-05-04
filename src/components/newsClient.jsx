@@ -60,7 +60,7 @@ export default function NewsContent({
         <h2 className="text-2xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
         <div className="clearfix block">
           {data?.images && (
-            <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-0">
+            <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-2">
               <Image
                 src={data.images[0]}
                 alt={t.title}
