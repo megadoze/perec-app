@@ -72,7 +72,7 @@ export const NewsLayout = ({
             main
               ? " text-3xl lg:text-4xl"
               : maincat
-              ? " text-[26px] lg:text-2xl"
+              ? " text-[26px] lg:text-2xl lg:leading-7"
               : " text-[26px]"
           }  font-narrow font-bold leading-tight `}
         >
@@ -85,7 +85,7 @@ export const NewsLayout = ({
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : "pt-0"
-            } text-xl font-light text-black ${clampClass[line]}`}
+            } -mt-2 text-xl font-light text-black ${clampClass[line]}`}
             dangerouslySetInnerHTML={{ __html: t.content || "" }}
           ></div>
         </Link>
