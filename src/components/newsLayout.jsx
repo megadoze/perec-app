@@ -52,11 +52,11 @@ export const NewsLayout = ({
                 main
                   ? " aspect-[3/2] lg:aspect-[4/3]"
                   : maincat
-                  ? "md:h-56 lg:h-32 xl:h-44"
+                  ? "h-64 md:h-56 lg:h-32 xl:h-44"
                   : `${
                       culture
                         ? " aspect-[3/2] md:aspect-[4/3]"
-                        : " md:h-56 lg:h-36 xl:h-52"
+                        : " h-64 md:h-56 lg:h-36 xl:h-52"
                     } `
               } w-full h-full object-cover hover:opacity-90`}
               placeholder="blur"
