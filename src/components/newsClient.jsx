@@ -14,7 +14,6 @@ export default function NewsContent({
   news,
   currentAvatar,
 }) {
-
   if (!data || !data.translations || !data.translations[locale]) {
     console.log("❌ [NewsContent] no data or translations for locale:", locale);
     return notFound();
@@ -52,11 +51,13 @@ export default function NewsContent({
   return (
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
-        <h1 className="text-3xl font-narrow font-bold mb-2">{t.title}</h1>
-        <p className="text-gray-500 font-light text-sm mb-4">
+        <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
+          {t.title}
+        </h1>
+        <p className="text-gray-500 font-light text-base mb-4">
           {published[locale]}: <PublishedAt timestamp={data.publishedAt} />
         </p>
-        <h2 className="text-xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
+        <h2 className="text-2xl font-narrow mb-6 md:mb-6">{t.subTitle}</h2>
         <div className="clearfix block">
           {data?.images && (
             <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-0">
@@ -71,7 +72,7 @@ export default function NewsContent({
             </div>
           )}
           <div
-            className=" text-lg font-light leading-relaxed clear-none "
+            className=" text-xl font-light leading-relaxed clear-none "
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
@@ -83,16 +84,16 @@ export default function NewsContent({
               </div>
             )}
             <div>
-              <p className="m-0 font-narrow">
+              <p className="m-0 font-narrow text-lg">
                 {data?.satire?.author || data.user.name}
               </p>
-              <p className="m-0 text-gray-500 font-light text-sm">
+              <p className="m-0 text-gray-500 font-light text-base">
                 {author[locale]}
               </p>
             </div>
           </div>
           {data.source.name && (
-            <div className=" order-1 md:order-2 mb-5 md:mb-0  flex items-center">
+            <div className=" order-1 md:order-2 mb-5 md:mb-0  flex items-center text-lg">
               <p className=" font-light pr-1">{source[locale]}</p>
               <a href={data.source.link} target="_blank">
                 <p> {data.source.label}</p>

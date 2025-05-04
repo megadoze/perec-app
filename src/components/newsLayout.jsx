@@ -69,7 +69,7 @@ export const NewsLayout = ({
       <Link href={`/${locale}/${news.category}/${t.slug}`}>
         <h2
           className={`${
-            main ? " text-2xl lg:text-3xl" : "text-2xl"
+            main ? " text-3xl lg:text-4xl" : "text-2xl"
           }  font-narrow font-bold leading-tight `}
         >
           {t.title}
@@ -81,7 +81,7 @@ export const NewsLayout = ({
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : "pt-0"
-            } text-lg font-light text-black ${clampClass[line]}`}
+            } text-xl font-light text-black ${clampClass[line]}`}
             dangerouslySetInnerHTML={{ __html: t.content || "" }}
           ></div>
         </Link>
