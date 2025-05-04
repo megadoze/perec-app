@@ -14,7 +14,7 @@ export default function CategoryLayoutSixV({ news, locale }) {
   // const col4 = news.slice(4, 6);
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.2fr_1fr] lg:divide-x divide-neutral-100">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1.1fr_1fr] lg:divide-x divide-neutral-100">
       {/* Колонка 1 */}
       <div className="  md:pr-4 pb-6 lg:pb-0 md:border-r lg:border-r-0">
         {col1.map((item, index) => (
