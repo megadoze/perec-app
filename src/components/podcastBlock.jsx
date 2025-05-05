@@ -69,7 +69,7 @@ export default function PodcastBlock() {
         </div>
 
         {/* Аудио */}
-        <audio controls src={episode.audioUrl} className="w-full h-12" />
+        <audio controls src={episode.audioUrl} className="w-full" />
       </div>
     </>
   );

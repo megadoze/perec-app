@@ -136,7 +136,7 @@ export default function BurgerMenu() {
               </Link>
             </nav>
 
-            <div className="mt-6 text-lg">
+            <div className="mt-10 text-lg">
               <LanguageSwitcher />
             </div>
           </div>
