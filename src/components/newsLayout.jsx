@@ -50,7 +50,7 @@ export const NewsLayout = ({
               loading={priority ? "eager" : "lazy"}
               className={`${
                 main
-                  ? " aspect-[3/2] lg:aspect-[4/3]"
+                  ? "h-64 md:h-56 lg:min-h-60 xl:h-80 aspect-[3/2] lg:aspect-[4/3]"
                   : maincat
                   ? "h-64 md:h-56 lg:h-32 xl:h-44"
                   : `${
