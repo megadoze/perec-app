@@ -1,4 +1,4 @@
-import PodcastPlayer from "./PodcastPlayer";
+import PodcastPlayer from "./podcastPlayer";
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
