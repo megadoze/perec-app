@@ -114,7 +114,7 @@ export default function PodcastPlayer() {
                 </div>
               </div>
 
-              <audio controls src={ep.audioUrl} className="w-full" />
+              <audio controls src={ep.audioUrl} className="w-full min-h-10" />
             </div>
           );
         })}
