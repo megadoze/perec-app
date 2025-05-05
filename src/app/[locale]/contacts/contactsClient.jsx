@@ -12,7 +12,7 @@ export default function ContactsClient() {
       <p className="mb-2 font-light">
         Email:{" "}
         <a href="mailto:contact@perec.news" className="text-red-600">
-          {t("podcasts")}
+          {t("contactemail")}
         </a>
       </p>
       <p className="font-light">
