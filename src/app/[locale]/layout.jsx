@@ -87,7 +87,7 @@ export default async function LocaleLayout({ children, params }) {
       <body className="bg-white text-black font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
-          <main className="px-4 md:px-8 pt-5 md:pt-10 flex-1">{children}</main>
+          <main className="px-4 md:px-8 pt-4 md:pt-8 flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

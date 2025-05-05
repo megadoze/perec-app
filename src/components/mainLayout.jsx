@@ -1,5 +1,7 @@
 import { NewsLayout } from "./newsLayout";
 import TelegramBanner from "./telegramBanner";
+import PodcastBlock from "./PodcastBlock";
+import Link from "next/link";
 
 export default function MainLayout({ news, bezkupur, locale }) {
   if (!news?.length) return <p>Нет новостей</p>;
@@ -60,6 +62,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
             </div>
           ))}
         </div>
+        <PodcastBlock />
         <div className=" mt-6">
           <TelegramBanner />
         </div>

@@ -123,6 +123,17 @@ export default function BurgerMenu() {
               >
                 {t("bezkupur")}
               </Link>
+              <Link
+                href={`/${locale}/podcasts`}
+                onClick={() => setOpened(false)}
+                className={
+                  category === "podcasts"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
+              >
+                {t("podcasts")}
+              </Link>
             </nav>
 
             <div className="mt-6 text-lg">
