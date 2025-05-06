@@ -1,4 +1,5 @@
-export const runtime = "nodejs";
+// export const runtime = "nodejs";
+export const runtime = "edge";
 
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
@@ -6,7 +7,7 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata({ params }) {
-  const { slug, locale } = params || {};
+  const { slug, locale } = await params;
   const id = slug?.split("-").at(-1);
 
   if (!id || !locale) {
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }) {
 
   const news = await res.json();
 
-  console.log(news);
+  // console.log(news);
 
   if (!news || !news.translations?.[locale]) {
     return { title: "Not found" };
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }) {
   const messages = (await import(`@/lang/${locale}/common.json`)).default;
   const t = news.translations[locale];
 
-  const title = t.title || messages.metaTitle;
+  // const title = t.title || messages.metaTitle;
+  const title = t.title;
   const description = t.subTitle || messages.metaTwitterDescription;
   const url = `https://perec.news/${locale}/${news.category}/${t.slug}`;
   const image =
