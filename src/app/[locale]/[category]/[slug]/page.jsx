@@ -19,6 +19,9 @@ export async function generateMetadata({ params }) {
 
   const news = await res.json();
 
+  console.log("🔥 generateMetadata ID:", id);
+  console.log("🔥 news:", news);
+
   if (!news || !news.translations?.[locale]) {
     return { title: "Not found" };
   }
