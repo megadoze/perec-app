@@ -6,7 +6,8 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata({ params }) {
-  const { slug, locale } = params || {};
+  const { slug, locale } = params;
+
   if (!slug || !locale) return { title: "Not found" };
 
   const res = await fetch(
