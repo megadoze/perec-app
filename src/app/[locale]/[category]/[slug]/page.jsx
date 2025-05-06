@@ -6,7 +6,7 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata({ params }) {
-  const { slug, locale } = params;
+  const { slug, locale } = await params;
 
   const id = slug?.split("-").at(-1);
 
