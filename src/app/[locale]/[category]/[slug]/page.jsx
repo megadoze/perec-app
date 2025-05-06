@@ -6,13 +6,17 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 
 export async function generateMetadata({ params }) {
-  const { slug, locale } = params;
+  const { slug, locale } = params || {};
+  const id = slug?.split("-").at(-1);
 
-  if (!slug || !locale) return { title: "Not found" };
+  if (!id || !locale) {
+    return { title: "Not found" };
+  }
 
   const res = await fetch(
-    `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${slug}.json`
+    `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${id}.json`
   );
+
   const news = await res.json();
 
   if (!news || !news.translations?.[locale]) {
@@ -49,58 +53,6 @@ export async function generateMetadata({ params }) {
     },
   };
 }
-
-// export async function generateMetadata({ params }) {
-//   const { slug, locale } = params || {};
-//   const id = slug?.split("-").at(-1);
-
-//   if (!id || !locale) {
-//     return { title: "Not found" };
-//   }
-
-//   const res = await fetch(
-//     `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${id}.json`
-//   );
-
-//   const news = await res.json();
-
-//   console.log("🔥 generateMetadata ID:", id);
-//   console.log("🔥 news:", news);
-
-//   if (!news || !news.translations?.[locale]) {
-//     return { title: "Not found" };
-//   }
-
-//   const messages = (await import(`@/lang/${locale}/common.json`)).default;
-//   const t = news.translations[locale];
-
-//   const title = t.title || messages.metaTitle;
-//   const description = t.subTitle || messages.metaTwitterDescription;
-//   const url = `https://perec.news/${locale}/${news.category}/${t.slug}`;
-//   const image =
-//     Array.isArray(news.images) && news.images.length > 0
-//       ? news.images[0]
-//       : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
-
-//   return {
-//     title,
-//     description,
-//     openGraph: {
-//       title,
-//       description,
-//       url,
-//       siteName: messages.metaTitle,
-//       type: "article",
-//       images: [{ url: image, width: 1200, height: 630, alt: title }],
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title,
-//       description,
-//       images: [image],
-//     },
-//   };
-// }
 
 export default async function NewsPage({ params }) {
   const { slug, locale } = await params;
