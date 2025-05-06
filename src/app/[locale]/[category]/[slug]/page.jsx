@@ -11,12 +11,15 @@ export async function generateMetadata({ params }) {
   const { slug, locale } = await params;
   const id = slug?.split("-").at(-1);
 
+  console.log("📣 generateMetadata called for", id, "locale:", locale);
+
   if (!id || !locale) {
     return { title: "Not found" };
   }
 
   const res = await fetch(
-    `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${id}.json`
+    `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${id}.json`,
+    { next: { revalidate: 0 } }
   );
 
   const news = await res.json();
