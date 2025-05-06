@@ -12,7 +12,6 @@ export async function generateMetadata({ params }) {
   const res = await fetch(
     `https://perec-news-default-rtdb.europe-west1.firebasedatabase.app/news/${slug}.json`
   );
-
   const news = await res.json();
 
   if (!news || !news.translations?.[locale]) {
