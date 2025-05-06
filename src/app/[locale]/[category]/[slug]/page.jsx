@@ -1,4 +1,5 @@
 // export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const runtime = "edge";
 
 import { db, ref, get, child } from "@/lib/firebase";
