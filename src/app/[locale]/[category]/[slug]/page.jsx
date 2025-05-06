@@ -1,6 +1,7 @@
 export const runtime = "nodejs";
 
 import { db, ref, get, child } from "@/lib/firebase";
+import { adminDb } from "@/lib/firebaseAdmin";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
@@ -18,8 +19,11 @@ export async function generateMetadata({ params }) {
   const subTitleDesc = messages.metaTwitterDescription;
   const siteName = messages.metaTitle;
 
-  const snapshot = await get(child(ref(db), `news/${id}`));
-  const news = snapshot.val();
+  // const snapshot = await get(child(ref(db), `news/${id}`));
+  // const news = snapshot.val();
+
+  const snapshot = await adminDb.ref(`news/${id}`).get();
+  const news = snapshot.exists() ? snapshot.val() : null;
 
   const emptyNews = {
     ru: "Новость не найдена",
