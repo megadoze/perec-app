@@ -35,6 +35,13 @@ export const NewsLayout = ({
   const t = news.translations[locale] || {};
   if (!t) return null;
 
+  // function stripStrongTags(html) {
+  //   return html.replace(/<\/?(strong|em|b|i)>/gi, "");
+  // }
+  function removeStrongTags(html) {
+    return html.replace(/<\/?strong>/gi, "");
+  }
+
   return (
     <article>
       {withPhoto && news?.images && (
@@ -86,7 +93,9 @@ export const NewsLayout = ({
             className={`${
               main ? " line-clamp-3 lg:line-clamp-3" : "pt-0"
             } -mt-2 text-xl font-light text-black ${clampClass[line]}`}
-            dangerouslySetInnerHTML={{ __html: t.content || "" }}
+            dangerouslySetInnerHTML={{
+              __html: removeStrongTags(t.content || ""),
+            }}
           ></div>
         </Link>
       )}
