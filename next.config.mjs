@@ -17,14 +17,17 @@ const nextConfig = {
   experimental: {
     serverActions: {},
   },
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: "https",
+  //       hostname: "firebasestorage.googleapis.com",
+  //       pathname: "/**",
+  //     },
+  //   ],
+  // },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "firebasestorage.googleapis.com",
-        pathname: "/**",
-      },
-    ],
+    unoptimized: true, // ⛔️ отключает Vercel-оптимизацию полностью
   },
   webpack: (config) => {
     config.resolve.alias["@"] = path.resolve(__dirname, "src");
