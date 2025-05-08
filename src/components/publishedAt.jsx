@@ -12,7 +12,7 @@ dayjs.extend(timezone);
 export default function PublishedAt({
   timestamp,
   locale,
-  format = "DD MMM YYYY HH:mm",
+  format = "DD MMM YYYY, HH:mm",
 }) {
   const [clientTime, setClientTime] = useState("");
 

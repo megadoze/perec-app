@@ -91,12 +91,11 @@ export const NewsLayout = ({
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <div
             className={`${
-              main ? " line-clamp-3 lg:line-clamp-3" : "pt-0"
-            } -mt-2 text-xl font-light text-black ${clampClass[line]}`}
-            dangerouslySetInnerHTML={{
-              __html: removeStrongTags(t.content || ""),
-            }}
-          ></div>
+              main ? " line-clamp-3 lg:line-clamp-4" : "pt-0"
+            } pt-4 text-xl font-light text-black ${clampClass[line]}`}
+          >
+            {t.subTitle || ""}
+          </div>
         </Link>
       )}
 
