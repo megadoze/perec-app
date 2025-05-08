@@ -157,3 +157,5 @@ export default async function NewsPage({ params }) {
     </>
   );
 }
+export const dynamic = "force-dynamic";
+export const revalidate = 0;

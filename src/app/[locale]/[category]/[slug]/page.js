@@ -58,5 +58,18 @@ export async function generateMetadata({ params }) {
 
 export default function OGPreviewPage() {
   // Telegram не анализирует контент — ему нужны только <head>
-  return null;
+  return (
+    <html>
+      <head>
+        <meta property="og:title" content="Тестовый заголовок" />
+        <meta property="og:description" content="Описание для Telegram" />
+        <meta property="og:image" content="https://perec.news/test.jpg" />
+        <meta property="og:type" content="article" />
+        <meta httpEquiv="refresh" content="5;url=/ru/politics/..." />
+      </head>
+      <body>
+        <p>Redirecting…</p>
+      </body>
+    </html>
+  );
 }
