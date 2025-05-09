@@ -43,6 +43,7 @@ export default async function ContactsPage({ params }) {
       <p className="font-light">
         Telegram:{" "}
         <a href="https://t.me/perecnews" className="text-red-600">
+          {contacts.contactTelegram}
         </a>
       </p>
     </main>
