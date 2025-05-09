@@ -18,7 +18,7 @@ export function middleware(req) {
   }
 
   if (pathname === "/sitemap-news.xml") {
-    return NextResponse.redirect("/api/sitemap-news.xml", 307);
+    return NextResponse.rewrite(new URL("/api/sitemap-news.xml", req.url));
   }
 
   // 🔁 Только Telegram — редирект на OG-страницу
