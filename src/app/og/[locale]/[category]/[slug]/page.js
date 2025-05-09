@@ -25,7 +25,7 @@ export default async function OGPage({ params }) {
   const image =
     news.ogImage || // рекомендуемое поле без `token=`
     news.images?.[0] ||
-    "https://i.imgur.com/gXCbQTn.jpeg";
+    "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return (
     <html lang={locale}>
@@ -65,7 +65,10 @@ function notFoundHtml(redirectUrl) {
           property="og:description"
           content="Запрашиваемая новость недоступна"
         />
-        <meta property="og:image" content="https://i.imgur.com/gXCbQTn.jpeg" />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media"
+        />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={redirectUrl} />
         <meta httpEquiv="refresh" content={`2;url=${redirectUrl}`} />

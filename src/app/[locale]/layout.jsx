@@ -6,7 +6,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import { headers } from "next/headers";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
@@ -22,25 +21,13 @@ const robotoCondensed = Roboto_Condensed({
   display: "swap",
 });
 
-export async function generateMetadata() {
-  const host = (await headers()).get("host");
-
-  if (host?.includes("vercel.app")) {
-    return {
-      robots: {
-        index: false,
-        follow: false,
-      },
-    };
-  }
-
-  return {
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
-}
+// ✅ Статичная metadata — теперь возможно SSG
+export const metadata = {
+  robots: {
+    index: !process.env.VERCEL_URL?.includes("vercel.app"),
+    follow: true,
+  },
+};
 
 export function generateStaticParams() {
   return [{ locale: "ru" }, { locale: "en" }];
@@ -49,7 +36,7 @@ export function generateStaticParams() {
 const locales = ["ru", "en"];
 
 export default async function LocaleLayout({ children, params }) {
-  const { locale } = await params;
+  const { locale } = params;
 
   if (!locales.includes(locale)) notFound();
 
