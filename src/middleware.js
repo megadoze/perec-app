@@ -8,6 +8,7 @@ const intlMiddleware = createMiddleware({
 
 export function middleware(req) {
   const { pathname } = req.nextUrl;
+  const ua = req.headers.get("user-agent") || "";
 
   if (pathname === "/sitemap.xml") {
     return NextResponse.redirect(
@@ -15,6 +16,17 @@ export function middleware(req) {
       307
     );
   }
+
+   // 🔁 Только Telegram — редирект на OG-страницу
+   if (
+    ua.includes("TelegramBot") &&
+    /^\/(ru|en)\/[^/]+\/[^/]+$/.test(pathname) // типа /ru/politics/slug
+  ) {
+    const ogUrl = req.nextUrl.clone();
+    ogUrl.pathname = `/og${pathname}`;
+    return NextResponse.rewrite(ogUrl);
+  }
+
 
   return intlMiddleware(req);
 }
