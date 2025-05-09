@@ -9,5 +9,6 @@ Host: perec.news
 
 # Sitemaps
 Sitemap: https://perec.news/sitemap.xml
+Sitemap: https://perec.news/sitemap-news.xml
 
 

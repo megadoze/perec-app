@@ -17,8 +17,12 @@ export function middleware(req) {
     );
   }
 
-   // 🔁 Только Telegram — редирект на OG-страницу
-   if (
+  if (pathname === "/sitemap-news.xml") {
+    return NextResponse.redirect("/api/sitemap-news.xml", 307);
+  }
+
+  // 🔁 Только Telegram — редирект на OG-страницу
+  if (
     ua.includes("TelegramBot") &&
     /^\/(ru|en)\/[^/]+\/[^/]+$/.test(pathname) // типа /ru/politics/slug
   ) {
@@ -27,10 +31,9 @@ export function middleware(req) {
     return NextResponse.rewrite(ogUrl);
   }
 
-
   return intlMiddleware(req);
 }
 
 export const config = {
-  matcher: ["/", "/(ru|en)/:path*", "/sitemap.xml"],
+  matcher: ["/", "/(ru|en)/:path*", "/sitemap.xml", "/sitemap-news.xml"],
 };

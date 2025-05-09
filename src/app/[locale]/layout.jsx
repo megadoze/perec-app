@@ -22,12 +22,7 @@ const robotoCondensed = Roboto_Condensed({
 });
 
 // ✅ Статичная metadata — теперь возможно SSG
-// export const metadata = {
-//   robots: {
-//     index: !process.env.VERCEL_URL?.includes("vercel.app"),
-//     follow: true,
-//   },
-// };
+
 export const metadata = {
   robots: {
     index: true,
