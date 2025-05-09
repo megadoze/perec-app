@@ -29,7 +29,7 @@ export default async function AboutPage({ params }) {
   const about = messages;
 
   return (
-    <section className="mt-10 max-w-3xl mx-auto px-4 pb-16 font-light text-lg">
+    <section className="mt-10 max-w-3xl mx-auto px-0 pb-16 font-light text-lg">
       <h1 className="text-2xl lg:text-3xl mb-6 font-normal">
         {about.aboutHeading}
       </h1>
