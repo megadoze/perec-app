@@ -33,13 +33,13 @@ export default async function AuthorsPage({ params }) {
       <h1 className="text-2xl lg:text-3xl mb-6 font-normal">
         {messages.authorsHeading}
       </h1>
-      <p className="text-lg text-gray-700 mb-8">
+      <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
         {messages.authorsDescription}
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {authors.map((author) => (
-          <div key={author.style} className="border shadow-sm p-6 bg-white">
+          <div key={author.style} className="border dark:border-none shadow-sm p-6 dark:bg-gray-800/40 ">
             <div className=" flex items-center gap-3">
               <MultiavatarImage avatarId={author.avatar} size={48} />
               <div>
@@ -49,8 +49,8 @@ export default async function AuthorsPage({ params }) {
                 </p>
               </div>
             </div>
-            <p className=" text-base text-gray-800 mb-2">{author.tone}</p>
-            <blockquote className=" text-gray-800">{author.tagline}</blockquote>
+            <p className=" text-base text-gray-800 dark:text-gray-300 mb-2">{author.tone}</p>
+            <blockquote className=" text-gray-800 dark:text-gray-400">{author.tagline}</blockquote>
           </div>
         ))}
       </div>

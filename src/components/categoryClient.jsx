@@ -61,7 +61,7 @@ export default function CategoryClient({ title, news, category }) {
             <div
               className={
                 category !== "bezkupur"
-                  ? "my-6 border-t border-neutral-200"
+                  ? "my-6 border-t border-neutral-200 dark:border-gray-800"
                   : ""
               }
             ></div>

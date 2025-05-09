@@ -22,8 +22,8 @@ export default function CategoryLayoutFourH({
           className="
           px-0 md:px-4 pb-0
           // Вертикальные бордеры
-          md:[&:not(:nth-child(2n+1))]:border-l md:border-neutral-100
-          lg:[&:not(:nth-child(4n+1))]:border-l lg:border-neutral-100
+          md:[&:not(:nth-child(2n+1))]:border-l md:border-neutral-100 md:dark:border-gray-800
+          lg:[&:not(:nth-child(4n+1))]:border-l lg:border-neutral-100 lg:dark:border-gray-800
 
           
           // Убираем отступы у краёв строки

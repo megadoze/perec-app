@@ -29,8 +29,8 @@ export default function BurgerMenu() {
         className="flex flex-col justify-center items-end w-6 h-6 gap-[6px]"
         aria-label="Открыть меню"
       >
-        <span className="w-full h-[2px] bg-black"></span>
-        <span className="w-2/3 h-[2px] bg-black"></span>
+        <span className="w-full h-[2px] bg-black dark:bg-white"></span>
+        <span className="w-2/3 h-[2px] bg-black dark:bg-white"></span>
       </button>
 
       <div
@@ -44,12 +44,12 @@ export default function BurgerMenu() {
         <div
           className={`transition-all duration-300 transform ${
             opened ? "translate-x-0" : "translate-x-full"
-          } w-full md:w-[360px] h-full bg-white p-6 ml-auto`}
+          } w-full md:w-[360px] h-full bg-white dark:bg-gray-800 p-6 ml-auto`}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="relative">
             <button
-              className="absolute top-0 right-0 text-xl text-zinc-600"
+              className="absolute top-0 right-0 text-xl text-zinc-600 dark:text-white"
               onClick={() => setOpened(false)}
               aria-label="Закрыть меню"
             >

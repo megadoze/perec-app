@@ -6,6 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import ThemeInitializer from "@/components/ThemeInitializer";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
@@ -74,9 +75,10 @@ export default async function LocaleLayout({ children, params }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href={`https://perec.news/${locale}`} />
       </head>
-      <body className="bg-white text-black font-sans flex flex-col min-h-screen">
+      <body className="bg-white text-black dark:bg-gray-900 dark:text-gray-200 font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
+          <ThemeInitializer />
           <main className="px-4 md:px-8 pt-4 md:pt-8 flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>

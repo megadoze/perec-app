@@ -92,7 +92,7 @@ export const NewsLayout = ({
           <div
             className={`${
               main ? " line-clamp-3 lg:line-clamp-4" : "pt-0"
-            } pt-4 text-xl font-light text-black ${clampClass[line]}`}
+            } pt-4 text-xl font-light ${clampClass[line]}`}
           >
             {t.subTitle || ""}
           </div>

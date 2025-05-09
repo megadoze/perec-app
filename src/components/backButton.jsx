@@ -22,7 +22,7 @@ export default function BackButton({ params }) {
           router.push("/");
         }
       }}
-      className="inline-flex items-center gap-1 mt-6 text-cyan-700/60"
+      className="inline-flex items-center gap-1 mt-6 text-cyan-700/60 dark:text-cyan-700"
     >
       <span className="pb-1">←</span>
       <span>{butName[locale]}</span>

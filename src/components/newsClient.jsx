@@ -85,7 +85,7 @@ export default function NewsContent({
               </div>
             )}
             <div>
-              <p className="m-0 font-narrow text-lg">
+              <p className="m-0 font-narrow text-lg dark:text-gray-300">
                 {data?.satire?.author || data.user.name}
               </p>
               <p className="m-0 text-gray-500 font-light text-base">
@@ -104,7 +104,7 @@ export default function NewsContent({
         </div>
         <BackButton />
       </article>
-      <div className="my-8 border-t border-neutral-100"></div>
+      <div className="my-8 border-t border-neutral-100 dark:border-gray-800"></div>
       <Link href={`/${locale}/${data.category}`}>
         <h3 className=" font-narrow text-2xl mb-5">
           {moreNews[locale]}{" "}

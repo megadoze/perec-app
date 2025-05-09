@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import BurgerMenu from "./burgerMenu";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const locale = useLocale();
@@ -15,11 +16,14 @@ export default function Header() {
         className="text-xl lg:text-2xl font-blackout "
       >
         {/* <img src="/logo.webp" alt="perec logo" className=" w-20 md:w-24" /> */}
-        <span className=" text-3xl md:text-4xl font-blackout text-red-500 hover:text-red-600 transition-colors">
+        <span className=" bg-white text-3xl md:text-4xl font-blackout text-red-500 hover:text-red-600 transition-colors">
           PEREC
         </span>
       </Link>
-      <BurgerMenu />
+      <div className=" flex items-center gap-10">
+        <ThemeToggle />
+        <BurgerMenu />
+      </div>
     </header>
   );
 }

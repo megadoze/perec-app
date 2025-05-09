@@ -11,9 +11,9 @@ export default function MainLayout({ news, bezkupur, locale }) {
   const col4 = bezkupur;
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100 dark:divide-gray-800">
       {/* Колонка 1 */}
-      <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100 mt-4 md:mt-0">
+      <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 dark:border-gray-800 md:border-r lg:border-r-0 divide-neutral-100 dark:divide-gray-800 mt-4 md:mt-0">
         {(col1 ?? []).map((item, index) => (
           <div key={item._id} className={index > 0 ? "pt-5" : ""}>
             <NewsLayout news={item} withText maincat line={3} locale={locale} />
@@ -22,7 +22,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
       </div>
 
       {/* Главная новость */}
-      <div className="order-1 sm:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80 px-4 md:px-0 -mx-4 md:-mx-0 pt-4 ">
+      <div className="order-1 sm:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80  dark:border-gray-800  dark:bg-gray-800/60 px-4 md:px-0 -mx-4 md:-mx-0 pt-4 ">
         {col2 && (
           <NewsLayout
             news={col2}
@@ -37,7 +37,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 border-neutral-100 md:border-r lg:border-r-0 divide-neutral-100">
+      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 lg:dark:bg-gray-800/40  md:border-r lg:border-r-0 divide-neutral-100 border-neutral-100 dark:divide-gray-800">
         {(col3 ?? []).map((item, index) => (
           <NewsLayout
             key={item._id}
@@ -51,11 +51,11 @@ export default function MainLayout({ news, bezkupur, locale }) {
 
       {/* Колонка 4 */}
       <div className="md:mt-6 lg:mt-0 order-4 md:space-y-6 md:pl-4 space-y-6">
-        <div className=" bg-neutral-50 px-4 py-3 space-y-4 ">
+        <div className=" bg-neutral-50 dark:bg-gray-900 px-4 py-3 space-y-4 ">
           {(col4 ?? []).map((item, index) => (
             <div
               key={item._id}
-              className="news-h2-light first:border-b first:pb-6 border-neutral-200/40"
+              className="news-h2-light first:border-b first:pb-6 border-neutral-200/40 dark:border-gray-800"
             >
               <NewsLayout news={item} maincat locale={locale} />
             </div>

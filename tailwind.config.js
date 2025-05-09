@@ -5,6 +5,7 @@ export const content = [
   "./components/**/*.{js,ts,jsx,tsx,mdx}",
   "./src/**/*.{js,ts,jsx,tsx,mdx}",
 ];
+export const darkMode = "class";
 export const theme = {
   extend: {
     fontFamily: {
