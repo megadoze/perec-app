@@ -13,6 +13,7 @@ export default getRequestConfig(async ({ locale }) => {
         ...(await import(`../lang/${resolvedLocale}/about.json`)).default,
         ...(await import(`../lang/${resolvedLocale}/ads.json`)).default,
         ...(await import(`../lang/${resolvedLocale}/contacts.json`)).default,
+        ...(await import(`../lang/${resolvedLocale}/authors.json`)).default,
       },
     };
   } catch (error) {

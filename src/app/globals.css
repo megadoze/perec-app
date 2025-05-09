@@ -14,7 +14,7 @@
 }
 
 blockquote {
-  border-left: 4px solid #ccc;
+  border-left: 4px solid #d60c0c;
   padding-left: 1rem;
   color: #666;
   font-style: italic;
@@ -23,14 +23,6 @@ blockquote {
 p {
   margin-top: 1em;
 }
-
-@layer base {
-  ol li p,
-  ul li p {
-    @apply m-0 p-0;
-  }
-}
-
 
 /* ol li p,
 ul li p {

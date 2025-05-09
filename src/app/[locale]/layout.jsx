@@ -37,7 +37,7 @@ export function generateStaticParams() {
 const locales = ["ru", "en"];
 
 export default async function LocaleLayout({ children, params }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale)) notFound();
 
@@ -45,12 +45,14 @@ export default async function LocaleLayout({ children, params }) {
   const about = (await import(`@/lang/${locale}/about.json`)).default;
   const ads = (await import(`@/lang/${locale}/ads.json`)).default;
   const contacts = (await import(`@/lang/${locale}/contacts.json`)).default;
+  const authors = (await import(`@/lang/${locale}/authors.json`)).default;
 
   const messages = {
     ...common,
     ...about,
     ...ads,
     ...contacts,
+    ...authors,
   };
 
   return (

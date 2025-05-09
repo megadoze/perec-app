@@ -11,6 +11,7 @@ export default function Footer() {
 
   const links = [
     { href: `/${locale}/about`, label: t("about") },
+    { href: `/${locale}/authors`, label: t("authors") },
     { href: `/${locale}/ads`, label: t("ads") },
     { href: `/${locale}/contacts`, label: t("contacts") },
   ];

@@ -1,0 +1,49 @@
+{
+        "authorsTitle": "Authors | PEREC.news",
+        "authorsDescription": "Meet our authors — the ironic, sharp, punk, and absurd voices of PEREC.news.",
+        "ogSiteName": "PEREC.news — spicy news🔥",
+        "authorsHeading": "Authors",
+        "authors": [
+    {
+      "avatar": "625206",
+      "style": "classic",
+      "name": "Sophie Pepper",
+      "character": "intellectual, ironic",
+      "tone": "Intelligently with irony",
+      "tagline": "I see the world through rose-colored glasses, but I never forget the pepper."
+    },
+    {
+      "avatar": "141565",
+      "style": "sharp",
+      "name": "Max Sharp",
+      "character": "cutting, precise",
+      "tone": "Sharp and biting",
+      "tagline": "I cut with words, but only where it hurts. My wit is my weapon."
+    },
+    {
+      "avatar": "510258",
+      "style": "blaze",
+      "name": "Roxy Blaze",
+      "character": "trashy, punkish",
+      "tone": "Punk-style, no brakes",
+      "tagline": "If it didn’t burn, you didn’t finish it."
+    },
+    {
+      "avatar": "739002",
+      "style": "absurd",
+      "name": "Dada Droid",
+      "character": "surrealist, absurdist",
+      "tone": "Absurd and unpredictable",
+      "tagline": "It’s clear that nothing is clear—and that’s the point."
+    },
+    {
+      "avatar": "779930",
+      "style": "wise",
+      "name": "Parmegano",
+      "character": "thoughtful, sarcastic",
+      "tone": "Smart satire with a refined touch",
+      "tagline": "Salt in my words. Pepper in what’s between the lines."
+    }    
+  ]
+}
+      
