@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import BurgerMenu from "./burgerMenu";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./themeToggle";
 
 export default function Header() {
   const locale = useLocale();

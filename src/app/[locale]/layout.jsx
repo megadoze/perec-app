@@ -6,7 +6,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
-import ThemeInitializer from "@/components/ThemeInitializer";
+import ThemeInitializer from "@/components/themeInitializer";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
