@@ -10,15 +10,10 @@ export default function Header() {
 
   return (
     <header className="h-[64px] px-4 md:px-8 py-4 flex items-center justify-between text-sm">
-      <Link
-        href={`/${locale}`}
-        aria-label="На главную"
-        className="text-xl lg:text-2xl font-blackout "
-      >
-        {/* <img src="/logo.webp" alt="perec logo" className=" w-20 md:w-24" /> */}
-        <span className=" bg-white text-3xl md:text-4xl font-blackout text-red-500 hover:text-red-600 transition-colors">
-          PEREC
-        </span>
+      <Link href={`/${locale}`} aria-label="На главную" className="">
+        <p className="text-3xl md:text-4xl font-blackout text-red-500 hover:text-red-600 transition-colors">
+          <span className="bg-white inline">PEREC</span>
+        </p>
       </Link>
       <div className=" flex items-center gap-10">
         <ThemeToggle />
