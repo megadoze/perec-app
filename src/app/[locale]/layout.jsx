@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import { cookies } from "next/headers";
 
 import { blackout2am } from "@/fonts/blackout";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
@@ -38,6 +39,9 @@ export function generateStaticParams() {
 const locales = ["ru", "en"];
 
 export default async function LocaleLayout({ children, params }) {
+  const cookie = await cookies();
+  const theme = cookie.get("theme")?.value || "light";
+
   const { locale } = await params;
 
   if (!locales.includes(locale)) notFound();
@@ -59,7 +63,9 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html
       lang={locale}
-      className={`${blackout2am.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
+      className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
+        ptsansNarrow.variable
+      } ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>
         <base href="/" />
@@ -75,7 +81,7 @@ export default async function LocaleLayout({ children, params }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href={`https://perec.news/${locale}`} />
       </head>
-      <body className="bg-white text-black dark:bg-gray-900 dark:text-gray-200 font-sans flex flex-col min-h-screen">
+      <body className="bg-white text-black dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <ThemeInitializer />

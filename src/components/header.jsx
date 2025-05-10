@@ -16,19 +16,7 @@ export default function Header() {
         className="text-3xl md:text-4xl font-blackout bg-white text-red-500 hover:text-red-600 transition-colors"
         style={{ lineHeight: "0.9" }}
       >
-        {/* <p className="text-3xl md:text-4xl font-blackout text-red-500 hover:text-red-600 transition-colors"> */}
-        {/* <span
-            className="bg-white inline"
-            style={{
-              display: "inline-block",
-              lineHeight: "0.9",
-              // paddingTop: "0.05em",
-              // paddingBottom: "0.05em",
-            }}
-          > */}
         PEREC
-        {/* </span> */}
-        {/* </p> */}
       </Link>
       <div className=" flex items-center gap-10">
         <ThemeToggle />

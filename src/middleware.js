@@ -10,6 +10,9 @@ export function middleware(req) {
   const { pathname } = req.nextUrl;
   const ua = req.headers.get("user-agent") || "";
 
+  // Перехватываем тему из куки
+  const theme = req.cookies.get("theme")?.value;
+
   if (pathname === "/sitemap.xml") {
     return NextResponse.redirect(
       "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml",
