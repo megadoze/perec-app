@@ -106,7 +106,7 @@ export default function NewsContent({
       </article>
       <div className="my-8 border-t border-neutral-100 dark:border-gray-800"></div>
       <Link href={`/${locale}/${data.category}`}>
-        <h3 className=" font-narrow text-2xl mb-5">
+        <h3 className=" font-narrow font-normal text-2xl mb-5">
           {moreNews[locale]}{" "}
           <span className=" text-red-600">{categoryName}</span>
         </h3>

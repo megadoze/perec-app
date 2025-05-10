@@ -15,8 +15,16 @@ export default function CategoryClient({ title, news, category }) {
 
   const [visibleCount, setVisibleCount] = useState(1); // сколько порций загружено
   const containerRef = useRef(null);
+  const firstNewRef = useRef(null);
 
-  const extraToShow = extraAll.slice(0, visibleCount * PAGE_SIZE);
+  const from = (visibleCount - 1) * PAGE_SIZE;
+  const to = visibleCount * PAGE_SIZE;
+  const newChunk = extraAll.slice(from, to); // только новая порция
+  const extraToShow = extraAll.slice(0, to); // всё, что рендерим
+
+  const firstNewId = newChunk[0]?._id;
+
+  // const extraToShow = extraAll.slice(0, visibleCount * PAGE_SIZE);
   const hasMore = extraToShow.length < extraAll.length;
 
   const handleLoadMore = () => {
@@ -25,10 +33,14 @@ export default function CategoryClient({ title, news, category }) {
 
   // 🔻 Скроллим к подгруженному блоку
   useEffect(() => {
-    if (visibleCount > 1 && containerRef.current) {
-      containerRef.current.scrollIntoView({
+    if (visibleCount > 1 && firstNewRef.current) {
+      const elementTop =
+        firstNewRef.current.getBoundingClientRect().top + window.scrollY;
+      const offset = 14; // 🔹 отступ сверху
+
+      window.scrollTo({
+        top: elementTop - offset,
         behavior: "smooth",
-        block: "start",
       });
     }
   }, [visibleCount]);
@@ -70,6 +82,8 @@ export default function CategoryClient({ title, news, category }) {
               withText
               withPhoto
               locale={locale}
+              firstNewId={firstNewId}
+              firstItemRef={firstNewRef}
             />
           </motion.div>
         )}

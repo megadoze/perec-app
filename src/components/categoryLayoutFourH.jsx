@@ -6,6 +6,8 @@ export default function CategoryLayoutFourH({
   withText,
   lineClamp,
   locale,
+  firstNewId,
+  firstItemRef,
 }) {
   const emptyNews = {
     ru: "Нет новостей",
@@ -19,6 +21,7 @@ export default function CategoryLayoutFourH({
       {news.map((item, idx) => (
         <div
           key={item._id}
+          ref={item._id === firstNewId ? firstItemRef : null}
           className="
           px-0 md:px-4 pb-0
           // Вертикальные бордеры
@@ -32,8 +35,10 @@ export default function CategoryLayoutFourH({
           md:[&:nth-child(2n)]:pr-0
 
           lg:[&:nth-child(4n+1)]:pl-0
-          lg:[&:nth-child(3n+1)]:pl-4
           lg:[&:nth-child(3n)]:pl-4
+          lg:[&:nth-child(3n+1)]:pl-4
+          lg:[&:nth-child(3n+2)]:pl-4
+
           lg:[&:nth-child(2n)]:pr-4
           lg:[&:nth-child(4n+1)]:pr-4
           lg:[&:nth-child(4n)]:pr-0
