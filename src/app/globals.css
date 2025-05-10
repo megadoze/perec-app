@@ -14,10 +14,14 @@
 }
 
 blockquote {
-  border-left: 4px solid #d60c0c;
+  border-left: 4px solid #da0808;
   padding-left: 1rem;
   color: #666;
   font-style: italic;
+}
+
+html.dark blockquote {
+  color: #bcbcbc;
 }
 
 p {
@@ -33,13 +37,13 @@ ul li p {
 ul {
   margin-top: 10px;
   list-style-type: disc;
-  padding-left: 1.5rem;
+  padding-left: 2.5rem;
 }
 
 ol {
   margin-top: 10px;
   list-style-type: decimal;
-  padding-left: 1.5rem;
+  padding-left: 2.5rem;
 }
 
 @layer base {
