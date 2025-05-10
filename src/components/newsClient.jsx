@@ -88,7 +88,7 @@ export default function NewsContent({
               <p className="m-0 font-narrow text-lg dark:text-gray-300">
                 {data?.satire?.author || data.user.name}
               </p>
-              <p className="m-0 text-gray-500 font-light text-base">
+              <p className="m-0 text-gray-400 font-light text-base">
                 {author[locale]}
               </p>
             </div>

@@ -48,7 +48,16 @@ export default async function LocaleLayout({ children, params }) {
   const header = await headers();
   const cookieHeader = header.get("cookie") || "";
   const themeMatch = cookieHeader.match(/theme=(dark|light)/);
-  const theme = themeMatch?.[1] || "light";
+  let theme;
+  if (themeMatch?.[1]) {
+    theme = themeMatch[1];
+  } else {
+    const now = new Date();
+    const utcHour = now.getUTCHours();
+    const localHour = (utcHour + 2) % 24; // Испания
+    const isNight = localHour >= 20 || localHour < 7;
+    theme = isNight ? "dark" : "light";
+  }
 
   const common = (await import(`@/lang/${locale}/common.json`)).default;
   const about = (await import(`@/lang/${locale}/about.json`)).default;
