@@ -14,6 +14,7 @@ export const NewsLayout = ({
   priority = false,
   line = 2,
   locale,
+  theme,
 }) => {
   const tCat = useTranslations("categoryName");
 
@@ -35,16 +36,14 @@ export const NewsLayout = ({
   const t = news.translations[locale] || {};
   if (!t) return null;
 
-  // function stripStrongTags(html) {
-  //   return html.replace(/<\/?(strong|em|b|i)>/gi, "");
-  // }
   function removeStrongTags(html) {
     return html.replace(/<\/?strong>/gi, "");
   }
 
-  // const svg = `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff8a00" offset="0%" /><stop stop-color="#e52e71" offset="100%" /></linearGradient></defs><rect width="320" height="200" fill="url(#g)" /></svg>`; gradient
-  const svg = `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(228,228,228,0.4)" /></svg>`;
-  // const base64 = typeof window !== "undefined" ? btoa(svg) : "";
+  const svg =
+    theme === "dark"
+      ? `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(31,41,55,0.2)" /></svg>`
+      : `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(228,228,228,0.4)" /></svg>`;
   const base64 = Buffer.from(svg).toString("base64");
   const blurDataURL = `data:image/svg+xml;base64,${base64}`;
 

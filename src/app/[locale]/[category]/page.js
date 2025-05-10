@@ -1,6 +1,7 @@
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import CategoryClient from "@/components/categoryClient";
+import { cookies } from "next/headers";
 
 export async function generateMetadata({ params }) {
   const { category, locale } = await params;
@@ -46,6 +47,17 @@ export async function generateMetadata({ params }) {
 export default async function CategoryPage({ params }) {
   const { category, locale } = await params;
 
+  const coockie = await cookies();
+  const cookieTheme = coockie.get("theme")?.value;
+  const fallbackTheme = (() => {
+    const hour = new Date().getHours();
+    return hour >= 20 || hour < 7 ? "dark" : "light";
+  })();
+  const theme =
+    cookieTheme === "dark" || cookieTheme === "light"
+      ? cookieTheme
+      : fallbackTheme;
+
   const messages = (await import(`@/lang/${locale}/common.json`)).default;
   const title = messages.categoryName?.[category];
   if (!title) return notFound();
@@ -66,5 +78,12 @@ export default async function CategoryPage({ params }) {
     })
     .sort((a, b) => b.publishedAt - a.publishedAt);
 
-  return <CategoryClient title={title} news={news} category={category} />;
+  return (
+    <CategoryClient
+      title={title}
+      news={news}
+      category={category}
+      theme={theme}
+    />
+  );
 }

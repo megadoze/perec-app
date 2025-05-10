@@ -8,6 +8,7 @@ export default function CategoryLayoutFourH({
   locale,
   firstNewId,
   firstItemRef,
+  theme,
 }) {
   const emptyNews = {
     ru: "Нет новостей",
@@ -50,6 +51,7 @@ export default function CategoryLayoutFourH({
             withText={withText}
             lineClamp={lineClamp}
             locale={locale}
+            theme={theme}
           />
         </div>
       ))}

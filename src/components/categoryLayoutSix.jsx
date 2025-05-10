@@ -1,6 +1,6 @@
 import { NewsLayout } from "./newsLayout";
 
-export default function CategoryLayoutSix({ news, locale }) {
+export default function CategoryLayoutSix({ news, locale, theme }) {
   const emptyNews = {
     ru: "Нет новостей",
     en: "No news",
@@ -25,6 +25,7 @@ export default function CategoryLayoutSix({ news, locale }) {
               withPhoto
               lineClamp={2}
               locale={locale}
+              theme={theme}
             />
           </div>
         ))}
@@ -34,7 +35,13 @@ export default function CategoryLayoutSix({ news, locale }) {
       <div className=" md:space-y-6 md:pl-4 lg:pr-4 pb-6 lg:pb-0 border-neutral-100 dark:border-gray-800 md:divide-y divide-neutral-100 dark:divide-gray-800">
         {col2.map((item, index) => (
           <div key={item._id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText lineClamp={2} locale={locale} />
+            <NewsLayout
+              news={item}
+              withText
+              lineClamp={2}
+              locale={locale}
+              theme={theme}
+            />
           </div>
         ))}
       </div>
@@ -49,6 +56,7 @@ export default function CategoryLayoutSix({ news, locale }) {
               withPhoto
               lineClamp={2}
               locale={locale}
+              theme={theme}
             />
           </div>
         ))}
@@ -58,7 +66,13 @@ export default function CategoryLayoutSix({ news, locale }) {
       <div className=" md:space-y-6 md:pl-4 border-neutral-100 dark:border-gray-800 md:divide-y divide-neutral-100 dark:divide-gray-800">
         {col4.map((item, index) => (
           <div key={item._id} className={`${index > 0 && "pt-5"}`}>
-            <NewsLayout news={item} withText lineClamp={2} locale={locale} />
+            <NewsLayout
+              news={item}
+              withText
+              lineClamp={2}
+              locale={locale}
+              theme={theme}
+            />
           </div>
         ))}
       </div>

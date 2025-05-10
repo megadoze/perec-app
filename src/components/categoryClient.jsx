@@ -8,7 +8,7 @@ import CategoryLayoutSixV from "./categoryLayoutSixV";
 
 const PAGE_SIZE = 8; // Количество новостей за одну подгрузку
 
-export default function CategoryClient({ title, news, category }) {
+export default function CategoryClient({ title, news, category, theme }) {
   const locale = useLocale();
   const initial = news.slice(0, 6); // первые 6
   const extraAll = category === "bezkupur" ? news : news.slice(6);
@@ -57,7 +57,7 @@ export default function CategoryClient({ title, news, category }) {
       {news.length === 0 && <p>{emptyNewsTitle[locale]}</p>}
 
       {initial.length > 0 && category !== "bezkupur" && (
-        <CategoryLayoutSixV news={initial} locale={locale} />
+        <CategoryLayoutSixV news={initial} locale={locale} theme={theme} />
       )}
 
       <AnimatePresence>
@@ -84,6 +84,7 @@ export default function CategoryClient({ title, news, category }) {
               locale={locale}
               firstNewId={firstNewId}
               firstItemRef={firstNewRef}
+              theme={theme}
             />
           </motion.div>
         )}

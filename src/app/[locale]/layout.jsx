@@ -1,14 +1,14 @@
 import "@/app/globals.css";
-// import { cookies } from "next/headers";
+
 import { headers } from "next/headers";
 
 import { blackout2am } from "@/fonts/blackout";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import ThemeInitializer from "@/components/themeInitializer";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
