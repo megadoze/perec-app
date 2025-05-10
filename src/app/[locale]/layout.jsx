@@ -40,9 +40,6 @@ export function generateStaticParams() {
 const locales = ["ru", "en"];
 
 export default async function LocaleLayout({ children, params }) {
-  // const cookie = await cookies();
-  // const theme = cookie.get("theme")?.value || "light";
-
   const { locale } = await params;
 
   if (!locales.includes(locale)) notFound();

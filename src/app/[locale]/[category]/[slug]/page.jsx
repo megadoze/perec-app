@@ -6,15 +6,14 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
 
-// export async function generateStaticParams() {
-//   return [];
-// }
 export async function generateStaticParams() {
   const snapshot = await get(child(ref(db), "news"));
   const data = snapshot.exists() ? snapshot.val() : {};
 
   return Object.entries(data)
     .filter(([_, news]) => news.status === "published")
+    .sort((a, b) => b[1].publishedAt - a[1].publishedAt)
+    .slice(0, 30)
     .flatMap(([_, news]) =>
       Object.entries(news.translations || {}).map(([locale, t]) => ({
         locale,
