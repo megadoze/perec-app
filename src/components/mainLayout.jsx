@@ -11,7 +11,7 @@ export default function MainLayout({ news, bezkupur, locale }) {
   const col4 = bezkupur;
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100 dark:divide-gray-800">
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100 dark:divide-gray-800/60">
       {/* Колонка 1 */}
       <div className="order-2 sm:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 dark:border-gray-800 md:border-r lg:border-r-0 divide-neutral-100 dark:divide-gray-800 mt-4 md:mt-0">
         {(col1 ?? []).map((item, index) => (
