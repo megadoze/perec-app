@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 import { blackout2am } from "@/fonts/blackout";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
@@ -39,8 +39,8 @@ export function generateStaticParams() {
 const locales = ["ru", "en"];
 
 export default async function LocaleLayout({ children, params }) {
-  const cookie = await cookies();
-  const theme = cookie.get("theme")?.value || "light";
+  // const cookie = await cookies();
+  // const theme = cookie.get("theme")?.value || "light";
 
   const { locale } = await params;
 
@@ -63,7 +63,7 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html
       lang={locale}
-      className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
+      className={` ${blackout2am.variable} ${
         ptsansNarrow.variable
       } ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
