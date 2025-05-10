@@ -6,8 +6,23 @@ import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
 
+// export async function generateStaticParams() {
+//   return [];
+// }
 export async function generateStaticParams() {
-  return [];
+  const snapshot = await get(child(ref(db), "news"));
+  const data = snapshot.exists() ? snapshot.val() : {};
+
+  return Object.entries(data)
+    .filter(([_, news]) => news.status === "published")
+    .flatMap(([_, news]) =>
+      Object.entries(news.translations || {}).map(([locale, t]) => ({
+        locale,
+        category: news.category,
+        slug: t?.slug,
+      }))
+    )
+    .filter((p) => p.slug); // только с валидным slug
 }
 
 export async function generateMetadata({ params }) {
