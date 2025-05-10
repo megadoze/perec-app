@@ -44,3 +44,4 @@ export default async function HomePage({ params }) {
 
   return <ClientHome initialNews={news} mainNews={mainNews} locale={locale} />;
 }
+export const revalidate = 300;
