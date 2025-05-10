@@ -54,7 +54,7 @@ export default function NewsContent({
         <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
           {t.title}
         </h1>
-        <p className="text-gray-500 font-light text-base mb-4">
+        <p className="text-gray-500 dark:text-gray-400 font-light text-base mb-4">
           {published[locale]}:{" "}
           <PublishedAt timestamp={data.publishedAt} locale={locale} />
         </p>

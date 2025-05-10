@@ -1,28 +1,8 @@
-// export const revalidate = 300; // например, 5 минут
-
 import { db, ref, get, child } from "@/lib/firebase";
 import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
-
-// export async function generateStaticParams() {
-//   const snapshot = await get(child(ref(db), "news"));
-//   const data = snapshot.exists() ? snapshot.val() : {};
-
-//   return Object.entries(data)
-//     .filter(([_, news]) => news.status === "published")
-//     .sort((a, b) => b[1].publishedAt - a[1].publishedAt)
-//     .slice(0, 30)
-//     .flatMap(([_, news]) =>
-//       Object.entries(news.translations || {}).map(([locale, t]) => ({
-//         locale,
-//         category: news.category,
-//         slug: t?.slug,
-//       }))
-//     )
-//     .filter((p) => p.slug); // только с валидным slug
-// }
 
 export async function generateMetadata({ params }) {
   const { slug, locale } = await params;
