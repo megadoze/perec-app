@@ -60,7 +60,9 @@ export default function PodcastPlayer() {
   return (
     <>
       <h1 className="text-3xl font-bold mb-2">{t("podcasts")}</h1>
-      <p className="text-lg text-gray-800 p-0 m-0">{description[locale]}</p>
+      <p className="text-lg text-gray-800 dark:text-gray-300 p-0 m-0">
+        {description[locale]}
+      </p>
 
       <div>
         {episodes.map((ep, i) => {
@@ -69,7 +71,7 @@ export default function PodcastPlayer() {
           return (
             <div
               key={i}
-              className="flex flex-col mt-6 bg-white rounded shadow-md p-4 items-start gap-2"
+              className="flex flex-col mt-6 bg-white dark:bg-gray-800/50 rounded shadow-md p-4 items-start gap-2"
             >
               <div className="flex gap-4">
                 {ep.image && (
@@ -80,11 +82,13 @@ export default function PodcastPlayer() {
                   />
                 )}
                 <div className="flex-1">
-                  <h3 className="text-2xl font-narrow font-bold">{ep.title}</h3>
+                  <h3 className="text-2xl font-narrow font-bold mt-0">
+                    {ep.title}
+                  </h3>
 
                   <div className="relative">
                     <p
-                      className={`text-lg font-light mt-2 text-gray-800 transition-all ${
+                      className={`text-lg font-light mt-2 text-gray-800 dark:text-gray-300 transition-all ${
                         isExpanded ? "" : "line-clamp-3 md:line-clamp-none"
                       }`}
                     >
@@ -125,7 +129,7 @@ export default function PodcastPlayer() {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="bg-gray-100 hover:bg-gray-100/80 text-sm px-4 py-2 rounded transition transform ease-in-out"
+            className="bg-gray-200 hover:bg-gray-100 text-gray-600 text-sm px-4 py-2 rounded transition transform ease-in-out"
           >
             {loading ? loadData[locale] : showMore[locale]}
           </button>
