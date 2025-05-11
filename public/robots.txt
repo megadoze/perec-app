@@ -1,8 +1,15 @@
 # *
 User-agent: *
-Allow: /
-Disallow: /admin
-Disallow: /api
+Disallow: /_next/
+Disallow: /static/
+Disallow: /api/
+Disallow: /fonts/
+Disallow: /*.woff$
+Disallow: /*.woff2$
+Disallow: /*.ttf$
+Disallow: /*.eot$
+Disallow: /*.otf$
+
 
 # Host
 Host: perec.news
