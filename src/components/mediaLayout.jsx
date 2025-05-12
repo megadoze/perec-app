@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import PublishedAt from "./publishedAt";
 
 function VideoWithIcon({ url }) {
   const videoRef = useRef(null);
@@ -93,15 +94,26 @@ export default function MediaLayout({ data, locale }) {
       .catch((err) => console.warn("Ошибка загрузки похожих:", err));
   }, [data._id, locale]);
 
+  const published = {
+    ru: "Опубликовано",
+    en: "Published",
+  };
+
   return (
     <div className="max-w-3xl mx-auto px-0 py-10">
-      <h1 className="text-3xl font-bold mb-4">{t.title || "Без заголовка"}</h1>
+      <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
+        {t.title || "Без заголовка"}
+      </h1>
 
-      <div className="mb-6 text-gray-500 text-sm">
+      {/* <div className="mb-6 text-gray-500 text-sm">
         {new Date(data.publishedAt).toLocaleDateString(locale)}
-      </div>
+      </div> */}
+      <p className="text-gray-500 dark:text-gray-400 font-light text-base mb-4">
+        {published[locale]}:{" "}
+        <PublishedAt timestamp={data.publishedAt} locale={locale} />
+      </p>
 
-      <div className="mb-6 flex justify-center">
+      <div className="mt-6 mb-6 flex justify-center">
         <div className="relative w-full mx-auto max-w-full sm:max-w-[360px]">
           {isVideo ? (
             <VideoWithIcon url={data.images[0]} />
@@ -117,7 +129,7 @@ export default function MediaLayout({ data, locale }) {
 
       {(t.subTitle || t.telegramText) && (
         <p
-          className="text-lg text-gray-200 mb-4"
+          className="text-xl font-light leading-relaxed text-gray-800 dark:text-gray-200 mb-4"
           dangerouslySetInnerHTML={{
             __html: t.telegramText,
           }}

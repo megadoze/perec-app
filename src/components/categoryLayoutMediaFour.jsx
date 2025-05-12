@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function CategoryLayoutMediaFour({
@@ -68,7 +69,7 @@ export default function CategoryLayoutMediaFour({
     };
 
     return (
-      <div className="relative w-full">
+      <div className="relative w-full brightness-90 hover:brightness-100">
         <video
           ref={videoRef}
           src={url}
@@ -100,8 +101,7 @@ export default function CategoryLayoutMediaFour({
           typeof imageUrl === "string" &&
           (imageUrl.includes(".mp4") || imageUrl.includes(".webm"));
         const title = item.translations?.[locale]?.title || "Без заголовка";
-        const subTitle = item.translations?.[locale]?.subTitle || "";
-        console.log(subTitle);
+        // const subTitle = item.translations?.[locale]?.subTitle || "";
 
         return (
           <div
@@ -122,7 +122,7 @@ export default function CategoryLayoutMediaFour({
               lg:[&:nth-child(4n)]:pr-0
             "
           >
-            <article className="space-y-2 relative ">
+            <article className="space-y-2 relative h-full aspect-[3/4] flex flex-col justify-between">
               {withPhoto && imageUrl && (
                 <>
                   {isVideo ? (
@@ -138,13 +138,11 @@ export default function CategoryLayoutMediaFour({
               )}
 
               <div className=" absolute bottom-4 left-4 right-4 z-0">
-                <h2
-                  className={`text-2xl font-narrow   ${
-                    theme === "dark" ? "text-white" : "text-gray-800"
-                  }`}
+                <Link
+                  href={`${locale}/media/${item.translations[locale].slug}`}
                 >
-                  {title}
-                </h2>
+                  <h2 className=" text-xl font-narrow text-white">{title}</h2>
+                </Link>
               </div>
               {/* {withText && (
                 <div className=" z-0">
