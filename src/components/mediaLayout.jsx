@@ -6,31 +6,31 @@ import PublishedAt from "./publishedAt";
 
 function VideoWithIcon({ url }) {
   const videoRef = useRef(null);
-  const previewRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showControls, setShowControls] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    // Определяем, мобилка ли
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-
-    const showPreview = () => {
-      previewRef.current.style.display = "flex";
-    };
-
-    const hidePreview = () => {
-      previewRef.current.style.display = "none";
-    };
+    if (!video) return;
 
     const handlePlay = () => {
-      hidePreview();
-      video.setAttribute("controls", "controls");
+      setIsPlaying(true);
+      if (!isMobile) setShowControls(true);
     };
 
     const handlePause = () => {
-      if (!video.ended) showPreview();
+      if (!video.ended) setIsPlaying(false);
     };
 
     const handleEnded = () => {
-      showPreview();
-      video.removeAttribute("controls");
+      setIsPlaying(false);
+      setShowControls(false);
       video.currentTime = 0;
     };
 
@@ -43,7 +43,7 @@ function VideoWithIcon({ url }) {
       video.removeEventListener("pause", handlePause);
       video.removeEventListener("ended", handleEnded);
     };
-  }, []);
+  }, [isMobile]);
 
   const handleOverlayClick = () => {
     const video = videoRef.current;
@@ -52,7 +52,6 @@ function VideoWithIcon({ url }) {
     if (video.paused || video.ended) {
       video.play().catch((err) => console.warn("play() error:", err));
     } else {
-      video.removeAttribute("controls");
       video.pause();
     }
   };
@@ -64,21 +63,99 @@ function VideoWithIcon({ url }) {
         src={url}
         muted
         playsInline
-        className="w-full rounded-md cursor-pointer"
+        controls={isMobile || showControls}
+        className="w-full rounded-md"
       />
-      <div
-        ref={previewRef}
-        onClick={handleOverlayClick}
-        className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
-        style={{ display: "flex" }}
-      >
-        <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
-          <span>▶</span>
+      {/* Кастомная кнопка ▶ только на десктопе и когда видео не играет */}
+      {!isMobile && !isPlaying && (
+        <div
+          onClick={handleOverlayClick}
+          className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent z-10"
+        >
+          <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
+            <span>▶</span>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
+
+// function VideoWithIcon({ url }) {
+//   const videoRef = useRef(null);
+//   const previewRef = useRef(null);
+
+//   useEffect(() => {
+//     const video = videoRef.current;
+
+//     const showPreview = () => {
+//       previewRef.current.style.display = "flex";
+//     };
+
+//     const hidePreview = () => {
+//       previewRef.current.style.display = "none";
+//     };
+
+//     const handlePlay = () => {
+//       hidePreview();
+//       video.setAttribute("controls", "controls");
+//     };
+
+//     const handlePause = () => {
+//       if (!video.ended) showPreview();
+//     };
+
+//     const handleEnded = () => {
+//       showPreview();
+//       video.removeAttribute("controls");
+//       video.currentTime = 0;
+//     };
+
+//     video.addEventListener("play", handlePlay);
+//     video.addEventListener("pause", handlePause);
+//     video.addEventListener("ended", handleEnded);
+
+//     return () => {
+//       video.removeEventListener("play", handlePlay);
+//       video.removeEventListener("pause", handlePause);
+//       video.removeEventListener("ended", handleEnded);
+//     };
+//   }, []);
+
+//   const handleOverlayClick = () => {
+//     const video = videoRef.current;
+//     if (!video) return;
+
+//     if (video.paused || video.ended) {
+//       video.play().catch((err) => console.warn("play() error:", err));
+//     } else {
+//       video.removeAttribute("controls");
+//       video.pause();
+//     }
+//   };
+
+//   return (
+//     <div className="relative w-full">
+//       <video
+//         ref={videoRef}
+//         src={url}
+//         muted
+//         playsInline
+//         className="w-full rounded-md cursor-pointer"
+//       />
+//       <div
+//         ref={previewRef}
+//         onClick={handleOverlayClick}
+//         className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
+//         style={{ display: "flex" }}
+//       >
+//         <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
+//           <span>▶</span>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 export default function MediaLayout({ data, locale }) {
   const t = data.translations?.[locale] ?? {};
