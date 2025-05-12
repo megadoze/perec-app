@@ -10,7 +10,8 @@
     "life": "Life spicy like chili",
     "culture": "Pop culture in pepper",
     "bezkupur": "Unfiltered news",
-    "podcasts": "Podcasts"
+    "podcasts": "Podcasts",
+    "media": "Spicy shot"
   },
   "categoryDescription": {
     "politics":
@@ -21,7 +22,8 @@
     "culture": "An ironic look at show business, cinema, fashion and internet trends",
     "bezkupur":
     "The most absurd, funny and unexpected headlines that are simply impossible not to discuss",
-    "podcasts": "The Daily podcast by The New York Times"
+    "podcasts": "The Daily podcast by The New York Times",
+    "media": "Funny and absurd photos, viral videos, memes, and broadcast highlights"
   },
   "ogSiteName": "PEREC.news - spicy news🔥",
   "footer": {

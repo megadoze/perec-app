@@ -7,6 +7,7 @@ import { useState, useMemo } from "react";
 import MainLayout from "./mainLayout";
 
 import dynamic from "next/dynamic";
+import CategoryLayoutMediaFour from "./categoryLayoutMediaFour";
 
 const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
   loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
@@ -80,14 +81,37 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
     [news, mainNewsIds]
   );
 
+  // const media = useMemo(
+  //   () =>
+  //     news
+  //       .filter(
+  //         (item) => item.category === "media" && !mainNewsIds.includes(item._id)
+  //       )
+  //       .slice(0, 4),
+  //   [news, mainNewsIds]
+  // );
+  const filterMedia = news.filter((i) => i.category === "media");
+  const media = Array(4).fill(filterMedia[0]);
+  console.log(media);
+
   return (
     <>
-      <MainLayout news={mainNews} bezkupur={bezkupur} locale={locale} theme={theme}/>
+      <MainLayout
+        news={mainNews}
+        bezkupur={bezkupur}
+        locale={locale}
+        theme={theme}
+      />
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6  text-red-600">
         <Link href={`/${locale}/politics`}>{t("politics")}</Link>
       </h2>
-      <CategoryLayoutFourH news={politics} withText locale={locale} theme={theme}/>
+      <CategoryLayoutFourH
+        news={politics}
+        withText
+        locale={locale}
+        theme={theme}
+      />
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/economics`}>{t("economics")}</Link>
@@ -103,13 +127,24 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/life`}>{t("life")}</Link>
       </h2>
-      <CategoryLayoutSix news={life} locale={locale} theme={theme}/>
+      <CategoryLayoutSix news={life} locale={locale} theme={theme} />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/culture`}>{t("culture")}</Link>
       </h2>
-      <CategoryLayoutSixV news={culture} locale={locale} theme={theme}/>
+      <CategoryLayoutSixV news={culture} locale={locale} theme={theme} />
+
+      {/* <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
+      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+        <Link href={`/${locale}/media`}>{t("media")}</Link>
+      </h2>
+      <CategoryLayoutMediaFour
+        news={media}
+        withPhoto
+        locale={locale}
+        theme={theme}
+      /> */}
     </>
   );
 }

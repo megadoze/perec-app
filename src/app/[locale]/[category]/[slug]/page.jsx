@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import NewsContent from "@/components/newsClient";
 import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
+import MediaLayout from "@/components/mediaLayout";
+
 
 export async function generateMetadata({ params }) {
   const { slug, locale } = await params;
@@ -76,6 +78,10 @@ export default async function NewsPage({ params }) {
 
   if (!data || data.status !== "published" || !data.translations?.[locale]) {
     return notFound();
+  }
+
+  if (data.category === "media") {
+    return <MediaLayout data={data} locale={locale} />;
   }
 
   const messages = await getMessages(locale);
