@@ -17,7 +17,7 @@ export async function getNewsBySlug(slug, locale = "ru") {
   const match = list.find((item) => {
     const translation = item.translations?.[locale];
     return (
-      item.category === "spicyshot" &&
+      item.category === "media" &&
       item.status === "published" &&
       translation?.slug === slug
     );

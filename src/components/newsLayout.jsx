@@ -53,7 +53,7 @@ export const NewsLayout = ({
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <div className="overflow-hidden mb-2">
             <Image
-              src={news?.images[0]}
+              src={news?.images[0].url || null}
               alt={t.title || ""}
               width={320}
               height={200}

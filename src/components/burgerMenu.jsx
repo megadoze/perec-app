@@ -134,6 +134,17 @@ export default function BurgerMenu() {
               >
                 {t("podcasts")}
               </Link>
+              <Link
+                href={`/${locale}/media`}
+                onClick={() => setOpened(false)}
+                className={
+                  category === "media"
+                    ? "underline underline-offset-[6px] decoration-red-500 decoration-2"
+                    : ""
+                }
+              >
+                {t("media")}
+              </Link>
             </nav>
 
             <div className="mt-10 text-lg">

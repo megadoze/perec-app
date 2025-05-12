@@ -63,7 +63,7 @@ export default function NewsContent({
           {data?.images && (
             <div className="relative w-full md:w-[320px] aspect-[3/2] md:float-right md:ml-4 mb-4 md:mb-2">
               <Image
-                src={data.images[0]}
+                src={data.images[0].url}
                 alt={t.title}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"

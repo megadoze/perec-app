@@ -72,8 +72,7 @@ export default async function CategoryPage({ params }) {
       return (
         item.status === "published" &&
         item.category === category &&
-        t?.title?.trim() &&
-        t?.content?.trim()
+        t?.title?.trim()
       );
     })
     .sort((a, b) => b.publishedAt - a.publishedAt);

@@ -5,7 +5,6 @@ import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
 import MediaLayout from "@/components/mediaLayout";
 
-
 export async function generateMetadata({ params }) {
   const { slug, locale } = await params;
 
@@ -36,7 +35,7 @@ export async function generateMetadata({ params }) {
   const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
   const image =
     Array.isArray(news?.images) && news.images.length > 0
-      ? news.images[0]
+      ? news.images[0].url
       : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
@@ -120,7 +119,7 @@ export default async function NewsPage({ params }) {
     headline: data.translations[locale].title,
     image: [
       Array.isArray(data.images) && data.images.length > 0
-        ? data.images[0]
+        ? data.images[0].url
         : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
     ],
     datePublished: new Date(data.createdAt).toISOString(),

@@ -16,9 +16,7 @@ export const getHomePageData = unstable_cache(
       .map(([id, item]) => ({ _id: id, ...item }))
       .filter((item) => {
         const t = item.translations?.[locale];
-        return (
-          item.status === "published" && t?.title?.trim() && t?.content?.trim()
-        );
+        return item.status === "published" && t?.title?.trim();
       })
       .sort((a, b) => b.publishedAt - a.publishedAt)
       .slice(0, 100);

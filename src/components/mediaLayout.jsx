@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import PublishedAt from "./publishedAt";
 
-function VideoWithIcon({ url }) {
+function VideoWithIcon({ url, posterUrl }) {
   const videoRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showControls, setShowControls] = useState(false);
@@ -61,6 +60,7 @@ function VideoWithIcon({ url }) {
       <video
         ref={videoRef}
         src={url}
+        poster={posterUrl}
         muted
         playsInline
         controls={isMobile || showControls}
@@ -81,96 +81,20 @@ function VideoWithIcon({ url }) {
   );
 }
 
-// function VideoWithIcon({ url }) {
-//   const videoRef = useRef(null);
-//   const previewRef = useRef(null);
-
-//   useEffect(() => {
-//     const video = videoRef.current;
-
-//     const showPreview = () => {
-//       previewRef.current.style.display = "flex";
-//     };
-
-//     const hidePreview = () => {
-//       previewRef.current.style.display = "none";
-//     };
-
-//     const handlePlay = () => {
-//       hidePreview();
-//       video.setAttribute("controls", "controls");
-//     };
-
-//     const handlePause = () => {
-//       if (!video.ended) showPreview();
-//     };
-
-//     const handleEnded = () => {
-//       showPreview();
-//       video.removeAttribute("controls");
-//       video.currentTime = 0;
-//     };
-
-//     video.addEventListener("play", handlePlay);
-//     video.addEventListener("pause", handlePause);
-//     video.addEventListener("ended", handleEnded);
-
-//     return () => {
-//       video.removeEventListener("play", handlePlay);
-//       video.removeEventListener("pause", handlePause);
-//       video.removeEventListener("ended", handleEnded);
-//     };
-//   }, []);
-
-//   const handleOverlayClick = () => {
-//     const video = videoRef.current;
-//     if (!video) return;
-
-//     if (video.paused || video.ended) {
-//       video.play().catch((err) => console.warn("play() error:", err));
-//     } else {
-//       video.removeAttribute("controls");
-//       video.pause();
-//     }
-//   };
-
-//   return (
-//     <div className="relative w-full">
-//       <video
-//         ref={videoRef}
-//         src={url}
-//         muted
-//         playsInline
-//         className="w-full rounded-md cursor-pointer"
-//       />
-//       <div
-//         ref={previewRef}
-//         onClick={handleOverlayClick}
-//         className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
-//         style={{ display: "flex" }}
-//       >
-//         <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
-//           <span>▶</span>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 export default function MediaLayout({ data, locale }) {
   const t = data.translations?.[locale] ?? {};
-  const [relatedMedia, setRelatedMedia] = useState([]);
+  // const [relatedMedia, setRelatedMedia] = useState([]);
 
-  const isVideo =
-    typeof data.images?.[0] === "string" &&
-    (data.images[0].includes(".mp4") || data.images[0].includes(".webm"));
+  const isVideo = data?.images[0].type === "video";
+  const imageUrl = data?.images[0].url || "";
+  const posterUrl = data?.images[0].poster || "";
 
-  useEffect(() => {
-    fetch("/api/media-related?id=" + data._id + "&locale=" + locale)
-      .then((res) => res.json())
-      .then((items) => setRelatedMedia(items))
-      .catch((err) => console.warn("Ошибка загрузки похожих:", err));
-  }, [data._id, locale]);
+  // useEffect(() => {
+  //   fetch("/api/media-related?id=" + data._id + "&locale=" + locale)
+  //     .then((res) => res.json())
+  //     .then((items) => setRelatedMedia(items))
+  //     .catch((err) => console.warn("Ошибка загрузки похожих:", err));
+  // }, [data._id, locale]);
 
   const published = {
     ru: "Опубликовано",
@@ -190,10 +114,10 @@ export default function MediaLayout({ data, locale }) {
       <div className="mt-6 mb-6 flex justify-center">
         <div className="relative w-full mx-auto max-w-full sm:max-w-[360px]">
           {isVideo ? (
-            <VideoWithIcon url={data.images[0]} />
+            <VideoWithIcon url={imageUrl} posterUrl={posterUrl} />
           ) : (
             <img
-              src={data.images?.[0]}
+              src={data.images?.[0].url}
               alt={t.title}
               className="rounded-lg w-full"
             />
@@ -215,7 +139,7 @@ export default function MediaLayout({ data, locale }) {
           {t.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs bg-zinc-100 dark:bg-gray-800 text-zinc-600 dark:text-zinc-300 px-2 py-1 rounded"
+              className="text-sm bg-zinc-100 dark:bg-gray-800 text-zinc-600 dark:text-zinc-300 px-2 py-1 rounded"
             >
               #{tag}
             </span>
@@ -223,7 +147,7 @@ export default function MediaLayout({ data, locale }) {
         </div>
       )}
 
-      {relatedMedia.length > 0 && (
+      {/* {relatedMedia.length > 0 && (
         <div className="mt-10">
           <h2 className="text-xl font-semibold mb-4">
             {locale === "ru" ? "Похожие материалы" : "Related media"}
@@ -261,7 +185,7 @@ export default function MediaLayout({ data, locale }) {
             })}
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

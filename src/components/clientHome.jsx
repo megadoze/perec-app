@@ -81,17 +81,20 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
     [news, mainNewsIds]
   );
 
-  // const media = useMemo(
-  //   () =>
-  //     news
-  //       .filter(
-  //         (item) => item.category === "media" && !mainNewsIds.includes(item._id)
-  //       )
-  //       .slice(0, 4),
-  //   [news, mainNewsIds]
-  // );
-  const filterMedia = news.filter((i) => i.category === "media");
-  const media = Array(4).fill(filterMedia[0]);
+  const media = useMemo(
+    () =>
+      news
+        .filter(
+          (item) => item.category === "media" && !mainNewsIds.includes(item._id)
+        )
+        .slice(0, 4),
+    [news, mainNewsIds]
+  );
+
+  // const filterMedia = news.filter((i) => i.category === "media");
+  // console.log(filterMedia);
+
+  // const media = Array(4).fill(filterMedia[0]);
   // console.log(media);
 
   return (
@@ -135,7 +138,7 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
       </h2>
       <CategoryLayoutSixV news={culture} locale={locale} theme={theme} />
 
-      {/* <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
+      <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/media`}>{t("media")}</Link>
       </h2>
@@ -144,7 +147,7 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
         withPhoto
         locale={locale}
         theme={theme}
-      /> */}
+      />
     </>
   );
 }

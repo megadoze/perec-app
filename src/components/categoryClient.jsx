@@ -5,13 +5,15 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CategoryLayoutFourH from "./categoryLayoutFourH";
 import CategoryLayoutSixV from "./categoryLayoutSixV";
+import CategoryLayoutMediaFour from "./categoryLayoutMediaFour";
 
 const PAGE_SIZE = 8; // Количество новостей за одну подгрузку
 
 export default function CategoryClient({ title, news, category, theme }) {
   const locale = useLocale();
   const initial = news.slice(0, 6); // первые 6
-  const extraAll = category === "bezkupur" ? news : news.slice(6);
+  const extraAll =
+    category === "bezkupur" || category === "media" ? news : news.slice(6);
 
   const [visibleCount, setVisibleCount] = useState(1); // сколько порций загружено
   const containerRef = useRef(null);
@@ -56,9 +58,11 @@ export default function CategoryClient({ title, news, category, theme }) {
 
       {news.length === 0 && <p>{emptyNewsTitle[locale]}</p>}
 
-      {initial.length > 0 && category !== "bezkupur" && (
-        <CategoryLayoutSixV news={initial} locale={locale} theme={theme} />
-      )}
+      {initial.length > 0 &&
+        category !== "bezkupur" &&
+        category !== "media" && (
+          <CategoryLayoutSixV news={initial} locale={locale} theme={theme} />
+        )}
 
       <AnimatePresence>
         {extraToShow.length > 0 && (
@@ -72,20 +76,29 @@ export default function CategoryClient({ title, news, category, theme }) {
           >
             <div
               className={
-                category !== "bezkupur"
+                category !== "bezkupur" && category !== "media"
                   ? "my-6 border-t border-neutral-200 dark:border-gray-800"
                   : ""
               }
-            ></div>
-            <CategoryLayoutFourH
-              news={extraToShow}
-              withText
-              withPhoto
-              locale={locale}
-              firstNewId={firstNewId}
-              firstItemRef={firstNewRef}
-              theme={theme}
             />
+            {category !== "media" ? (
+              <CategoryLayoutFourH
+                news={extraToShow}
+                withText
+                withPhoto
+                locale={locale}
+                firstNewId={firstNewId}
+                firstItemRef={firstNewRef}
+                theme={theme}
+              />
+            ) : (
+              <CategoryLayoutMediaFour
+                news={extraToShow}
+                withPhoto
+                locale={locale}
+                theme={theme}
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
