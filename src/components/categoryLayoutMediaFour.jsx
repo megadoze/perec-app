@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 export default function CategoryLayoutMediaFour({
   news,
   withPhoto,
-  withText,
-  lineClamp,
   locale,
   firstNewId,
   firstItemRef,
@@ -16,19 +14,22 @@ export default function CategoryLayoutMediaFour({
     en: "No news",
   };
 
-  function VideoWithIcon({ url }) {
+  function VideoWithIcon({ url, news }) {
     const videoRef = useRef(null);
     const previewRef = useRef(null);
+    const titleRef = useRef(null);
 
     useEffect(() => {
       const video = videoRef.current;
 
       const showPreview = () => {
         previewRef.current.style.display = "flex";
+        titleRef.current.style.display = "flex";
       };
 
       const hidePreview = () => {
         previewRef.current.style.display = "none";
+        titleRef.current.style.display = "none";
       };
 
       const handlePlay = () => {
@@ -69,25 +70,37 @@ export default function CategoryLayoutMediaFour({
     };
 
     return (
-      <div className="relative w-full brightness-90 hover:brightness-100">
-        <video
-          ref={videoRef}
-          src={url}
-          muted
-          playsInline
-          className="w-full rounded-md cursor-pointer"
-        />
-        <div
-          ref={previewRef}
-          onClick={handleOverlayClick}
-          className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
-          style={{ display: "flex" }}
-        >
-          <div className="bg-black bg-opacity-50 text-white rounded-full p-4 text-xl sm:text-2xl shadow-lg">
-            ▶
+      <>
+        <div className="relative w-full h-full aspect-[3/4]">
+          <video
+            ref={videoRef}
+            src={url}
+            muted
+            playsInline
+            className="w-full cursor-pointer"
+          />
+          <div
+            ref={previewRef}
+            onClick={handleOverlayClick}
+            className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
+            style={{ display: "flex" }}
+          >
+            <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
+              <span>▶</span>
+            </div>
+          </div>
+          <div
+            ref={titleRef}
+            className=" absolute bottom-0 left-4 right-4 bg-gray-900/30 p-2 rounded-sm "
+          >
+            <Link href={`${locale}/media/${news.translations[locale].slug}`}>
+              <h2 className=" text-xl font-narrow tracking-wide	 text-white ">
+                {news.translations[locale].title}
+              </h2>
+            </Link>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -126,7 +139,7 @@ export default function CategoryLayoutMediaFour({
               {withPhoto && imageUrl && (
                 <>
                   {isVideo ? (
-                    <VideoWithIcon url={imageUrl} />
+                    <VideoWithIcon url={imageUrl} news={item} />
                   ) : (
                     <img
                       src={imageUrl}
@@ -136,25 +149,6 @@ export default function CategoryLayoutMediaFour({
                   )}
                 </>
               )}
-
-              <div className=" absolute bottom-4 left-4 right-4 z-0">
-                <Link
-                  href={`${locale}/media/${item.translations[locale].slug}`}
-                >
-                  <h2 className=" text-xl font-narrow text-white">{title}</h2>
-                </Link>
-              </div>
-              {/* {withText && (
-                <div className=" z-0">
-                  <h2
-                    className={`text-base font-semibold ${
-                      theme === "dark" ? "text-white" : "text-gray-800"
-                    }`}
-                  >
-                    {title}
-                  </h2>
-                </div>
-              )} */}
             </article>
           </div>
         );

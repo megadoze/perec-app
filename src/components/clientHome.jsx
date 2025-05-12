@@ -92,7 +92,7 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
   // );
   const filterMedia = news.filter((i) => i.category === "media");
   const media = Array(4).fill(filterMedia[0]);
-  console.log(media);
+  // console.log(media);
 
   return (
     <>

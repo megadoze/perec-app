@@ -52,6 +52,7 @@ function VideoWithIcon({ url }) {
     if (video.paused || video.ended) {
       video.play().catch((err) => console.warn("play() error:", err));
     } else {
+      video.removeAttribute("controls");
       video.pause();
     }
   };
@@ -71,8 +72,8 @@ function VideoWithIcon({ url }) {
         className="absolute inset-0 flex items-center justify-center cursor-pointer bg-transparent"
         style={{ display: "flex" }}
       >
-        <div className="bg-black bg-opacity-50 text-white rounded-full p-4 text-xl sm:text-2xl shadow-lg">
-          ▶
+        <div className="flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full w-20 h-20 text-xl sm:text-2xl shadow-lg">
+          <span>▶</span>
         </div>
       </div>
     </div>
@@ -104,10 +105,6 @@ export default function MediaLayout({ data, locale }) {
       <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
         {t.title || "Без заголовка"}
       </h1>
-
-      {/* <div className="mb-6 text-gray-500 text-sm">
-        {new Date(data.publishedAt).toLocaleDateString(locale)}
-      </div> */}
       <p className="text-gray-500 dark:text-gray-400 font-light text-base mb-4">
         {published[locale]}:{" "}
         <PublishedAt timestamp={data.publishedAt} locale={locale} />

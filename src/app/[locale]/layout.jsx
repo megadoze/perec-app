@@ -19,7 +19,7 @@ const ptsansNarrow = PT_Sans_Narrow({
 
 const robotoCondensed = Roboto_Condensed({
   subsets: ["cyrillic", "latin"],
-  weight: ["300", "400", "700"],
+  weight: ["300", "400", "500", "700"],
   variable: "--font-roboto-condensed",
   display: "swap",
 });
