@@ -1,6 +1,4 @@
-# *
 User-agent: *
-Allow: /
 Disallow: /_next/
 Disallow: /static/
 Disallow: /api/
@@ -10,11 +8,9 @@ Disallow: /*.woff2$
 Disallow: /*.ttf$
 Disallow: /*.eot$
 Disallow: /*.otf$
+Allow: /
 
-# Host
 Host: perec.news
 
-# Sitemaps
 Sitemap: https://perec.news/sitemap.xml
 Sitemap: https://perec.news/sitemap-news.xml
-
