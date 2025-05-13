@@ -34,9 +34,10 @@ export async function generateMetadata({ params }) {
   const description = news.translations[locale].subTitle || subTitleDesc;
   const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
   const image =
-    Array.isArray(news?.images) && news.images.length > 0
-      ? news.images[0].url
-      : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+    news.images?.[0]?.type === "video"
+      ? news.images?.[0]?.poster
+      : news.images?.[0]?.url ||
+        "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return {
     title,
@@ -118,9 +119,10 @@ export default async function NewsPage({ params }) {
     "@type": "NewsArticle",
     headline: data.translations[locale].title,
     image: [
-      Array.isArray(data.images) && data.images.length > 0
-        ? data.images[0].url
-        : "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
+      news.images?.[0]?.type === "video"
+        ? news.images?.[0]?.poster
+        : news.images?.[0]?.url ||
+          "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
     ],
     datePublished: new Date(data.createdAt).toISOString(),
     dateModified: new Date(data.updatedAt || data.createdAt).toISOString(),

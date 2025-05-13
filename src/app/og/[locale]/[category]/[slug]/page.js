@@ -23,9 +23,10 @@ export default async function OGPage({ params }) {
     t.subTitle ||
     "Острая, сатирическая и немного странная новость от PEREC.news";
   const image =
-    news.ogImage || // рекомендуемое поле без `token=`
-    news.images?.[0].url ||
-    "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
+    news.images?.[0]?.type === "video"
+      ? news.images?.[0]?.poster
+      : news.images?.[0]?.url ||
+        "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media";
 
   return (
     <html lang={locale}>
