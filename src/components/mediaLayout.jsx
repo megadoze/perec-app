@@ -111,9 +111,17 @@ export default function MediaLayout({ data, locale }) {
         <PublishedAt timestamp={data.publishedAt} locale={locale} />
       </p>
 
-      <div className=" flex flex-col md:flex-row gap-6 mt-6 mb-6">
+      <div className=" flex flex-col md:flex-row gap-6 mt-8 mb-6">
         <div className="order-2 md:order-1 flex-1">
-          {(t.subTitle || t.telegramText) && (
+          {t.subTitle && (
+            <p
+              className="text-2xl font-narrow  text-gray-800 dark:text-gray-200 mb-4 mt-0 md:-mt-2 "
+              dangerouslySetInnerHTML={{
+                __html: t.subTitle,
+              }}
+            />
+          )}
+          {t.telegramText && (
             <p
               className="text-xl font-light leading-relaxed text-gray-800 dark:text-gray-200 mb-4 mt-0"
               dangerouslySetInnerHTML={{
