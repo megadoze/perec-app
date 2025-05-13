@@ -64,7 +64,7 @@ function VideoWithIcon({ url, posterUrl }) {
         muted
         playsInline
         controls={isMobile || showControls}
-        className="w-full rounded-md"
+        className="w-full cursor-pointer aspect-[9/16] max-h-[600px] object-cover"
       />
       {/* Кастомная кнопка ▶ только на десктопе и когда видео не играет */}
       {!isMobile && !isPlaying && (
@@ -106,26 +106,49 @@ export default function MediaLayout({ data, locale }) {
       <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
         {t.title || "Без заголовка"}
       </h1>
-      <p className="text-gray-500 dark:text-gray-400 font-light text-base mb-4">
+      <p className="text-gray-500 dark:text-gray-400 font-light text-base">
         {published[locale]}:{" "}
         <PublishedAt timestamp={data.publishedAt} locale={locale} />
       </p>
 
-      <div className="mt-6 mb-6 flex justify-center">
-        <div className="relative w-full mx-auto max-w-full sm:max-w-[360px]">
+      <div className=" flex flex-col md:flex-row gap-6 mt-6 mb-6">
+        <div className="order-2 md:order-1 flex-1">
+          {(t.subTitle || t.telegramText) && (
+            <p
+              className="text-xl font-light leading-relaxed text-gray-800 dark:text-gray-200 mb-4 mt-0"
+              dangerouslySetInnerHTML={{
+                __html: t.telegramText,
+              }}
+            />
+          )}
+
+          {Array.isArray(t.tags) && t.tags.length > 0 && (
+            <div className="mt-6 flex flex-wrap gap-2">
+              {t.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="text-sm bg-zinc-100 dark:bg-gray-800 text-zinc-600 dark:text-zinc-300 px-2 py-1 rounded"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="order-1 md:order-2 relative w-full mx-auto max-w-full sm:max-w-[400px]">
           {isVideo ? (
             <VideoWithIcon url={imageUrl} posterUrl={posterUrl} />
           ) : (
             <img
               src={data.images?.[0].url}
               alt={t.title}
-              className="rounded-lg w-full"
+              className="w-full aspect-[9/16] max-h-[600px] object-cover"
             />
           )}
         </div>
       </div>
 
-      {(t.subTitle || t.telegramText) && (
+      {/* {(t.subTitle || t.telegramText) && (
         <p
           className="text-xl font-light leading-relaxed text-gray-800 dark:text-gray-200 mb-4"
           dangerouslySetInnerHTML={{
@@ -145,7 +168,7 @@ export default function MediaLayout({ data, locale }) {
             </span>
           ))}
         </div>
-      )}
+      )} */}
 
       {/* {relatedMedia.length > 0 && (
         <div className="mt-10">

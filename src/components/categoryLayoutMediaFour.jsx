@@ -148,7 +148,11 @@ export default function CategoryLayoutMediaFour({
                       posterUrl={posterUrl}
                     />
                   ) : (
-                    <img src={imageUrl} alt={title} className="w-full h-[500px] object-cover" />
+                    <img
+                      src={imageUrl}
+                      alt={title}
+                      className="w-full h-[500px] object-cover"
+                    />
                   )}
                 </>
               )}
