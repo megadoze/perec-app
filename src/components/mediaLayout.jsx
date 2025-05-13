@@ -102,7 +102,7 @@ export default function MediaLayout({ data, locale }) {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-0 py-10">
+    <article className="max-w-3xl h-fit mx-auto">
       <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
         {t.title || "Без заголовка"}
       </h1>
@@ -209,6 +209,6 @@ export default function MediaLayout({ data, locale }) {
           </div>
         </div>
       )} */}
-    </div>
+    </article>
   );
 }
