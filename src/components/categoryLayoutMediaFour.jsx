@@ -78,7 +78,7 @@ export default function CategoryLayoutMediaFour({
     };
 
     return (
-      <div className="relative w-full ">
+      <div className="relative w-full">
         <video
           ref={videoRef}
           src={imageUrl}
@@ -86,7 +86,7 @@ export default function CategoryLayoutMediaFour({
           muted
           playsInline
           controls={isMobile} // ✅ на мобилке controls по умолчанию, без кастома
-          className="w-full cursor-pointer"
+          className="w-full cursor-pointer h-[500px] object-cover"
         />
 
         {/* ✅ Кастомный контрол — только если НЕ мобилка */}
@@ -148,7 +148,7 @@ export default function CategoryLayoutMediaFour({
                       posterUrl={posterUrl}
                     />
                   ) : (
-                    <img src={imageUrl} alt={title} className="w-full" />
+                    <img src={imageUrl} alt={title} className="w-full h-[500px] object-cover" />
                   )}
                 </>
               )}
