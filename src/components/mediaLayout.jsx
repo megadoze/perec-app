@@ -143,7 +143,7 @@ export default function MediaLayout({ data, locale }) {
             </div>
           )}
         </div>
-        <div className="order-1 md:order-2 relative w-full mx-auto max-w-full sm:max-w-[400px]">
+        <div className="order-1 md:order-2 relative w-full mx-auto md:max-w-[400px]">
           {isVideo ? (
             <VideoWithIcon url={imageUrl} posterUrl={posterUrl} />
           ) : (
