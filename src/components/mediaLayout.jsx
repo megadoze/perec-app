@@ -64,7 +64,7 @@ function VideoWithIcon({ url, posterUrl }) {
         muted
         playsInline
         controls={isMobile || showControls}
-        className="w-full cursor-pointer aspect-[9/16] max-h-[600px] object-cover"
+        className="w-full cursor-pointer aspect-[9/16] md:max-h-[600px] object-cover"
       />
       {/* Кастомная кнопка ▶ только на десктопе и когда видео не играет */}
       {!isMobile && !isPlaying && (
@@ -150,7 +150,7 @@ export default function MediaLayout({ data, locale }) {
             <img
               src={data.images?.[0].url}
               alt={t.title}
-              className="w-full aspect-[9/16] max-h-[600px] object-cover"
+              className="w-full aspect-[9/16] md:max-h-[600px] object-cover"
             />
           )}
         </div>
