@@ -30,8 +30,11 @@ export async function generateMetadata({ params }) {
     return { title: emptyNews[locale] };
   }
 
-  const title = news.translations[locale].title;
-  const description = news.translations[locale].subTitle || subTitleDesc;
+  const t = news.translations?.[locale];
+  if (!t) return { title: emptyNews[locale] };
+
+  const title = t.seoTitle || t.title;
+  const description = t.seoDescription || t.subTitle;
   const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
   const image =
     news.images?.[0]?.type === "video"
@@ -46,7 +49,7 @@ export async function generateMetadata({ params }) {
       title,
       description,
       url,
-      siteName: siteName,
+      siteName: siteName || "PEREC NEWS",
       type: "article",
       images: [
         {
@@ -117,7 +120,8 @@ export default async function NewsPage({ params }) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
-    headline: data.translations[locale].title,
+    headline:
+      data.translations[locale].seoTitle || data.translations[locale].title,
     image: [
       news.images?.[0]?.type === "video"
         ? news.images?.[0]?.poster
