@@ -91,14 +91,13 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
     [news, mainNewsIds]
   );
 
-  // const filterMedia = news.filter((i) => i.category === "media");
-  // console.log(filterMedia);
-
-  // const media = Array(4).fill(filterMedia[0]);
-  // console.log(media);
-
   return (
     <>
+      <h1 className="sr-only">
+        {locale === "ru"
+          ? "Острые новости, мемы, ирония и безжалостная правда — Perec.news приправляет инфополе"
+          : "Spicy news, memes, irony, and merciless truth — Perec.news seasons your feed"}
+      </h1>
       <MainLayout
         news={mainNews}
         bezkupur={bezkupur}
