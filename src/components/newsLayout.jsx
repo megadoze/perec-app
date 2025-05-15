@@ -52,15 +52,16 @@ export const NewsLayout = ({
       {withPhoto && news?.images && (
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <div className="overflow-hidden mb-2">
-            <Image
+            <img
               // src={news?.images[0].url || null}
               src={`/api/image?path=${encodeURIComponent(news?.images[0].url)}`}
               alt={t.title || ""}
               width={320}
               height={240}
+              loading="eager"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-              priority={priority}
-              loading={priority ? "eager" : "lazy"}
+              // priority={priority}
+              // loading={priority ? "eager" : "lazy"}
               className={`${
                 main
                   ? "h-64 md:h-56 lg:min-h-60 xl:h-80"
@@ -72,8 +73,8 @@ export const NewsLayout = ({
                         : " h-64 md:h-56 lg:h-36 xl:h-52"
                     } `
               } w-full object-cover hover:opacity-90`}
-              placeholder="blur"
-              blurDataURL={blurDataURL}
+              // placeholder="blur"
+              // blurDataURL={blurDataURL}
             />
           </div>
         </Link>
