@@ -63,7 +63,7 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
             </div>
           ))}
         </div>
-        <PodcastBlock />
+        {/* <PodcastBlock /> */}
         <div className=" mt-6">
           <TelegramBanner />
         </div>

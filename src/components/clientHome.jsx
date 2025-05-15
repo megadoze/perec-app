@@ -5,9 +5,7 @@ import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import MainLayout from "./mainLayout";
-
 import dynamic from "next/dynamic";
-import CategoryLayoutMediaFour from "./categoryLayoutMediaFour";
 
 const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
   loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
@@ -23,6 +21,14 @@ const CategoryLayoutSix = dynamic(() => import("./categoryLayoutSix"), {
   loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
   ssr: false,
 });
+
+const CategoryLayoutMediaFour = dynamic(
+  () => import("./categoryLayoutMediaFour"),
+  {
+    loading: () => <p className="text-sm text-neutral-400">Loading...</p>,
+    ssr: false,
+  }
+);
 
 export default function ClientHome({ initialNews, mainNews, theme }) {
   const locale = useLocale();
