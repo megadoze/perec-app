@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 
-import { headers } from "next/headers";
+// import { headers } from "next/headers";
 
 import { blackout2am } from "@/fonts/blackout";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
@@ -9,6 +9,19 @@ import { notFound } from "next/navigation";
 import ThemeInitializer from "@/components/themeInitializer";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+// RU
+import commonRu from "@/lang/ru/common.json";
+import aboutRu from "@/lang/ru/about.json";
+import adsRu from "@/lang/ru/ads.json";
+import contactsRu from "@/lang/ru/contacts.json";
+import authorsRu from "@/lang/ru/authors.json";
+
+// EN
+import commonEn from "@/lang/en/common.json";
+import aboutEn from "@/lang/en/about.json";
+import adsEn from "@/lang/en/ads.json";
+import contactsEn from "@/lang/en/contacts.json";
+import authorsEn from "@/lang/en/authors.json";
 
 const ptsansNarrow = PT_Sans_Narrow({
   subsets: ["latin", "cyrillic"],
@@ -45,40 +58,46 @@ export default async function LocaleLayout({ children, params }) {
   if (!locales.includes(locale)) notFound();
 
   // ✅ Надёжно получаем тему из cookie-заголовка
-  const header = await headers();
-  const cookieHeader = header.get("cookie") || "";
-  const themeMatch = cookieHeader.match(/theme=(dark|light)/);
-  let theme;
-  if (themeMatch?.[1]) {
-    theme = themeMatch[1];
-  } else {
-    const now = new Date();
-    const utcHour = now.getUTCHours();
-    const localHour = (utcHour + 2) % 24; // Испания
-    const isNight = localHour >= 20 || localHour < 7;
-    theme = isNight ? "dark" : "light";
-  }
+  // const header = await headers();
+  // const cookieHeader = header.get("cookie") || "";
+  // const themeMatch = cookieHeader.match(/theme=(dark|light)/);
+  // let theme;
+  // if (themeMatch?.[1]) {
+  //   theme = themeMatch[1];
+  // } else {
+  //   const now = new Date();
+  //   const utcHour = now.getUTCHours();
+  //   const localHour = (utcHour + 2) % 24; // Испания
+  //   const isNight = localHour >= 20 || localHour < 7;
+  //   theme = isNight ? "dark" : "light";
+  // }
 
-  const common = (await import(`@/lang/${locale}/common.json`)).default;
-  const about = (await import(`@/lang/${locale}/about.json`)).default;
-  const ads = (await import(`@/lang/${locale}/ads.json`)).default;
-  const contacts = (await import(`@/lang/${locale}/contacts.json`)).default;
-  const authors = (await import(`@/lang/${locale}/authors.json`)).default;
+  // const common = (await import(`@/lang/${locale}/common.json`)).default;
+  // const about = (await import(`@/lang/${locale}/about.json`)).default;
+  // const ads = (await import(`@/lang/${locale}/ads.json`)).default;
+  // const contacts = (await import(`@/lang/${locale}/contacts.json`)).default;
+  // const authors = (await import(`@/lang/${locale}/authors.json`)).default;
 
-  const messages = {
-    ...common,
-    ...about,
-    ...ads,
-    ...contacts,
-    ...authors,
-  };
+  // const messages = {
+  //   ...common,
+  //   ...about,
+  //   ...ads,
+  //   ...contacts,
+  //   ...authors,
+  // };
+
+  const messages =
+    locale === "ru"
+      ? { ...commonRu, ...aboutRu, ...adsRu, ...contactsRu, ...authorsRu }
+      : { ...commonEn, ...aboutEn, ...adsEn, ...contactsEn, ...authorsEn };
 
   return (
     <html
       lang={locale}
-      className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
-        ptsansNarrow.variable
-      } ${robotoCondensed.variable} min-h-screen flex flex-col`}
+      // className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
+      //   ptsansNarrow.variable
+      // } ${robotoCondensed.variable} min-h-screen flex flex-col`}
+      className={` ${blackout2am.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>
         <base href="/" />
@@ -94,7 +113,7 @@ export default async function LocaleLayout({ children, params }) {
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="canonical" href={`https://perec.news/${locale}`} />
       </head>
-      <body className="bg-white text-black dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen">
+      <body className=" bg-white text-black dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <ThemeInitializer />
