@@ -3,6 +3,7 @@
 import Link from "next/link";
 // import Image from "next/image";
 import { useTranslations } from "next-intl";
+import Head from "next/head";
 
 export const NewsLayout = ({
   news,
@@ -33,7 +34,10 @@ export const NewsLayout = ({
     3: "line-clamp-3",
   };
 
-  const t = news.translations[locale] || {};
+  const t = news.translations[locale];
+  const imageUrl = news?.images?.[0]?.url || "";
+  const proxiedUrl = `/api/image?path=${encodeURIComponent(imageUrl)}`;
+  
   if (!t) return null;
 
   // function removeStrongTags(html) {
@@ -49,6 +53,17 @@ export const NewsLayout = ({
 
   return (
     <>
+      {/* ✅ Добавляем прелоад, если это главная новость */}
+      {main && imageUrl && (
+        <Head>
+          <link
+            rel="preload"
+            as="image"
+            href={proxiedUrl}
+            fetchpriority="high"
+          />
+        </Head>
+      )}
       {withPhoto && news?.images && (
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <img

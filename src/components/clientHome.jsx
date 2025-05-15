@@ -63,15 +63,15 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
     [news, mainNewsIds]
   );
 
-  // const media = useMemo(
-  //   () =>
-  //     news
-  //       .filter(
-  //         (item) => item.category === "media" && !mainNewsIds.includes(item._id)
-  //       )
-  //       .slice(0, 4),
-  //   [news, mainNewsIds]
-  // );
+  const media = useMemo(
+    () =>
+      news
+        .filter(
+          (item) => item.category === "media" && !mainNewsIds.includes(item._id)
+        )
+        .slice(0, 4),
+    [news, mainNewsIds]
+  );
 
   return (
     <>
@@ -130,14 +130,14 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
         props={{ news: culture, locale, theme }}
       />
 
-      {/* <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
+      <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/media`}>{t("media")}</Link>
       </h2>
       <LazyCategorySection
         importComponent={() => import("./categoryLayoutMediaFour")}
         props={{ news: media, withPhoto: true, locale, theme }}
-      /> */}
+      />
     </>
   );
 }
