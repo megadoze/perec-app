@@ -3,7 +3,7 @@
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import BurgerMenu from "./burgerMenu";
-import ThemeToggle from "./themeToggle";
+// import ThemeToggle from "./themeToggle";
 
 export default function Header() {
   const locale = useLocale();
@@ -19,7 +19,7 @@ export default function Header() {
         PEREC
       </Link>
       <div className=" flex items-center gap-10">
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
         <BurgerMenu />
       </div>
     </header>
