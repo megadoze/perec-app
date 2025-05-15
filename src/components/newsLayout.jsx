@@ -35,6 +35,7 @@ export const NewsLayout = ({
   };
 
   const t = news.translations[locale];
+
   const imageUrl = news?.images?.[0]?.url || "";
   const proxiedUrl = `/api/image?path=${encodeURIComponent(imageUrl)}`;
 
@@ -56,18 +57,13 @@ export const NewsLayout = ({
       {/* ✅ Добавляем прелоад, если это главная новость */}
       {main && imageUrl && (
         <Head>
-          <link
-            rel="preload"
-            as="image"
-            href={proxiedUrl}
-            fetchpriority="high"
-          />
+          <link rel="preload" as="image" href={imageUrl} fetchpriority="high" />
         </Head>
       )}
       {withPhoto && news?.images && (
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <img
-            src={news?.images[0].url || null}
+            src={imageUrl}
             // src={`/api/image?path=${encodeURIComponent(news?.images[0].url)}`}
             alt={t.title || ""}
             width={320}

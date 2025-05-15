@@ -77,11 +77,5 @@ export default async function HomePage({ params }) {
         theme={null}
       />
     </>
-    // <ClientHome
-    //   initialNews={news}
-    //   mainNews={mainNews}
-    //   locale={locale}
-    //   theme={theme}
-    // />
   );
 }
