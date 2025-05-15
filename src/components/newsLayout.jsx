@@ -37,7 +37,7 @@ export const NewsLayout = ({
   const t = news.translations[locale];
 
   const imageUrl = news?.images?.[0]?.url || "";
-  const proxiedUrl = `/api/image?path=${encodeURIComponent(imageUrl)}`;
+  // const proxiedUrl = `/api/image?path=${encodeURIComponent(imageUrl)}`;
 
   if (!t) return null;
 
@@ -74,9 +74,8 @@ export const NewsLayout = ({
             width={320}
             height={240}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-            // fetchPriority="high"
-            // loading="eager"
-            // decoding="async"
+            fetchPriority="high"
+            decoding="async"
             priority={priority}
             loading={priority ? "eager" : "lazy"}
             className={`${

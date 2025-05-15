@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
+import MainLayout from "@/components/mainLayout";
 import { getHomePageData } from "@/lib/getHomePageData";
 import { cookies } from "next/headers";
 
@@ -54,9 +55,26 @@ export default async function HomePage({ params }) {
       : fallbackTheme;
 
   const { news, mainNews } = await getHomePageData(locale);
+  const bezkupur = news.filter((i) => i.category === "bezkupur").slice(0, 2);
+
+  const preloadImage = mainNews?.[2]?.images?.[0]?.url;
 
   return (
     <>
+      {preloadImage && (
+        <link
+          rel="preload"
+          as="image"
+          href={preloadImage}
+          fetchPriority="high"
+        />
+      )}
+      <MainLayout
+        news={mainNews}
+        bezkupur={bezkupur}
+        locale={locale}
+        theme={theme}
+      />
       <ClientHome
         initialNews={news}
         mainNews={mainNews}

@@ -63,7 +63,7 @@ export default async function LocaleLayout({ children, params }) {
   const themeMatch = cookieHeader.match(/theme=(dark|light)/);
 
   let theme;
-  
+
   if (themeMatch?.[1]) {
     theme = themeMatch[1];
   } else {
@@ -73,20 +73,6 @@ export default async function LocaleLayout({ children, params }) {
     const isNight = localHour >= 20 || localHour < 7;
     theme = isNight ? "dark" : "light";
   }
-
-  // const common = (await import(`@/lang/${locale}/common.json`)).default;
-  // const about = (await import(`@/lang/${locale}/about.json`)).default;
-  // const ads = (await import(`@/lang/${locale}/ads.json`)).default;
-  // const contacts = (await import(`@/lang/${locale}/contacts.json`)).default;
-  // const authors = (await import(`@/lang/${locale}/authors.json`)).default;
-
-  // const messages = {
-  //   ...common,
-  //   ...about,
-  //   ...ads,
-  //   ...contacts,
-  //   ...authors,
-  // };
 
   const messages =
     locale === "ru"
