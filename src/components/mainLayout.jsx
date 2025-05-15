@@ -22,7 +22,7 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
       </div>
 
       {/* Главная новость */}
-      <div className="order-1 sm:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80  dark:border-gray-800  dark:bg-gray-800/60 px-4 md:px-0 -mx-4 md:-mx-0 pt-4 ">
+      <div className="order-1 sm:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80  dark:border-gray-800  dark:bg-gray-800/60 px-4 md:px-0 -mx-4 md:-mx-0 pt-4">
         {col2 && (
           <NewsLayout
             news={col2}
