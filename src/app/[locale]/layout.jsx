@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 
-// import { headers } from "next/headers";
+import { headers } from "next/headers";
 
 import { blackout2am } from "@/fonts/blackout";
 import { PT_Sans_Narrow, Roboto_Condensed } from "next/font/google";
@@ -58,19 +58,19 @@ export default async function LocaleLayout({ children, params }) {
   if (!locales.includes(locale)) notFound();
 
   // ✅ Надёжно получаем тему из cookie-заголовка
-  // const header = await headers();
-  // const cookieHeader = header.get("cookie") || "";
-  // const themeMatch = cookieHeader.match(/theme=(dark|light)/);
-  // let theme;
-  // if (themeMatch?.[1]) {
-  //   theme = themeMatch[1];
-  // } else {
-  //   const now = new Date();
-  //   const utcHour = now.getUTCHours();
-  //   const localHour = (utcHour + 2) % 24; // Испания
-  //   const isNight = localHour >= 20 || localHour < 7;
-  //   theme = isNight ? "dark" : "light";
-  // }
+  const header = await headers();
+  const cookieHeader = header.get("cookie") || "";
+  const themeMatch = cookieHeader.match(/theme=(dark|light)/);
+  let theme;
+  if (themeMatch?.[1]) {
+    theme = themeMatch[1];
+  } else {
+    const now = new Date();
+    const utcHour = now.getUTCHours();
+    const localHour = (utcHour + 2) % 24; // Испания
+    const isNight = localHour >= 20 || localHour < 7;
+    theme = isNight ? "dark" : "light";
+  }
 
   // const common = (await import(`@/lang/${locale}/common.json`)).default;
   // const about = (await import(`@/lang/${locale}/about.json`)).default;
@@ -94,10 +94,9 @@ export default async function LocaleLayout({ children, params }) {
   return (
     <html
       lang={locale}
-      // className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
-      //   ptsansNarrow.variable
-      // } ${robotoCondensed.variable} min-h-screen flex flex-col`}
-      className={` ${blackout2am.variable} ${ptsansNarrow.variable} ${robotoCondensed.variable} min-h-screen flex flex-col`}
+      className={`${theme === "dark" ? "dark" : ""} ${blackout2am.variable} ${
+        ptsansNarrow.variable
+      } ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <head>
         <base href="/" />
