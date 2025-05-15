@@ -4,10 +4,15 @@ import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useState, useMemo } from "react";
-import MainLayout from "./mainLayout";
+// import MainLayout from "./mainLayout";
 import LazyCategorySection from "@/components/lazyCategorySection";
 
-export default function ClientHome({ initialNews, mainNews, theme }) {
+export default function ClientHome({
+  initialNews,
+  mainNews,
+  theme,
+  MainSection,
+}) {
   const locale = useLocale();
   const [news] = useState(initialNews);
 
@@ -58,10 +63,10 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
     [news, mainNewsIds]
   );
 
-  const bezkupur = useMemo(
-    () => news.filter((item) => item.category === "bezkupur").slice(0, 2),
-    [news, mainNewsIds]
-  );
+  // const bezkupur = useMemo(
+  //   () => news.filter((item) => item.category === "bezkupur").slice(0, 2),
+  //   [news, mainNewsIds]
+  // );
 
   const media = useMemo(
     () =>
@@ -81,12 +86,13 @@ export default function ClientHome({ initialNews, mainNews, theme }) {
           : "Spicy news, memes, irony, and merciless truth — Perec.news seasons your feed"}
       </h1>
 
-      <MainLayout
+      {/* <MainLayout
         news={mainNews}
         bezkupur={bezkupur}
         locale={locale}
         theme={theme}
-      />
+      /> */}
+      {MainSection}
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
       <h2 className="font-narrow text-2xl pb-6  text-red-600">

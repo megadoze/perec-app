@@ -37,7 +37,7 @@ export const NewsLayout = ({
   const t = news.translations[locale];
   const imageUrl = news?.images?.[0]?.url || "";
   const proxiedUrl = `/api/image?path=${encodeURIComponent(imageUrl)}`;
-  
+
   if (!t) return null;
 
   // function removeStrongTags(html) {
@@ -67,8 +67,8 @@ export const NewsLayout = ({
       {withPhoto && news?.images && (
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
           <img
-            // src={news?.images[0].url || null}
-            src={`/api/image?path=${encodeURIComponent(news?.images[0].url)}`}
+            src={news?.images[0].url || null}
+            // src={`/api/image?path=${encodeURIComponent(news?.images[0].url)}`}
             alt={t.title || ""}
             width={320}
             height={240}

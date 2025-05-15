@@ -1,7 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
+import MainSection from "@/components/mainSection";
 import { getHomePageData } from "@/lib/getHomePageData";
 import { cookies } from "next/headers";
+
+export const dynamic = "force-static";
+export const revalidate = 300;
 
 export async function generateMetadata({ params }) {
   const { locale } = await params;
@@ -53,14 +57,30 @@ export default async function HomePage({ params }) {
   // console.log("🟡 Главная пересобирается:", Date.now());
 
   const { news, mainNews } = await getHomePageData(locale);
+  const bezkupur = news
+    .filter((item) => item.category === "bezkupur")
+    .slice(0, 2);
 
   return (
     <ClientHome
       initialNews={news}
       mainNews={mainNews}
-      locale={locale}
       theme={theme}
+      // ⬇️ передаём MainSection как готовый серверный компонент
+      MainSection={
+        <MainSection
+          mainNews={mainNews}
+          bezkupur={bezkupur}
+          locale={locale}
+          theme={theme}
+        />
+      }
     />
+    // <ClientHome
+    //   initialNews={news}
+    //   mainNews={mainNews}
+    //   locale={locale}
+    //   theme={theme}
+    // />
   );
 }
-export const revalidate = 300;

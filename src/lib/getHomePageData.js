@@ -19,7 +19,7 @@ export const getHomePageData = unstable_cache(
         return item.status === "published" && t?.title?.trim();
       })
       .sort((a, b) => b.publishedAt - a.publishedAt)
-      .slice(0, 30);
+      .slice(0, 100);
 
     const mainNews = Object.entries(mainData)
       .map(([id, item]) => ({ _id: id, ...item }))
