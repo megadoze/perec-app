@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
-import MainSection from "@/components/mainSection";
+// import MainSection from "@/components/mainSection";
+import MainLayout from "@/components/mainLayout";
 import { getHomePageData } from "@/lib/getHomePageData";
 import { cookies } from "next/headers";
 
@@ -62,20 +63,20 @@ export default async function HomePage({ params }) {
     .slice(0, 2);
 
   return (
-    <ClientHome
-      initialNews={news}
-      mainNews={mainNews}
-      theme={theme}
-      // ⬇️ передаём MainSection как готовый серверный компонент
-      MainSection={
-        <MainSection
-          mainNews={mainNews}
-          bezkupur={bezkupur}
-          locale={locale}
-          theme={theme}
-        />
-      }
-    />
+    <>
+      <MainLayout
+        news={mainNews}
+        bezkupur={bezkupur}
+        locale={locale}
+        theme={null}
+      />
+      <ClientHome
+        initialNews={news}
+        mainNews={mainNews}
+        locale={locale}
+        theme={null}
+      />
+    </>
     // <ClientHome
     //   initialNews={news}
     //   mainNews={mainNews}
