@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-// import Image from "next/image";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Head from "next/head";
+// import Head from "next/head";
 
 export const NewsLayout = ({
   news,
@@ -12,7 +12,7 @@ export const NewsLayout = ({
   withText,
   maincat,
   culture,
-  // priority = false,
+  priority = false,
   line = 2,
   locale,
   theme,
@@ -45,17 +45,17 @@ export const NewsLayout = ({
   //   return html.replace(/<\/?strong>/gi, "");
   // }
 
-  // const svg =
-  //   theme === "dark"
-  //     ? `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(31,41,55,0.4)" /></svg>`
-  //     : `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(228,228,228,0.4)" /></svg>`;
-  // const base64 = Buffer.from(svg).toString("base64");
-  // const blurDataURL = `data:image/svg+xml;base64,${base64}`;
+  const svg =
+    theme === "dark"
+      ? `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(31,41,55,0.4)" /></svg>`
+      : `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(228,228,228,0.4)" /></svg>`;
+  const base64 = Buffer.from(svg).toString("base64");
+  const blurDataURL = `data:image/svg+xml;base64,${base64}`;
 
   return (
     <>
       {/* ✅ Добавляем прелоад, если это главная новость */}
-      {main && imageUrl && (
+      {/* {main && imageUrl && (
         <Head>
           <link
             rel="preload"
@@ -64,21 +64,21 @@ export const NewsLayout = ({
             fetchpriority="high"
           />
         </Head>
-      )}
+      )} */}
       {withPhoto && news?.images && (
         <Link href={`/${locale}/${news.category}/${t.slug}`}>
-          <img
-            src={proxiedUrl}
+          <Image
+            src={imageUrl}
             // src={`/api/image?path=${encodeURIComponent(news?.images[0].url)}`}
             alt={t.title || ""}
             width={320}
             height={240}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
-            fetchPriority="high"
-            loading="eager"
-            decoding="async"
-            // priority={priority}
-            // loading={priority ? "eager" : "lazy"}
+            // fetchPriority="high"
+            // loading="eager"
+            // decoding="async"
+            priority={priority}
+            loading={priority ? "eager" : "lazy"}
             className={`${
               main
                 ? "h-64 md:h-56 lg:min-h-60 xl:h-80"
@@ -90,8 +90,8 @@ export const NewsLayout = ({
                       : " h-64 md:h-56 lg:h-36 xl:h-52"
                   } `
             } w-full object-cover hover:opacity-90 mb-2`}
-            // placeholder="blur"
-            // blurDataURL={blurDataURL}
+            placeholder="blur"
+            blurDataURL={blurDataURL}
           />
         </Link>
       )}

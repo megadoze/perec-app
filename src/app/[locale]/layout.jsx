@@ -61,7 +61,9 @@ export default async function LocaleLayout({ children, params }) {
   const header = await headers();
   const cookieHeader = header.get("cookie") || "";
   const themeMatch = cookieHeader.match(/theme=(dark|light)/);
+
   let theme;
+  
   if (themeMatch?.[1]) {
     theme = themeMatch[1];
   } else {

@@ -1,7 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
-// import MainSection from "@/components/mainSection";
-import MainLayout from "@/components/mainLayout";
 import { getHomePageData } from "@/lib/getHomePageData";
 import { cookies } from "next/headers";
 
@@ -55,26 +53,15 @@ export default async function HomePage({ params }) {
       ? cookieTheme
       : fallbackTheme;
 
-  // console.log("🟡 Главная пересобирается:", Date.now());
-
   const { news, mainNews } = await getHomePageData(locale);
-  const bezkupur = news
-    .filter((item) => item.category === "bezkupur")
-    .slice(0, 2);
 
   return (
     <>
-      <MainLayout
-        news={mainNews}
-        bezkupur={bezkupur}
-        locale={locale}
-        theme={null}
-      />
       <ClientHome
         initialNews={news}
         mainNews={mainNews}
         locale={locale}
-        theme={null}
+        theme={theme}
       />
     </>
   );
