@@ -1,6 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
 const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
   ssr: false,
@@ -8,5 +10,14 @@ const CategoryLayoutFourH = dynamic(() => import("./categoryLayoutFourH"), {
 });
 
 export default function LazyCategoryFourH(props) {
-  return <CategoryLayoutFourH {...props} />;
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "200px" });
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (inView) setShow(true);
+  }, [inView]);
+
+  return (
+    <div ref={ref}>{show ? <CategoryLayoutFourH {...props} /> : null}</div>
+  );
 }

@@ -70,8 +70,7 @@ export default async function HomePage({ params }) {
     bezkupur: t("categoryName.bezkupur"),
   };
 
-  const { news, mainNews } = await getHomePageData(locale);
-  const bezkupur = news.filter((i) => i.category === "bezkupur").slice(0, 2);
+  const { newsByCategory, mainNews } = await getHomePageData(locale);
 
   const preloadImage = mainNews?.[2]?.images?.[0]?.url;
 
@@ -87,14 +86,17 @@ export default async function HomePage({ params }) {
       )}
       <MainLayout
         news={mainNews}
-        bezkupur={bezkupur}
+        bezkupur={newsByCategory.bezkupur}
         locale={locale}
         theme={theme}
         t={tCategoryName}
       />
       <ClientHome
-        initialNews={news}
-        mainNews={mainNews}
+        politics={newsByCategory.politics}
+        economics={newsByCategory.economics}
+        life={newsByCategory.life}
+        culture={newsByCategory.culture}
+        media={newsByCategory.media}
         locale={locale}
         theme={theme}
         t={tCategoryName}

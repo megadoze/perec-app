@@ -5,28 +5,15 @@ import LazyCategorySixV from "./lazyCategorySixV";
 import LazyCategoryMediaFour from "./lazyCategoryMediaFour";
 
 export default function ClientHome({
-  initialNews,
-  mainNews,
+  politics,
+  economics,
+  life,
+  culture,
+  media,
   theme,
   locale,
   t,
 }) {
-  const news = initialNews;
-  const mainNewsIds = mainNews.map((n) => n._id);
-
-  const filterNews = (category, limit) =>
-    news
-      .filter(
-        (item) => item.category === category && !mainNewsIds.includes(item._id)
-      )
-      .slice(0, limit);
-
-  const politics = filterNews("politics", 4);
-  const economics = filterNews("economics", 4);
-  const life = filterNews("life", 6);
-  const culture = filterNews("culture", 6);
-  const media = filterNews("media", 4);
-
   return (
     <>
       <h1 className="sr-only">
@@ -39,6 +26,7 @@ export default function ClientHome({
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/politics`}>{t.politics}</Link>
       </h2>
+
       <LazyCategoryFourH
         news={politics}
         withText
@@ -62,7 +50,13 @@ export default function ClientHome({
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
         <Link href={`/${locale}/life`}>{t.life}</Link>
       </h2>
-      <LazyCategorySix news={life} locale={locale} theme={theme} />
+      <LazyCategorySix
+        news={life}
+        withPhoto
+        withText
+        locale={locale}
+        theme={theme}
+      />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
       <h2 className="font-narrow text-2xl pb-6 text-red-600">
@@ -178,10 +172,10 @@ export default function ClientHome({
 //       <h2 className="font-narrow text-2xl pb-6  text-red-600">
 //         <Link href={`/${locale}/politics`}>{t("politics")}</Link>
 //       </h2>
-//       <LazyCategorySection
-//         importComponent={() => import("./categoryLayoutFourH")}
-//         props={{ news: politics, withText: true, locale, theme }}
-//       />
+// <LazyCategorySection
+//   importComponent={() => import("./categoryLayoutFourH")}
+//   props={{ news: politics, withText: true, locale, theme }}
+// />
 
 //       <div className="my-6 border-t border-neutral-100 dark:border-gray-800"></div>
 //       <h2 className="font-narrow text-2xl pb-6 text-red-600">
