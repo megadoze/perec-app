@@ -2,7 +2,7 @@ import { NewsLayout } from "./newsLayout";
 // import PodcastBlock from "./podcastBlock";
 import TelegramBanner from "./telegramBanner";
 
-export default function MainLayout({ news, bezkupur, locale, theme }) {
+export default function MainLayout({ news, bezkupur, locale, theme, t }) {
   if (!news?.length) return <p>Нет новостей</p>;
 
   const col1 = news.slice(0, 2);
@@ -24,6 +24,7 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
             priority={true}
             locale={locale}
             theme={theme}
+            categoryName={t[col2.category]}
           />
         )}
       </div>
@@ -39,6 +40,7 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
               line={3}
               locale={locale}
               theme={theme}
+              categoryName={t[item.category]}
             />
           </div>
         ))}
@@ -54,6 +56,7 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
             maincat
             locale={locale}
             theme={theme}
+            categoryName={t[item.category]}
           />
         ))}
       </div>
@@ -66,7 +69,13 @@ export default function MainLayout({ news, bezkupur, locale, theme }) {
               key={item._id}
               className="news-h2-light first:border-b first:pb-6 border-neutral-200/40 dark:border-gray-800"
             >
-              <NewsLayout news={item} maincat locale={locale} theme={theme} />
+              <NewsLayout
+                news={item}
+                maincat
+                locale={locale}
+                theme={theme}
+                categoryName={t[item.category]}
+              />
             </div>
           ))}
         </div>

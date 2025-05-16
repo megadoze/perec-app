@@ -86,20 +86,20 @@ export default async function LocaleLayout({ children, params }) {
         ptsansNarrow.variable
       } ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
-      <head>
-        <base href="/" />
-        <meta
+      {/* <head> */}
+      {/* <base href="/" /> */}
+      {/* <meta
           name="google-site-verification"
           content="8LTXtEFH_48BWqVY1lWd-DfTpWijIm_wmUzw5ME260s"
-        />
-        <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
-        <link
+        /> */}
+      {/* <link rel="preconnect" href="https://firebasestorage.googleapis.com" /> */}
+      {/* <link
           rel="dns-prefetch"
           href="https://firebasestorage.googleapis.com"
-        />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="canonical" href={`https://perec.news/${locale}`} />
-      </head>
+        /> */}
+      {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
+      {/* <link rel="canonical" href={`https://perec.news/${locale}`} /> */}
+      {/* </head> */}
       <body className=" bg-white text-black dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />

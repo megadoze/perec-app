@@ -14,6 +14,12 @@ export async function generateMetadata({ params }) {
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    verification: {
+      google: "8LTXtEFH_48BWqVY1lWd-DfTpWijIm_wmUzw5ME260s", // ✅
+    },
+    alternates: {
+      canonical: `https://perec.news/${locale}`, // ✅ canonical
+    },
     openGraph: {
       title: t("metaTitle"),
       description: t("metaDescription"),
@@ -54,6 +60,16 @@ export default async function HomePage({ params }) {
       ? cookieTheme
       : fallbackTheme;
 
+  const t = await getTranslations({ locale });
+  const tCategoryName = {
+    politics: t("categoryName.politics"),
+    economics: t("categoryName.economics"),
+    media: t("categoryName.media"),
+    culture: t("categoryName.culture"),
+    life: t("categoryName.life"),
+    bezkupur: t("categoryName.bezkupur"),
+  };
+
   const { news, mainNews } = await getHomePageData(locale);
   const bezkupur = news.filter((i) => i.category === "bezkupur").slice(0, 2);
 
@@ -74,12 +90,14 @@ export default async function HomePage({ params }) {
         bezkupur={bezkupur}
         locale={locale}
         theme={theme}
+        t={tCategoryName}
       />
       <ClientHome
         initialNews={news}
         mainNews={mainNews}
         locale={locale}
         theme={theme}
+        t={tCategoryName}
       />
     </>
   );
