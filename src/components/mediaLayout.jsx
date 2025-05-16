@@ -83,18 +83,10 @@ function VideoWithIcon({ url, posterUrl }) {
 
 export default function MediaLayout({ data, locale }) {
   const t = data.translations?.[locale] ?? {};
-  // const [relatedMedia, setRelatedMedia] = useState([]);
 
   const isVideo = data?.images[0].type === "video";
   const imageUrl = data?.images[0].url || "";
   const posterUrl = data?.images[0].poster || "";
-
-  // useEffect(() => {
-  //   fetch("/api/media-related?id=" + data._id + "&locale=" + locale)
-  //     .then((res) => res.json())
-  //     .then((items) => setRelatedMedia(items))
-  //     .catch((err) => console.warn("Ошибка загрузки похожих:", err));
-  // }, [data._id, locale]);
 
   const published = {
     ru: "Опубликовано",
@@ -155,68 +147,6 @@ export default function MediaLayout({ data, locale }) {
           )}
         </div>
       </div>
-
-      {/* {(t.subTitle || t.telegramText) && (
-        <p
-          className="text-xl font-light leading-relaxed text-gray-800 dark:text-gray-200 mb-4"
-          dangerouslySetInnerHTML={{
-            __html: t.telegramText,
-          }}
-        />
-      )}
-
-      {Array.isArray(t.tags) && t.tags.length > 0 && (
-        <div className="mt-6 flex flex-wrap gap-2">
-          {t.tags.map((tag) => (
-            <span
-              key={tag}
-              className="text-sm bg-zinc-100 dark:bg-gray-800 text-zinc-600 dark:text-zinc-300 px-2 py-1 rounded"
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-      )} */}
-
-      {/* {relatedMedia.length > 0 && (
-        <div className="mt-10">
-          <h2 className="text-xl font-semibold mb-4">
-            {locale === "ru" ? "Похожие материалы" : "Related media"}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {relatedMedia.map((item) => {
-              const tt = item.translations?.[locale] ?? {};
-              const slug = tt.slug;
-              const url = `/${locale}/media/${slug}`;
-              const imageUrl = item.images?.[0];
-
-              const isVideo =
-                typeof imageUrl === "string" &&
-                (imageUrl.includes(".mp4") || imageUrl.includes(".webm"));
-
-              return (
-                <Link key={item._id} href={url} className="group">
-                  <div className="relative aspect-video overflow-hidden rounded-lg">
-                    {isVideo ? (
-                      <div className="bg-black/60 absolute inset-0 flex items-center justify-center z-10">
-                        <span className="text-white text-2xl">▶</span>
-                      </div>
-                    ) : null}
-                    <img
-                      src={imageUrl}
-                      alt={tt.title}
-                      className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="mt-2 text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2">
-                    {tt.title}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )} */}
     </article>
   );
 }

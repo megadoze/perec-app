@@ -1,11 +1,10 @@
-// components/newsClient.jsx
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import MultiavatarImage from "./multiavatarImage";
 import Link from "next/link";
 import BackButton from "./backButton";
-import CategoryLayoutFourH from "./categoryLayoutFourH";
 import PublishedAt from "./publishedAt";
+import LazyCategoryFourH from "./lazyCategoryFourH";
 
 export default function NewsContent({
   data,
@@ -25,8 +24,6 @@ export default function NewsContent({
     console.log("❌ [NewsContent] empty title or content:", t);
     return notFound();
   }
-
-  // console.log("✅ [NewsContent] rendering article:", t.title);
 
   const moreNews = {
     ru: "Еще",
@@ -111,7 +108,7 @@ export default function NewsContent({
           <span className=" text-red-600">{categoryName}</span>
         </h3>
       </Link>
-      <CategoryLayoutFourH news={news} withPhoto withText locale={locale} />
+      <LazyCategoryFourH news={news} withPhoto withText locale={locale} />
     </>
   );
 }
