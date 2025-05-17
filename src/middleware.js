@@ -13,12 +13,12 @@ export function middleware(req) {
   // Перехватываем тему из куки
   const theme = req.cookies.get("theme")?.value;
 
-  if (pathname === "/sitemap.xml") {
-    return NextResponse.redirect(
-      "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml",
-      307
-    );
-  }
+  // if (pathname === "/sitemap.xml") {
+  //   return NextResponse.redirect(
+  //     "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml",
+  //     307
+  //   );
+  // }
 
   if (pathname === "/sitemap-news.xml") {
     return NextResponse.rewrite(new URL("/api/sitemap-news.xml", req.url));
