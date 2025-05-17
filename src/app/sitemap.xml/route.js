@@ -1,17 +1,21 @@
-// app/sitemap.xml/route.js
 export async function GET() {
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      <sitemap>
-        <loc>https://perec.news/sitemap-news.xml</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-      </sitemap>
-    </sitemapindex>`;
-  
-    return new Response(sitemap, {
-      headers: {
-        'Content-Type': 'application/xml',
-      },
+  const firebaseUrl =
+    "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml";
+
+  const res = await fetch(firebaseUrl);
+
+  if (!res.ok) {
+    return new Response("Failed to fetch sitemap from storage", {
+      status: 502,
     });
   }
-  
+
+  const xml = await res.text();
+
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=300", // кэш 5 минут
+    },
+  });
+}
