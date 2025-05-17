@@ -30,7 +30,7 @@ export default function MainLayout({ news, bezkupur, locale, theme, t }) {
       </div>
 
       {/* Колонка 1 */}
-      <div className="order-2 md:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 dark:border-gray-800 md:border-r lg:border-r-0 divide-neutral-100 dark:divide-gray-800 mt-4 md:mt-0">
+      <div className="order-2 md:order-1 md:space-y-6 md:divide-y pr-4 pb-8 border-neutral-100 dark:border-gray-800 md:border-r lg:border-none divide-neutral-100 dark:divide-gray-800 mt-4 md:mt-0">
         {(col1 ?? []).map((item, index) => (
           <div key={item._id} className={index > 0 ? "pt-5" : ""}>
             <NewsLayout
@@ -47,7 +47,7 @@ export default function MainLayout({ news, bezkupur, locale, theme, t }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 lg:dark:bg-gray-800/40  md:border-r lg:border-r-0 divide-neutral-100 border-neutral-100 dark:divide-gray-800">
+      <div className="md:mt-6 lg:mt-0 order-3 space-y-7 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 lg:dark:bg-gray-800/40  md:border-r lg:border-r-0  divide-neutral-100 border-neutral-100 dark:divide-gray-800">
         {(col3 ?? []).map((item, index) => (
           <NewsLayout
             key={item._id}

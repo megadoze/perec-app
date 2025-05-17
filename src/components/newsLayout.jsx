@@ -48,7 +48,7 @@ export const NewsLayout = ({
             loading={priority ? "eager" : "lazy"}
             className={`${
               main
-                ? "h-64 md:h-56 lg:min-h-60 xl:h-80"
+                ? "w-full aspect-[4/3] object-cover"
                 : maincat
                 ? "h-64 md:h-56 lg:h-32 xl:h-44"
                 : `${
