@@ -63,11 +63,11 @@ export default function MainLayout({ news, bezkupur, locale, theme, t }) {
 
       {/* Колонка 4 */}
       <div className="md:mt-6 lg:mt-0 order-4 md:space-y-6 md:pl-4 space-y-6">
-        <div className=" bg-neutral-50 dark:bg-gray-900 px-4 py-3 space-y-4 ">
+        <div className=" bg-neutral-50 dark:bg-gray-900 px-4 py-3 space-y-4 divide-y">
           {(col4 ?? []).map((item, index) => (
             <div
               key={item._id}
-              className="news-h2-light first:border-b first:pb-6 border-neutral-200/40 dark:border-gray-800"
+              className="news-h2-light first:pt-0 pt-4 border-neutral-200/40 dark:border-gray-800"
             >
               <NewsLayout
                 news={item}
