@@ -1,5 +1,4 @@
 import { NewsLayout } from "./newsLayout";
-// import PodcastBlock from "./podcastBlock";
 import TelegramBanner from "./telegramBanner";
 
 export default function MainLayout({ news, bezkupur, locale, theme, t }) {
