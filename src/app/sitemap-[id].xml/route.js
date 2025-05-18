@@ -5,17 +5,20 @@ export async function GET(_, ctx) {
     return new Response("Invalid sitemap ID", { status: 400 });
   }
 
-  const firebaseUrl = `https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-${id}.xml`;
+  const url = `https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-${id}.xml`;
 
   try {
-    const res = await fetch(firebaseUrl);
+    console.log("📡 FETCH:", url);
+    const res = await fetch(url);
 
     if (!res.ok) {
       const text = await res.text();
+      console.error("⚠️ FETCH ERROR:", res.status, text);
       return new Response(`Storage fetch failed: ${text}`, { status: 502 });
     }
 
     const xml = await res.text();
+    console.log("✅ XML FETCHED:", xml.slice(0, 200)); // только начало, чтобы не было огромного вывода
 
     return new Response(xml, {
       headers: {
@@ -24,7 +27,7 @@ export async function GET(_, ctx) {
       },
     });
   } catch (err) {
-    console.error("💥 Ошибка загрузки sitemap:", err);
+    console.error("💥 FATAL ERROR:", err);
     return new Response("Internal Server Error", { status: 500 });
   }
 }
