@@ -1,8 +1,10 @@
-export async function GET(_, { params }) {
+export const dynamic = "force-dynamic";
+
+export async function GET(_, context) {
+  const { params } = context;
   const { id } = params;
 
-  // Проверка на число
-  if (!/^\d+$/.test(id)) {
+  if (!id || isNaN(Number(id))) {
     return new Response("Invalid sitemap ID", { status: 400 });
   }
 

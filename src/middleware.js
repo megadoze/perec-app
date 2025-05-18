@@ -17,7 +17,7 @@ export function middleware(req) {
   if (
     pathname === "/sitemap.xml" ||
     pathname === "/sitemap-news.xml" ||
-    pathname.startsWith("/api/sitemap/")
+    (pathname.startsWith("/sitemap-") && pathname.endsWith(".xml"))
   ) {
     return NextResponse.next();
   }
