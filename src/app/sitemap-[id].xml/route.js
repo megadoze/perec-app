@@ -22,6 +22,7 @@ export async function GET(_, ctx) {
     return new Response(xml, {
       headers: {
         "Content-Type": "application/xml",
+        "Cache-Control": "public, max-age=300", // кэшируем на 5 минут
       },
     });
   } catch (err) {
