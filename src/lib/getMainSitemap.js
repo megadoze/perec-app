@@ -30,17 +30,34 @@ export async function getMainSitemap() {
     if (ruSlug && enSlug && category) {
       const ruUrl = `${siteUrl}/ru/${category}/${ruSlug}`;
       const enUrl = `${siteUrl}/en/${category}/${enSlug}`;
-      urls.push({
-        loc: enUrl,
-        alternates: [
-          { hreflang: "en", href: enUrl },
-          { hreflang: "ru", href: ruUrl },
-          { hreflang: "x-default", href: enUrl },
-        ],
-        lastmod: new Date(item.updatedAt || item.publishedAt).toISOString(),
-        changefreq: "daily",
-        priority: "0.8",
-      });
+      const lastmod = new Date(
+        item.updatedAt || item.publishedAt || item.createdAt
+      ).toISOString();
+
+      urls.push(
+        {
+          loc: enUrl,
+          alternates: [
+            { hreflang: "en", href: enUrl },
+            { hreflang: "ru", href: ruUrl },
+            { hreflang: "x-default", href: enUrl },
+          ],
+          lastmod: lastmod,
+          changefreq: "daily",
+          priority: "0.8",
+        },
+        {
+          loc: ruUrl,
+          alternates: [
+            { hreflang: "en", href: enUrl },
+            { hreflang: "ru", href: ruUrl },
+            { hreflang: "x-default", href: enUrl },
+          ],
+          lastmod: lastmod,
+          changefreq: "daily",
+          priority: "0.8",
+        }
+      );
     }
   });
 
