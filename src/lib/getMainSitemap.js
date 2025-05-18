@@ -23,41 +23,47 @@ export async function getMainSitemap() {
   Object.values(newsData).forEach((item) => {
     if (item.status !== "published") return;
 
-    const ruSlug = item.translations?.ru?.slug;
-    const enSlug = item.translations?.en?.slug;
+    const ru = item.translations?.ru;
+    const en = item.translations?.en;
     const category = item.category;
+    if (!category) return;
 
-    if (ruSlug && enSlug && category) {
-      const ruUrl = `${siteUrl}/ru/${category}/${ruSlug}`;
-      const enUrl = `${siteUrl}/en/${category}/${enSlug}`;
-      const lastmod = new Date(
-        item.updatedAt || item.publishedAt || item.createdAt
-      ).toISOString();
+    const lastmod = new Date(
+      item.updatedAt || item.publishedAt || item.createdAt
+    ).toISOString();
 
-      urls.push(
-        {
-          loc: enUrl,
-          alternates: [
-            { hreflang: "en", href: enUrl },
-            { hreflang: "ru", href: ruUrl },
-            { hreflang: "x-default", href: enUrl },
-          ],
-          lastmod: lastmod,
-          changefreq: "daily",
-          priority: "0.8",
-        },
-        {
-          loc: ruUrl,
-          alternates: [
-            { hreflang: "en", href: enUrl },
-            { hreflang: "ru", href: ruUrl },
-            { hreflang: "x-default", href: enUrl },
-          ],
-          lastmod: lastmod,
-          changefreq: "daily",
-          priority: "0.8",
-        }
-      );
+    if (ru?.slug) {
+      const ruUrl = `${siteUrl}/ru/${category}/${ru.slug}`;
+      const enUrl = en?.slug ? `${siteUrl}/en/${category}/${en.slug}` : ruUrl;
+
+      urls.push({
+        loc: ruUrl,
+        alternates: [
+          { hreflang: "ru", href: ruUrl },
+          ...(en?.slug ? [{ hreflang: "en", href: enUrl }] : []),
+          { hreflang: "x-default", href: ruUrl },
+        ],
+        lastmod,
+        changefreq: "daily",
+        priority: "0.8",
+      });
+    }
+
+    if (en?.slug) {
+      const enUrl = `${siteUrl}/en/${category}/${en.slug}`;
+      const ruUrl = ru?.slug ? `${siteUrl}/ru/${category}/${ru.slug}` : enUrl;
+
+      urls.push({
+        loc: enUrl,
+        alternates: [
+          { hreflang: "en", href: enUrl },
+          ...(ru?.slug ? [{ hreflang: "ru", href: ruUrl }] : []),
+          { hreflang: "x-default", href: enUrl },
+        ],
+        lastmod,
+        changefreq: "daily",
+        priority: "0.8",
+      });
     }
   });
 

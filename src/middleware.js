@@ -14,11 +14,7 @@ export function middleware(req) {
   const theme = req.cookies.get("theme")?.value;
 
   // 🧱 Исключаем sitemap-роуты
-  if (
-    pathname === "/sitemap.xml" ||
-    pathname === "/sitemap-news.xml" ||
-    (pathname.startsWith("/sitemap-") && pathname.endsWith(".xml"))
-  ) {
+  if (pathname === "/sitemap.xml" || pathname === "/sitemap-news.xml") {
     return NextResponse.next();
   }
 
@@ -36,11 +32,5 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: [
-    "/",
-    "/(ru|en)/:path*",
-    "/sitemap.xml",
-    "/sitemap-news.xml",
-    "/api/sitemap/:id*",
-  ],
+  matcher: ["/", "/(ru|en)/:path*", "/sitemap.xml", "/sitemap-news.xml"],
 };
