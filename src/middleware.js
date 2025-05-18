@@ -41,6 +41,6 @@ export const config = {
     "/(ru|en)/:path*",
     "/sitemap.xml",
     "/sitemap-news.xml",
-    "/sitemap-:id(\\d+).xml",
+    "/sitemap-:id.xml",
   ],
 };
