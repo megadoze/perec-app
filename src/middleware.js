@@ -13,11 +13,11 @@ export function middleware(req) {
   // Перехватываем тему из куки
   const theme = req.cookies.get("theme")?.value;
 
-  // ✅ Пропускаем sitemap.xml, sitemap-news.xml и sitemap-[id].xml
+  // 🧱 Исключаем sitemap-роуты
   if (
     pathname === "/sitemap.xml" ||
     pathname === "/sitemap-news.xml" ||
-    /^\/sitemap-\d+\.xml$/.test(pathname)
+    pathname.startsWith("/api/sitemap/")
   ) {
     return NextResponse.next();
   }
@@ -41,6 +41,6 @@ export const config = {
     "/(ru|en)/:path*",
     "/sitemap.xml",
     "/sitemap-news.xml",
-    "/sitemap-:id.xml",
+    "/api/sitemap/:id*",
   ],
 };
