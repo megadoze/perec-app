@@ -9,7 +9,7 @@ export async function GET(_, context) {
   }
 
   const res = await fetch(
-    `https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-${id}.xml`
+    `https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-1.xml`
   );
 
   if (!res.ok) {
