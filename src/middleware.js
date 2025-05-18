@@ -13,8 +13,12 @@ export function middleware(req) {
   // Перехватываем тему из куки
   const theme = req.cookies.get("theme")?.value;
 
-  // ✅ Пропускаем sitemap.xml и sitemap-news.xml — без локализации
-  if (pathname === "/sitemap.xml" || pathname === "/sitemap-news.xml") {
+  // ✅ Пропускаем sitemap.xml, sitemap-news.xml и sitemap-[id].xml
+  if (
+    pathname === "/sitemap.xml" ||
+    pathname === "/sitemap-news.xml" ||
+    /^\/sitemap-\d+\.xml$/.test(pathname)
+  ) {
     return NextResponse.next();
   }
 
@@ -32,5 +36,11 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/", "/(ru|en)/:path*", "/sitemap.xml", "/sitemap-news.xml"],
+  matcher: [
+    "/",
+    "/(ru|en)/:path*",
+    "/sitemap.xml",
+    "/sitemap-news.xml",
+    "/sitemap-:id.xml",
+  ],
 };
