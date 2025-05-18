@@ -1,6 +1,6 @@
 export async function GET() {
   const firebaseUrl =
-    "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-1.xml";
+    "https://storage.googleapis.com/perec-news.firebasestorage.app/sitemap-index.xml";
 
   const res = await fetch(firebaseUrl);
 
