@@ -60,22 +60,15 @@ export async function getNewsSitemap() {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 ${newsItems
   .map((item) => {
-    const altLinks = item.alternates
-      .map(
-        (alt) =>
-          `<xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`
-      )
-      .join("\n    ");
+    const name = item.lang === "en" ? "PEREC NEWS" : "ПЕРЕЦ NEWS";
     return `  <url>
     <loc>${item.loc}</loc>
-    ${altLinks}
     <news:news>
       <news:publication>
-        <news:name>PEREC.news</news:name>
+        <news:name>${name}</news:name>
         <news:language>${item.lang}</news:language>
       </news:publication>
       <news:publication_date>${item.date}</news:publication_date>
