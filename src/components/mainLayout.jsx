@@ -12,7 +12,7 @@ export default function MainLayout({ news, bezkupur, locale, theme, t }) {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[0.9fr_1.5fr_1fr_1fr] lg:divide-x divide-neutral-100 dark:divide-gray-800/60">
       {/* Главная новость */}
-      <div className="order-1 md:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80  dark:border-gray-800  dark:bg-gray-800/60 px-4 md:px-0 -mx-4 md:-mx-0 pt-4">
+      <div className="order-1 md:order-2 md:pl-4 md:pr-4 lg:px-4 pb-4 border-neutral-100 bg-neutral-100/80  dark:border-gray-800 dark:bg-gray-800/60 px-4 md:px-0 -mx-4 md:-mx-0 pt-4">
         {col2 && (
           <NewsLayout
             news={col2}
@@ -46,7 +46,7 @@ export default function MainLayout({ news, bezkupur, locale, theme, t }) {
       </div>
 
       {/* Колонка 3 */}
-      <div className="md:mt-6 lg:mt-0 order-3 space-y-7 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 lg:dark:bg-gray-800/40  md:border-r lg:border-r-0  divide-neutral-100 border-neutral-100 dark:divide-gray-800">
+      <div className="md:mt-6 lg:mt-0 order-3 space-y-6 md:pr-4 lg:px-4 pb-6 md:pb-4 lg:pt-4 lg:bg-stone-100/40 lg:dark:bg-gray-800/40  md:border-r lg:border-r-0  divide-neutral-100 border-neutral-100 dark:divide-gray-800">
         {(col3 ?? []).map((item, index) => (
           <NewsLayout
             key={item._id}

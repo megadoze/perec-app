@@ -48,15 +48,15 @@ export const NewsLayout = ({
             loading={priority ? "eager" : "lazy"}
             className={`${
               main
-                ? "w-full aspect-[4/3] object-cover"
+                ? "aspect-[4/3]"
                 : maincat
-                ? "h-64 md:h-56 lg:h-32 xl:h-44"
+                ? " aspect-[3/2]"
                 : `${
                     culture
                       ? " aspect-[3/2] md:aspect-[4/3]"
                       : " h-64 md:h-56 lg:h-36 xl:h-52"
                   } `
-            } w-full object-cover hover:opacity-90 mb-2`}
+            }  w-full h-full hover:opacity-90 mb-2`}
             placeholder="blur"
             blurDataURL={blurDataURL}
           />

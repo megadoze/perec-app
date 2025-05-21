@@ -76,6 +76,11 @@ export default async function NewsPage({ params }) {
   const { slug, locale } = await params;
   const id = slug?.split("-").at(-1);
 
+  // 🔒 Защита от недопустимого ID
+  if (!id || /[.#$\[\]]/.test(id)) {
+    return { title: "Not found" };
+  }
+
   const snapshot = await get(child(ref(db), `news/${id}`));
   const data = snapshot.exists() ? snapshot.val() : null;
 
