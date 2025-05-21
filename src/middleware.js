@@ -32,7 +32,9 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next|favicon.ico|.well-known|sitemap.xml|sitemap-news.xml).*)",
-  ],
+  matcher: ["/", "/(ru|en)/:path*", "/sitemap.xml", "/sitemap-news.xml"],
 };
+
+  // matcher: [
+  //   "/((?!_next|favicon.ico|.well-known|sitemap.xml|sitemap-news.xml).*)",
+  // ],
