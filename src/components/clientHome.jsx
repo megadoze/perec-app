@@ -23,7 +23,7 @@ export default function ClientHome({
       </h1>
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
-      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600 dark:text-red-500">
         <Link href={`/${locale}/politics`}>{t.politics}</Link>
       </h2>
 
@@ -35,7 +35,7 @@ export default function ClientHome({
       />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
-      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600 dark:text-red-500">
         <Link href={`/${locale}/economics`}>{t.economics}</Link>
       </h2>
       <LazyCategoryFourH
@@ -47,7 +47,7 @@ export default function ClientHome({
       />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
-      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600 dark:text-red-500">
         <Link href={`/${locale}/life`}>{t.life}</Link>
       </h2>
       <LazyCategorySix
@@ -59,13 +59,13 @@ export default function ClientHome({
       />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
-      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600 dark:text-red-500">
         <Link href={`/${locale}/culture`}>{t.culture}</Link>
       </h2>
       <LazyCategorySixV news={culture} locale={locale} theme={theme} />
 
       <div className="my-6 border-t border-neutral-100 dark:border-gray-800" />
-      <h2 className="font-narrow text-2xl pb-6 text-red-600">
+      <h2 className="font-narrow text-2xl pb-6 text-red-600 dark:text-red-500">
         <Link href={`/${locale}/media`}>{t.media}</Link>
       </h2>
       <LazyCategoryMediaFour

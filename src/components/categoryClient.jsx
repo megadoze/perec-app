@@ -54,7 +54,7 @@ export default function CategoryClient({ title, news, category, theme }) {
 
   return (
     <div>
-      <h1 className="text-2xl font-narrow text-red-600 mb-6">{title}</h1>
+      <h1 className="text-2xl font-narrow text-red-600 dark:text-red-500 mb-6">{title}</h1>
 
       {news.length === 0 && <p>{emptyNewsTitle[locale]}</p>}
 

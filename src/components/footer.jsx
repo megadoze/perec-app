@@ -29,7 +29,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`hover:text-red-600 transition-colors ${
+                className={`hover:text-red-600 hover:dark:text-red-500 transition-colors ${
                   isActive ? "text-red-600" : ""
                 }`}
               >
