@@ -10,9 +10,6 @@ export function middleware(req) {
   const { pathname } = req.nextUrl;
   const ua = req.headers.get("user-agent") || "";
 
-  // Перехватываем тему из куки
-  const theme = req.cookies.get("theme")?.value;
-
   // 🧱 Исключаем sitemap-роуты
   if (pathname === "/sitemap.xml" || pathname === "/sitemap-news.xml") {
     return NextResponse.next();

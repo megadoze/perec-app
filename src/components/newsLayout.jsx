@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getBlurDataUrl } from "@/lib/getBlurDataUrl";
 
 export const NewsLayout = ({
   news,
@@ -24,13 +25,7 @@ export const NewsLayout = ({
 
   const imageUrl = news?.images?.[0]?.url || "";
 
-  const svg =
-    theme === "dark"
-      ? `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(31,41,55,0.4)" /></svg>`
-      : `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(228,228,228,0.4)" /></svg>`;
-  const blurDataURL = `data:image/svg+xml;base64,${Buffer.from(svg).toString(
-    "base64"
-  )}`;
+  const blurDataURL = getBlurDataUrl(theme);
 
   return (
     <article>
