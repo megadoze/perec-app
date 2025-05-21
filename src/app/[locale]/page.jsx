@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import ClientHome from "@/components/clientHome";
 import MainLayout from "@/components/mainLayout";
 import { getHomePageData } from "@/lib/getHomePageData";
-import { cookies } from "next/headers";
 
 export const dynamic = "force-static";
 export const revalidate = 300;
@@ -49,17 +48,6 @@ export async function generateMetadata({ params }) {
 export default async function HomePage({ params }) {
   const { locale } = await params;
 
-  const cookie = await cookies();
-  const cookieTheme = cookie.get("theme")?.value;
-  const fallbackTheme = (() => {
-    const hour = new Date().getHours();
-    return hour >= 20 || hour < 7 ? "dark" : "light";
-  })();
-  const theme =
-    cookieTheme === "dark" || cookieTheme === "light"
-      ? cookieTheme
-      : fallbackTheme;
-
   const t = await getTranslations({ locale });
   const tCategoryName = {
     politics: t("categoryName.politics"),
@@ -88,7 +76,6 @@ export default async function HomePage({ params }) {
         news={mainNews}
         bezkupur={newsByCategory.bezkupur}
         locale={locale}
-        theme={theme}
         t={tCategoryName}
       />
       <ClientHome
@@ -98,7 +85,6 @@ export default async function HomePage({ params }) {
         culture={newsByCategory.culture}
         media={newsByCategory.media}
         locale={locale}
-        theme={theme}
         t={tCategoryName}
       />
     </>
