@@ -44,15 +44,15 @@ export const NewsLayout = ({
             loading={priority ? "eager" : "lazy"}
             className={`${
               main
-                ? "aspect-[4/3]"
+                ? "h-72 md:h-60 xl:h-80"
                 : maincat
-                ? " aspect-[3/2]"
+                ? "h-72 md:h-60 lg:h-40 xl:h-48"
                 : `${
                     culture
-                      ? " aspect-[3/2] md:aspect-[4/3]"
-                      : " h-64 md:h-56 lg:h-36 xl:h-52"
+                      ? "aspect-[4/3] object-cover"
+                      : "h-64 md:h-56 lg:h-36 xl:h-52 object-cover"
                   } `
-            }  w-full h-full hover:opacity-90 mb-2`}
+            } w-full hover:opacity-90 mb-2`}
             placeholder="blur"
             blurDataURL={blurDataURL}
           />
