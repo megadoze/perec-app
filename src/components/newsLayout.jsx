@@ -52,7 +52,7 @@ export const NewsLayout = ({
                       ? "aspect-[4/3]"
                       : "h-64 md:h-56 lg:h-36 xl:h-52"
                   } `
-            } w-full hover:opacity-90 mb-2`}
+            } w-full object-cover hover:opacity-90 mb-2`}
             placeholder="blur"
             blurDataURL={blurDataURL}
           />
