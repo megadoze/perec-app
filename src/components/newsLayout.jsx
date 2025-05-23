@@ -49,8 +49,8 @@ export const NewsLayout = ({
                 ? "h-72 md:h-60 lg:h-40 xl:h-48"
                 : `${
                     culture
-                      ? "aspect-[4/3] object-cover"
-                      : "h-64 md:h-56 lg:h-36 xl:h-52 object-cover"
+                      ? "aspect-[4/3]"
+                      : "h-64 md:h-56 lg:h-36 xl:h-52"
                   } `
             } w-full hover:opacity-90 mb-2`}
             placeholder="blur"
