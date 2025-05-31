@@ -87,6 +87,15 @@ export default async function LocaleLayout({ children, params }) {
       } ${robotoCondensed.variable} min-h-screen flex flex-col`}
     >
       <body className=" bg-white text-black dark:bg-gray-900 dark:text-gray-100 font-sans flex flex-col min-h-screen">
+        {/* Facebook Pixel noscript fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1013925427613766&ev=PageView&noscript=1"
+          />
+        </noscript>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
           <ThemeInitializer />
