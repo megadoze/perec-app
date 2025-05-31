@@ -23,7 +23,7 @@ export const NewsLayout = ({
 
   const imageUrl = news?.images?.[0]?.url || "";
 
-  const svg = `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="200" fill="rgba(80,80,80,0.1)" /></svg>`;
+  const svg = `<svg width="320" height="200" xmlns="http://www.w3.org/2000/svg"><rect width="320" height="240" fill="rgba(80,80,80,0.1)" /></svg>`;
   const blurDataURL = `data:image/svg+xml;base64,${Buffer.from(svg).toString(
     "base64"
   )}`;
@@ -48,9 +48,7 @@ export const NewsLayout = ({
                 : maincat
                 ? "h-72 md:h-60 lg:h-40 xl:h-48"
                 : `${
-                    culture
-                      ? "aspect-[4/3]"
-                      : "h-64 md:h-56 lg:h-36 xl:h-52"
+                    culture ? "aspect-[4/3]" : "h-64 md:h-56 lg:h-36 xl:h-52"
                   } `
             } w-full object-cover hover:opacity-90 mb-2`}
             placeholder="blur"
