@@ -45,6 +45,25 @@ export default function NewsContent({
     en: "Based on materials from",
   };
 
+  const telegram = {
+    ru: {
+      title: "🌶️ Хочешь острое первым?",
+      description:
+        "Мы пишем тексты, которые не укладываются в формат “новости” — и точно не пролезут в ленту Яндекса или Google. Подпишись на наш",
+      lead: "— острое, честное, без цензуры. Только когда есть, что сказать.",
+      follow: "Подписаться",
+      link: "https://t.me/perecnews",
+    },
+    en: {
+      title: "🌶️ Want the spiciest first?",
+      description:
+        "We write texts that don’t fit into the usual 'news' format — and surely won’t appear in your Google feed. Subscribe to our",
+      lead: "— sharp, honest, uncensored. Only when we truly have something to say.",
+      follow: "Subscribe",
+      link: "https://t.me/perecnews_en",
+    },
+  };
+
   return (
     <>
       <article className="max-w-3xl h-fit mx-auto p-0">
@@ -98,6 +117,29 @@ export default function NewsContent({
               </a>
             </div>
           )}
+        </div>
+        <div className="border-t border-neutral-100 dark:border-gray-800 mt-6">
+          <p className="text-2xl font-narrow font-bold mb-2">
+            {telegram[locale].title}
+          </p>
+          <p className="text-lg font-sans text-gray-800 mb-4">
+            {telegram[locale].description}{" "}
+            <a
+              href={telegram[locale].link}
+              target="_blank"
+              className="text-black underline"
+            >
+              Telegram
+            </a>{" "}
+            {telegram[locale].lead}
+          </p>
+          <a
+            href={telegram[locale].link}
+            target="_blank"
+            className="inline-block bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition"
+          >
+            {telegram[locale].follow} →
+          </a>
         </div>
         <BackButton />
       </article>
