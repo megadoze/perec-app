@@ -50,7 +50,7 @@ export default function NewsContent({
       title: "🌶️ Хочешь острое первым?",
       description:
         "Мы пишем тексты, которые не укладываются в формат “новости” — и точно не пролезут в ленту Яндекса или Google. Подпишись на наш",
-      lead: "— острое, честное, без цензуры. Только когда есть, что сказать.",
+      lead: "острое, честное, без цензуры. Только когда есть, что сказать.",
       follow: "Подписаться",
       link: "https://t.me/perecnews",
     },
@@ -58,7 +58,7 @@ export default function NewsContent({
       title: "🌶️ Want the spiciest first?",
       description:
         "We write texts that don’t fit into the usual 'news' format — and surely won’t appear in your Google feed. Subscribe to our",
-      lead: "— sharp, honest, uncensored. Only when we truly have something to say.",
+      lead: "sharp, honest, uncensored. Only when we truly have something to say.",
       follow: "Subscribe",
       link: "https://t.me/perecnews_en",
     },
@@ -129,7 +129,7 @@ export default function NewsContent({
               target="_blank"
               className="text-black underline"
             >
-              Telegram
+              Telegram →
             </a>{" "}
             {telegram[locale].lead}
           </p>
