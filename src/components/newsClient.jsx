@@ -127,7 +127,7 @@ export default function NewsContent({
             <a
               href={telegram[locale].link}
               target="_blank"
-              className="text-black underline"
+              className="text-black font-bold"
             >
               Telegram →
             </a>{" "}
