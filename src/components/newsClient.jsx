@@ -91,6 +91,27 @@ export default function NewsContent({
             dangerouslySetInnerHTML={{ __html: t.content }}
           ></div>
         </div>
+        <div className=" mt-6">
+          <p className="text-2xl font-narrow">{telegram[locale].title}</p>
+          <p className="text-lg font-sans text-gray-800 mb-4 mt-4">
+            {telegram[locale].description}{" "}
+            <a
+              href={telegram[locale].link}
+              target="_blank"
+              className="text-perecred font-bold"
+            >
+              Telegram →
+            </a>{" "}
+            {telegram[locale].lead}
+          </p>
+          <a
+            href={telegram[locale].link}
+            target="_blank"
+            className="inline-block bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition"
+          >
+            {telegram[locale].follow} →
+          </a>
+        </div>
         <div className="w-full pt-8 flex flex-wrap justify-between items-end text-base text-gray-800">
           <div className="order-2 md:order-1 flex w-full md:w-auto gap-3 items-center">
             {currentAvatar && (
@@ -115,29 +136,6 @@ export default function NewsContent({
               </a>
             </div>
           )}
-        </div>
-        <div className="border-t border-neutral-100 dark:border-gray-800 mt-6">
-          <p className="text-2xl font-narrow font-bold">
-            {telegram[locale].title}
-          </p>
-          <p className="text-lg font-sans text-gray-800 mb-4 mt-4">
-            {telegram[locale].description}{" "}
-            <a
-              href={telegram[locale].link}
-              target="_blank"
-              className="text-perecred font-bold"
-            >
-              Telegram →
-            </a>{" "}
-            {telegram[locale].lead}
-          </p>
-          <a
-            href={telegram[locale].link}
-            target="_blank"
-            className="inline-block bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition"
-          >
-            {telegram[locale].follow} →
-          </a>
         </div>
         <BackButton />
       </article>
