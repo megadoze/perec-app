@@ -48,17 +48,15 @@ export default function NewsContent({
   const telegram = {
     ru: {
       title: "🌶️ Хочешь острое первым?",
-      description:
-        "Мы пишем тексты, которые не укладываются в формат “новости” — и точно не пролезут в ленту Яндекса или Google. Подпишись на наш",
-      lead: "острое, честное, без цензуры. Только когда есть, что сказать.",
+      description: "Подпишись на наш",
+      lead: "острое, честное, без цензуры.",
       follow: "Подписаться",
       link: "https://t.me/perecnews",
     },
     en: {
       title: "🌶️ Want the spiciest first?",
-      description:
-        "We write texts that don’t fit into the usual 'news' format — and surely won’t appear in your Google feed. Subscribe to our",
-      lead: "sharp, honest, uncensored. Only when we truly have something to say.",
+      description: "Subscribe to our",
+      lead: "sharp, honest, uncensored.",
       follow: "Subscribe",
       link: "https://t.me/perecnews_en",
     },
@@ -119,15 +117,15 @@ export default function NewsContent({
           )}
         </div>
         <div className="border-t border-neutral-100 dark:border-gray-800 mt-6">
-          <p className="text-2xl font-narrow font-bold mb-2">
+          <p className="text-2xl font-narrow font-bold">
             {telegram[locale].title}
           </p>
-          <p className="text-lg font-sans text-gray-800 mb-4">
+          <p className="text-lg font-sans text-gray-800 mb-4 mt-4">
             {telegram[locale].description}{" "}
             <a
               href={telegram[locale].link}
               target="_blank"
-              className="text-black font-bold"
+              className="text-perecred font-bold"
             >
               Telegram →
             </a>{" "}
