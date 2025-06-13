@@ -93,7 +93,7 @@ export default function NewsContent({
         </div>
         <div className=" mt-6">
           <p className="text-2xl font-narrow">{telegram[locale].title}</p>
-          <p className="text-lg font-sans text-gray-800 mb-4 mt-4">
+          <p className="text-lg font-sans text-gray-800 dark:text-gray-200 mb-4 mt-4">
             {telegram[locale].description}{" "}
             <a
               href={telegram[locale].link}
