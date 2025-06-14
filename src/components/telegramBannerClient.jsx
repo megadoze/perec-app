@@ -42,7 +42,7 @@ export default function TelegramBannerClient() {
   return (
     <div
       id="telegram-banner"
-      className="fixed top-4 left-4 right-4 md:left-auto md:right-8 md:top-8 bg-black text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between transition-opacity duration-500 opacity-100 pointer-events-none z-50"
+      className="fixed top-4 left-4 right-4 md:left-auto md:right-8 md:top-8 bg-black text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between transition-opacity duration-500 opacity-0 pointer-events-none z-50"
     >
       <span className="text-base font-medium text-white">
         🌶️ Подписывайся на наш{" "}
