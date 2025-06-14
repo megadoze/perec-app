@@ -5,7 +5,7 @@ import Link from "next/link";
 import BackButton from "./backButton";
 import PublishedAt from "./publishedAt";
 import LazyCategoryFourH from "./lazyCategoryFourH";
-import TelegramBannerClient from "./TelegramBannerClient";
+import TelegramBannerClient from "./telegramBannerClient";
 
 export default function NewsContent({
   data,
