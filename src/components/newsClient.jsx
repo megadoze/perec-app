@@ -5,6 +5,7 @@ import Link from "next/link";
 import BackButton from "./backButton";
 import PublishedAt from "./publishedAt";
 import LazyCategoryFourH from "./lazyCategoryFourH";
+import TelegramBannerClient from "./TelegramBannerClient";
 
 export default function NewsContent({
   data,
@@ -64,6 +65,7 @@ export default function NewsContent({
 
   return (
     <>
+      <TelegramBannerClient />
       <article className="max-w-3xl h-fit mx-auto p-0">
         <h1 className="text-4xl md:text-5xl font-narrow font-bold mb-2">
           {t.title}
@@ -112,6 +114,29 @@ export default function NewsContent({
             {telegram[locale].follow} →
           </a>
         </div>
+        <div
+          id="telegram-banner"
+          className="fixed bottom-4 left-4 right-4 md:left-auto md:right-8 md:bottom-8 bg-black text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between transition-opacity duration-500 opacity-0 pointer-events-none z-50"
+        >
+          <span className="text-base font-medium">
+            🌶️ Подписывайся на наш{" "}
+            <a
+              href="https://t.me/perecnews"
+              target="_blank"
+              className="underline"
+            >
+              Telegram
+            </a>{" "}
+            — острое, честное, без цензуры.
+          </span>
+          <button
+            id="close-banner"
+            className="ml-4 text-white text-xl leading-none hover:text-gray-400"
+          >
+            ×
+          </button>
+        </div>
+
         <div className="w-full pt-8 flex flex-wrap justify-between items-end text-base text-gray-800">
           <div className="order-2 md:order-1 flex w-full md:w-auto gap-3 items-center">
             {currentAvatar && (
