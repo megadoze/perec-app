@@ -5,13 +5,15 @@ import FadeWrapper from "@/components/fadeWrapper";
 import { getMessages } from "@/lib/getMessages";
 import MediaLayout from "@/components/mediaLayout";
 
+const SITE_URL = "https://perec.news";
+
 export async function generateMetadata({ params }) {
   const { slug, locale } = await params;
 
   const id = slug?.split("-").at(-1);
 
   if (!id) {
-    return { title: "Not found" };
+    return { title: "Not found", robots: { index: false, follow: false } };
   }
 
   const messages = await getMessages(locale);
@@ -27,15 +29,28 @@ export async function generateMetadata({ params }) {
   };
 
   if (!news) {
-    return { title: emptyNews[locale] };
+    return {
+      title: emptyNews[locale],
+      robots: { index: false, follow: false },
+    };
   }
 
   const t = news.translations?.[locale];
-  if (!t) return { title: emptyNews[locale] };
+  if (!t)
+    return {
+      title: emptyNews[locale],
+      robots: { index: false, follow: false },
+    };
 
   const title = t.seoTitle || t.title;
   const description = t.seoDescription || t.subTitle;
-  const url = `https://perec.news/${locale}/${news.category}/${news.translations[locale].slug}`;
+  const url = `${SITE_URL}/${locale}/${news.category}/${news.translations[locale].slug}`;
+  const ruUrl = news.translations?.ru?.slug
+    ? `${SITE_URL}/ru/${news.category}/${news.translations.ru.slug}`
+    : undefined;
+  const enUrl = news.translations?.en?.slug
+    ? `${SITE_URL}/en/${news.category}/${news.translations.en.slug}`
+    : undefined;
   const image =
     news.images?.[0]?.type === "video"
       ? news.images?.[0]?.poster
@@ -45,6 +60,14 @@ export async function generateMetadata({ params }) {
   return {
     title,
     description,
+    alternates: {
+      canonical: url, // каноникал = текущая локаль
+      languages: {
+        ...(ruUrl ? { ru: ruUrl } : {}),
+        ...(enUrl ? { en: enUrl } : {}),
+        ...(enUrl ? { "x-default": enUrl } : {}),
+      },
+    },
     openGraph: {
       title,
       description,
@@ -129,8 +152,8 @@ export default async function NewsPage({ params }) {
       data.translations[locale].seoTitle || data.translations[locale].title,
     image: [
       news.images?.[0]?.type === "video"
-        ? news.images?.[0]?.poster
-        : news.images?.[0]?.url ||
+        ? data.images?.[0]?.poster
+        : data.images?.[0]?.url ||
           "https://firebasestorage.googleapis.com/v0/b/perec-news.firebasestorage.app/o/public%2Fpublic_perec.webp?alt=media",
     ],
     datePublished: new Date(data.createdAt).toISOString(),
